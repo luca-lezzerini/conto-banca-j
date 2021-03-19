@@ -6,7 +6,7 @@ Gruppo 2: Salvatori https://meet.google.com/vfn-vogq-ktm
 
 Gruppo 3: Tangucci https://meet.google.com/ywa-nivu-oco
 
-Gruppo 4: Montero
+Gruppo 4: Montero https://meet.google.com/vbc-cgvd-nix
 
 
 Responsabile Controllo di Configurazione: Marro
