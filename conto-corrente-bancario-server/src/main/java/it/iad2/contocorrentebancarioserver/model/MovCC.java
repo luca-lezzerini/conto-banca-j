@@ -1,4 +1,4 @@
-package it.iad2.contocorrentebancarioserver.model.movimenti;
+package it.iad2.contocorrentebancarioserver.model;
 
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -7,14 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class MovCD {
+public class MovCC {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @Column
-    private LocalDate datamov;
+    private LocalDate dataMov;
 
     @Column
     private String tipoMov;
@@ -22,11 +22,11 @@ public class MovCD {
     @Column
     private double importoMov;
 
-    public MovCD() {
+    public MovCC() {
     }
 
-    public MovCD(LocalDate datamov, String tipoMov, double importoMov) {
-        this.datamov = datamov;
+    public MovCC(LocalDate datamov, String tipoMov, double importoMov) {
+        this.dataMov = datamov;
         this.tipoMov = tipoMov;
         this.importoMov = importoMov;
     }
@@ -40,11 +40,11 @@ public class MovCD {
     }
 
     public LocalDate getDatamov() {
-        return datamov;
+        return dataMov;
     }
 
     public void setDatamov(LocalDate datamov) {
-        this.datamov = datamov;
+        this.dataMov = datamov;
     }
 
     public String getTipoMov() {
