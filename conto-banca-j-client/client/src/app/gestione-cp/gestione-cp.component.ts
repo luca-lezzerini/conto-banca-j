@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContoPrestito } from '../conto-prestito';
 
 @Component({
   selector: 'app-gestione-cp',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestioneCpComponent implements OnInit {
 
+  contoPrestito: ContoPrestito = new ContoPrestito();
+  codici: ContoPrestito[] = [];
+
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  new() {
+
+  }
+
+  add(){
+
+  }
+
+  edit(c: ContoPrestito){
+
+  }
+
+  delete(c: ContoPrestito){
+
   }
 
 }

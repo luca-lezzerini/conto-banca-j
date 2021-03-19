@@ -1,1 +1,17 @@
-<p>gestione-cp works!</p>
+Conto prestito
+<button (click)="new()">New</button>
+<br>
+<button (click)="add()">Add</button>
+<input type="text" [(ngModel)]="contoPrestito.codice" placeholder="codice conto prestito">
+<table>
+    <tr>
+        <th>Codice conto</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let c of codici,index as i">
+        <td>{{c.codice}}</td>
+        <td><button (click)="edit(c)">Edit</button></td>
+        <td><button (click)="delete(c)">Delete</button></td>
+    </tr>
+</table>

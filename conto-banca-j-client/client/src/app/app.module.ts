@@ -7,6 +7,7 @@ import { GestioneClienteComponent } from './gestione-cliente/gestione-cliente.co
 import { GestioneCcComponent } from './gestione-cc/gestione-cc.component';
 import { GestioneCpComponent } from './gestione-cp/gestione-cp.component';
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
