@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class MovCD {
@@ -21,6 +23,14 @@ public class MovCD {
 
     @Column
     private double importoMov;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ContoCorrente contoC;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ContoDeposito contoD;
 
     public MovCD() {
     }
@@ -61,6 +71,30 @@ public class MovCD {
 
     public void setImportoMov(double importoMov) {
         this.importoMov = importoMov;
+    }
+
+    public LocalDate getDataMov() {
+        return dataMov;
+    }
+
+    public void setDataMov(LocalDate dataMov) {
+        this.dataMov = dataMov;
+    }
+
+    public ContoCorrente getContoC() {
+        return contoC;
+    }
+
+    public void setContoC(ContoCorrente contoC) {
+        this.contoC = contoC;
+    }
+
+    public ContoDeposito getContoD() {
+        return contoD;
+    }
+
+    public void setContoD(ContoDeposito contoD) {
+        this.contoD = contoD;
     }
 
 }

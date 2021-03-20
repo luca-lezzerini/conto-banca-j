@@ -1,9 +1,14 @@
 package it.iad2.contocorrentebancarioserver.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ContoCorrente {
@@ -14,6 +19,19 @@ public class ContoCorrente {
     
     @Column
     private String numConto;
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Cliente cliente;
+    
+    @OneToMany (mappedBy = "contoC")
+    private List<MovCC> listaMovCC;
+    
+    @OneToMany (mappedBy = "contoC")
+    private List<MovCD> listaMovCD;
+    
+    @OneToMany (mappedBy = "contoC")
+    private List<MovCP> listaMovCP;
 
     public ContoCorrente() {
     }
@@ -37,6 +55,55 @@ public class ContoCorrente {
 
     public void setCodice(String codice) {
         this.numConto = codice;
+    }
+
+    public String getNumConto() {
+        return numConto;
+    }
+
+    public void setNumConto(String numConto) {
+        this.numConto = numConto;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<MovCC> getListaMovCC() {
+        if (listaMovCC == null){
+            listaMovCC = new ArrayList<>();
+        }
+        return listaMovCC;
+    }
+
+    public void setListaMovCC(List<MovCC> listaMovCC) {
+        this.listaMovCC = listaMovCC;
+    }
+
+    public List<MovCD> getListaMovCD() {
+        if (listaMovCD == null){
+            listaMovCD = new ArrayList<>();
+        }
+        return listaMovCD;
+    }
+
+    public void setListaMovCD(List<MovCD> listaMovCD) {
+        this.listaMovCD = listaMovCD;
+    }
+
+    public List<MovCP> getListaMovCP() {
+        if (listaMovCP == null){
+            listaMovCP = new ArrayList<>();
+        }
+        return listaMovCP;
+    }
+
+    public void setListaMovCP(List<MovCP> listaMovCP) {
+        this.listaMovCP = listaMovCP;
     }
     
     

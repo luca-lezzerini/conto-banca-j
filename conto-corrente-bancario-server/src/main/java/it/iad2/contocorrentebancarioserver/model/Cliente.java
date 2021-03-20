@@ -1,10 +1,13 @@
 package it.iad2.contocorrentebancarioserver.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -30,6 +33,15 @@ public class Cliente {
     
     @Column
     private LocalDate dataNascita;
+    
+    @OneToMany (mappedBy = "cliente")
+    private List<ContoCorrente> listaContiC;
+    
+    @OneToMany (mappedBy = "cliente")
+    private List<ContoDeposito> listaContiD;
+    
+    @OneToMany (mappedBy = "cliente")
+    private List<ContoPrestito> listaContiP;
 
     public Cliente() {
     }
@@ -99,5 +111,40 @@ public class Cliente {
     public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
     }
+
+    public List<ContoCorrente> getListaContiC() {
+        if (listaContiC == null){
+            listaContiC = new ArrayList<>();
+        }
+        return listaContiC;
+    }
+
+    public void setListaContiC(List<ContoCorrente> listaContiC) {
+        this.listaContiC = listaContiC;
+    }
+
+    public List<ContoDeposito> getListaContiD() {
+        if (listaContiD == null){
+            listaContiD = new ArrayList<>();
+        }
+        return listaContiD;
+    }
+
+    public void setListaContiD(List<ContoDeposito> listaContiD) {
+        this.listaContiD = listaContiD;
+    }
+
+    public List<ContoPrestito> getListaContiP() {
+        if (listaContiP == null){
+            listaContiP = new ArrayList<>();
+        }
+        return listaContiP;
+    }
+
+    public void setListaContiP(List<ContoPrestito> listaContiP) {
+        this.listaContiP = listaContiP;
+    }
+    
+    
     
 }
