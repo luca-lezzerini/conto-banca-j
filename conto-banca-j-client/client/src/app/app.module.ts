@@ -7,7 +7,9 @@ import { GestioneClienteComponent } from './gestione-cliente/gestione-cliente.co
 import { GestioneCcComponent } from './gestione-cc/gestione-cc.component';
 import { GestioneCpComponent } from './gestione-cp/gestione-cp.component';
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
