@@ -7,6 +7,7 @@ package it.iad2.contocorrentebancarioserver.controller;
 
 import it.iad2.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaCCDto;
+import it.iad2.contocorrentebancarioserver.dto.ModificaCCDto;
 import it.iad2.contocorrentebancarioserver.dto.NumCCDto;
 import it.iad2.contocorrentebancarioserver.service.GestioneCCService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class GestioneCCController {
     @RequestMapping("/new")
     @ResponseBody
     public ListaCCDto nuovoCC(@RequestBody NumCCDto dto) {
-        return new ListaCCDto(gestioneCCService.nuovo(dto.getNumConto()));
+        return new ListaCCDto(gestioneCCService.aggiungi(dto.getNumConto()));
     }
 
     @RequestMapping("/aggiorna-lista")
@@ -38,16 +39,16 @@ public class GestioneCCController {
     public ListaCCDto aggiorna() {
         return new ListaCCDto(gestioneCCService.aggiorna());
     }
-    
-    @RequestMapping("/aggiungi")
-    @ResponseBody
-    public ListaCCDto aggiungi() {
-        // TO DO
-        return new ListaCCDto(gestioneCCService.aggiungi());
-    }
+
     @RequestMapping("/elimina")
     @ResponseBody
     public ListaCCDto elimina(@RequestBody ContoCorrenteDto dto) {
         return new ListaCCDto(gestioneCCService.elimina(dto.getConto()));
+    }
+
+    @RequestMapping("/modifica")
+    @ResponseBody
+    public ListaCCDto modifica(@RequestBody ModificaCCDto dto) {
+        return new ListaCCDto(gestioneCCService.modifica(dto.getConto(), dto.getNuovoNumeroConto()));
     }
 }

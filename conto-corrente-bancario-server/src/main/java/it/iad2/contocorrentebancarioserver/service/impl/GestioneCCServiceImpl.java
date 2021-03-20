@@ -23,7 +23,7 @@ public class GestioneCCServiceImpl implements GestioneCCService {
     ContoCorrenteRepository contoCorrenteRepository;
 
     @Override
-    public List<ContoCorrente> nuovo(String numConto) {
+    public List<ContoCorrente> aggiungi(String numConto) {
         ContoCorrente conto = new ContoCorrente();
         conto.setNumConto(numConto);
         contoCorrenteRepository.save(conto);
@@ -35,15 +35,17 @@ public class GestioneCCServiceImpl implements GestioneCCService {
         return contoCorrenteRepository.findAll();
     }
 
-    @Override
-    public List<ContoCorrente> aggiungi() {
-        //TO DO 
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<ContoCorrente> elimina(ContoCorrente conto) {
         contoCorrenteRepository.delete(conto);
+        return aggiorna();
+    }
+
+    @Override
+    public List<ContoCorrente> modifica(ContoCorrente conto, String nuovoContoCorrente) {
+        conto.setNumConto(nuovoContoCorrente);
+        contoCorrenteRepository.save(conto);
         return aggiorna();
     }
 
