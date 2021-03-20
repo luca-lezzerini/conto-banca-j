@@ -14,27 +14,27 @@ export class GestioneCcComponent implements OnInit {
 
   numConto: string;
   listaConti: Array<ContoCorrente>;
-
+  numContoEditable = false;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  nuovo():void{
+  nuovo(): void{
+    this.numContoEditable = true;
+  }
+
+  aggiungi(): void{
     const dto: numContoCCDto = new numContoCCDto();
     dto.numConto = this.numConto;
     const oss: Observable<ListaCCDto> = this.http
-    .post<ListaCCDto>('http://localhost:8080/new', dto);
+      .post<ListaCCDto>('http://localhost:8080/new', dto);
     oss.subscribe(l => this.listaConti = l.listaCC);
+    this.numContoEditable = false;
   }
-
-  aggiungi():void{
+  modifica(): void{
   }
-  
-  modifica():void{
-  }
-
-  elimina():void{
+  elimina(): void{
   }
 
 }

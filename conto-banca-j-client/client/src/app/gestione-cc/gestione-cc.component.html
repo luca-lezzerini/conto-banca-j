@@ -1,4 +1,4 @@
-<input type="text" placeholder="numConto" [(ngModel)]="numConto">
+<input type="text" placeholder="numConto" [disabled]="numContoEditable" [(ngModel)]="numConto">
 <button (click)="nuovo()"> new </button>
 <button (click)="aggiungi()"> aggiungi </button>
 <br>
