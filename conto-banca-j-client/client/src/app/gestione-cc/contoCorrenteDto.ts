@@ -1,5 +1,5 @@
-import { ContoCorrente } from "./contoCorrente";
+import { ContoCorrente } from './contoCorrente';
 
 export class ContoCorrenteDto{
-    contoCorrente: ContoCorrente;
+    conto: ContoCorrente;
 }

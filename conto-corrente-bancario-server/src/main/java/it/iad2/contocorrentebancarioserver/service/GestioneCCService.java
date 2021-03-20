@@ -14,13 +14,11 @@ import java.util.List;
  */
 public interface GestioneCCService {
 
-    List<ContoCorrente> nuovo(String numConto);
+    List<ContoCorrente> aggiungi(String numConto);
 
     List<ContoCorrente> aggiorna();
 
-    List<ContoCorrente> aggiungi();
-
     List<ContoCorrente> elimina(ContoCorrente conto);
 
-    //aggiungere metodo aggiungi
+    List<ContoCorrente> modifica(ContoCorrente conto, String nuovoContoCorrente);
 }
