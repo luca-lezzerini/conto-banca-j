@@ -13,15 +13,14 @@ import java.util.List;
  * @author lenovo
  */
 public interface GestioneCCService {
-    
+
     List<ContoCorrente> nuovo(String numConto);
-    
+
     List<ContoCorrente> aggiorna();
-    
+
     List<ContoCorrente> aggiungi();
-    
-    
-    
-    
+
+    List<ContoCorrente> elimina(ContoCorrente conto);
+
     //aggiungere metodo aggiungi
 }

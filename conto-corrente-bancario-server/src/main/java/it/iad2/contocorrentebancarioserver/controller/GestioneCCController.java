@@ -5,6 +5,7 @@
  */
 package it.iad2.contocorrentebancarioserver.controller;
 
+import it.iad2.contocorrentebancarioserver.dto.ContoCorrenteDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaCCDto;
 import it.iad2.contocorrentebancarioserver.dto.NumCCDto;
 import it.iad2.contocorrentebancarioserver.service.GestioneCCService;
@@ -44,5 +45,9 @@ public class GestioneCCController {
         // TO DO
         return new ListaCCDto(gestioneCCService.aggiungi());
     }
-
+    @RequestMapping("/elimina")
+    @ResponseBody
+    public ListaCCDto elimina(@RequestBody ContoCorrenteDto dto) {
+        return new ListaCCDto(gestioneCCService.elimina(dto.getConto()));
+    }
 }
