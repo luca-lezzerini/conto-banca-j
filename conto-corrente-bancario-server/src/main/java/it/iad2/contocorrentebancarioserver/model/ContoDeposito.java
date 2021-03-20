@@ -30,8 +30,7 @@ public class ContoDeposito {
     public ContoDeposito() {
     }
 
-    public ContoDeposito(Long id, String codice) {
-        this.id = id;
+    public ContoDeposito(String codice) {
         this.codice = codice;
     }
 

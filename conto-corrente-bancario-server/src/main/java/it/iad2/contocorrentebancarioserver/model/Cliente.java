@@ -46,8 +46,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, String cognome, String codiceFiscale, String indirizzo, String telefono, LocalDate dataNascita) {
-        this.id = id;
+    public Cliente(String nome, String cognome, String codiceFiscale, String indirizzo, String telefono, LocalDate dataNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.codiceFiscale = codiceFiscale;

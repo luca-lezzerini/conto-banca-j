@@ -30,8 +30,7 @@ public class ContoPrestito {
     public ContoPrestito() {
     }
 
-    public ContoPrestito(Long id, String codice) {
-        this.id = id;
+    public ContoPrestito(String codice) {
         this.codice = codice;
     }
 

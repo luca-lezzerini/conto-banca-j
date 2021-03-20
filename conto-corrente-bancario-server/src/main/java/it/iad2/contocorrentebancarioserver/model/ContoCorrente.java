@@ -36,8 +36,7 @@ public class ContoCorrente {
     public ContoCorrente() {
     }
 
-    public ContoCorrente(Long id, String codice) {
-        this.id = id;
+    public ContoCorrente(String codice) {
         this.numConto = codice;
     }
 
