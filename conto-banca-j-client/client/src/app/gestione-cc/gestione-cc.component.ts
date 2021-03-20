@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContoCorrente } from './contoCorrente';
+import { ContoCorrenteDto } from './contoCorrenteDto';
 import { ListaCCDto } from './listaCCDto';
 import { numContoCCDto } from './numContoCCDto';
 
@@ -14,14 +15,14 @@ export class GestioneCcComponent implements OnInit {
 
   numConto: string;
   listaConti: Array<ContoCorrente>;
-  numContoEditable = false;
+  numContoEditable = true;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   nuovo(): void{
-    this.numContoEditable = true;
+    this.numContoEditable = false;
   }
 
   aggiungi(): void{
@@ -30,11 +31,18 @@ export class GestioneCcComponent implements OnInit {
     const oss: Observable<ListaCCDto> = this.http
       .post<ListaCCDto>('http://localhost:8080/new', dto);
     oss.subscribe(l => this.listaConti = l.listaCC);
-    this.numContoEditable = false;
+    this.numContoEditable = true;
   }
-  modifica(): void{
+
+  modifica(c: ContoCorrente): void{
   }
-  elimina(): void{
+
+  elimina(c: ContoCorrente): void{
+    const dto: ContoCorrenteDto = new ContoCorrenteDto();
+    dto.contoCorrente = c;
+    const oss: Observable<ListaCCDto> = this.http
+    .post<ListaCCDto>('http://localhost:8080/elimina', dto);
+    oss.subscribe(v => this.listaConti = v.listaCC);
   }
 
 }

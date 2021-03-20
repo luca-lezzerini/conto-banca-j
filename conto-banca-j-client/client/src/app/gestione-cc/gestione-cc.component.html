@@ -9,10 +9,10 @@
     <tr *ngFor="let c  of listaConti">
         <td>{{c.numConto}}</td>
         <td>
-            <button (click)="modifica()"> modifica </button>
+            <button (click)="modifica(c)"> modifica </button>
         </td>
         <td>
-            <button (click)="elimina()"> elimina </button>
+            <button (click)="elimina(c)"> elimina </button>
         </td>
     </tr>
 </table>
