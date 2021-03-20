@@ -1,14 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package it.iad2.contocorrentebancarioserver.dto;
 
-/**
- *
- * @author Valerio
- */
+import it.iad2.contocorrentebancarioserver.model.ContoPrestito;
+import java.util.List;
+
+
 public class ListaCPDto {
+   private List<ContoPrestito> listaCodici;
+
+    public ListaCPDto() {
+    }
+
+    public ListaCPDto(List<ContoPrestito> listaCodici) {
+        this.listaCodici = listaCodici;
+    }
+
+    public List<ContoPrestito> getListaCodici() {
+        return listaCodici;
+    }
+
+    public void setListaCodici(List<ContoPrestito> listaCodici) {
+        this.listaCodici = listaCodici;
+    }
+
+    @Override
+    public String toString() {
+        return "ListaCPDto{" + "listaCodici=" + listaCodici + '}';
+    }
+    
+            
     
 }

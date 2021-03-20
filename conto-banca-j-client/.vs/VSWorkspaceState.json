@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\app",
+    "\\client\\src\\app\\gestione-cc",
+    "\\client\\src\\app\\gestione-cd"
+  ],
+  "SelectedNode": "\\client\\src\\app\\gestione-cc\\gestione-cc.component.ts",
+  "PreviewInSolutionExplorer": false
+}

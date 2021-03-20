@@ -9,7 +9,7 @@ Conto prestito
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    <tr *ngFor="let c of codici,index as i">
+    <tr *ngFor="let c of listaCodici,index as i">
         <td>{{c.codice}}</td>
         <td><button (click)="edit(c)">Edit</button></td>
         <td><button (click)="delete(c)">Delete</button></td>
