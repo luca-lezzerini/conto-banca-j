@@ -8,8 +8,8 @@ import { ContoPrestito } from '../conto-prestito';
 })
 export class GestioneCpComponent implements OnInit {
 
-  contoPrestito: ContoPrestito = new ContoPrestito();
-  codici: ContoPrestito[] = [];
+  codice:string;
+  listaCodici: ContoPrestito[] = [];
 
 
   constructor() { }
