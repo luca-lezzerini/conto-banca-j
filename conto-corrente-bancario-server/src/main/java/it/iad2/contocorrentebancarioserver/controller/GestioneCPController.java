@@ -1,0 +1,10 @@
+package it.iad2.contocorrentebancarioserver.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin("*")
+@RestController
+public class GestioneCPController {
+
+}
