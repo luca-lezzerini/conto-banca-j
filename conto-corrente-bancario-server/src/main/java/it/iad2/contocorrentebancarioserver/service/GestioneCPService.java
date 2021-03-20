@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.iad2.contocorrentebancarioserver.service;
 
 import it.iad2.contocorrentebancarioserver.dto.ListaCPDto;
+import it.iad2.contocorrentebancarioserver.model.ContoPrestito;
 
-/**
- *
- * @author Valerio
- */
 public interface GestioneCPService {
 
-    ListaCPDto add(String codice);
+    ListaCPDto add(ContoPrestito cp);
 
-    ListaCPDto delete(String codice);
+    ListaCPDto delete(ContoPrestito cp);
 
-    ListaCPDto edit(String codice);
+    ListaCPDto edit(ContoPrestito cp);
+
+    ListaCPDto aggiorna();
 
 }
