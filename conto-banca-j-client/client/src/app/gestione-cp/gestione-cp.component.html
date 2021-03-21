@@ -1,5 +1,5 @@
 Conto prestito
-<button (click)="new()">New</button>
+<button (click)="new()" *ngIf="newVisibile">New</button>
 <br>
 <div>
   <input type="text" placeholder="codice conto prestito" [disabled]="codiceEdit" *ngIf="addVisibileInput" [(ngModel)]="codice">

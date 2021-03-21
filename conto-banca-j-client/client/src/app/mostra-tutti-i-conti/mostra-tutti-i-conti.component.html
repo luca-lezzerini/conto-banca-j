@@ -1,6 +1,8 @@
 <body>
     <input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome cliente">
     <button (click)="cerca()"> Cerca </button>
+    <hr>
+    <br>
     <table>
         <tr>
             <th>Nome</th>
@@ -21,6 +23,7 @@
             <td><button (click)="mostraConti(c)">Mostra conti</button></td>
         </tr>
     </table>
+    <br>
 
     <table>
         <tr>
@@ -30,6 +33,7 @@
             <td>{{d.numConto}}}</td>
         </tr>
     </table>
+    <br>
 
     <table>
         <tr>
@@ -39,6 +43,7 @@
             <td>{{d.codice}}}</td>
         </tr>
     </table>
+    <br>
 
     <table>
         <tr>

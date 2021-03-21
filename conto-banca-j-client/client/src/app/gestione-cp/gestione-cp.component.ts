@@ -20,6 +20,7 @@ export class GestioneCpComponent implements OnInit {
   addVisibileAdd: boolean;
   addVisibileInput: boolean;
   addVisibileIntestazioneTabella: boolean;
+  newVisibile:boolean=true;
 
 
   constructor(private http: HttpClient) { }
@@ -33,6 +34,7 @@ export class GestioneCpComponent implements OnInit {
     this.addVisibileAdd = true;
     this.addVisibileInput = true;
     this.addVisibileIntestazioneTabella = true;
+    this.newVisibile=false;
 
   }
 

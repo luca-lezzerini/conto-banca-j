@@ -7,6 +7,8 @@ import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
 import { ContoPrestito } from '../gestione-cp/conto-prestito';
 import { FiltroCognomeDto } from './filtro-cognome-dto';
 import { Observable } from 'rxjs';
+import { ListaContiClienteDto } from './lista-conti-cliente-dto';
+import { ClienteDto } from '../gestione-cliente/cliente-dto';
 
 @Component({
   selector: 'app-mostra-tutti-i-conti',
@@ -15,18 +17,18 @@ import { Observable } from 'rxjs';
 })
 export class MostraTuttiIContiComponent implements OnInit {
 
-  
-cliente = new Cliente();
-clienti: Cliente[] = [];
 
-contoCorrente = new ContoCorrente();
-contiCorrenti: ContoCorrente[] = [];
+  cliente = new Cliente();
+  clienti: Cliente[] = [];
 
-contoPrestito = new ContoPrestito();
-contiPrestiti: ContoPrestito[] = [];
+  contoCorrente = new ContoCorrente();
+  contiCorrenti: ContoCorrente[] = [];
 
-contoDeposito = new ContoDeposito;
-contiDepositi: ContoDeposito[] = [];
+  contoPrestito = new ContoPrestito();
+  contiPrestiti: ContoPrestito[] = [];
+
+  contoDeposito = new ContoDeposito;
+  contiDepositi: ContoDeposito[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -34,15 +36,22 @@ contiDepositi: ContoDeposito[] = [];
   }
 
   cerca() {
-    let dto:FiltroCognomeDto = new FiltroCognomeDto();
+    let dto: FiltroCognomeDto = new FiltroCognomeDto();
     dto.cognome = this.cliente.cognome;
-    let oss:Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhsto:8080/cerca-cliente",dto);
-    oss.subscribe(c=>this.clienti=c.listaClienti);
+    let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhost:8080/cerca-cliente", dto);
+    oss.subscribe(c => this.clienti = c.listaClienti);
 
   }
 
-  mostraConti(c:Cliente){
+  mostraConti(c: Cliente) {
+    let dto:ClienteDto = new ClienteDto();
+    dto.cliente=c;
+    let fx: Observable<ListaContiClienteDto> = this.http.post<ListaContiClienteDto>("http://localhost:8080/carica-conti", dto);
+    fx.subscribe(m => {
+      this.contiDepositi = m.listaCD;
+      this.contiPrestiti = m.listaCP;
+      this.contiCorrenti = m.listaCC;
+    });
 
   }
- 
 }
