@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ContoCorrente } from '../gestione-cc/contoCorrente';
 import { ContoDeposito } from '../gestione-cd/contoDeposito';
 import { Cliente } from '../gestione-cliente/cliente';
+import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
 import { ContoPrestito } from '../gestione-cp/conto-prestito';
+import { FiltroCognomeDto } from './filtro-cognome-dto';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mostra-tutti-i-conti',
@@ -31,7 +34,11 @@ contiDepositi: ContoDeposito[] = [];
   }
 
   cerca() {
-    
+    let dto:FiltroCognomeDto = new FiltroCognomeDto();
+    dto.cognome = this.cliente.cognome;
+    let oss:Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhsto:8080/cerca-cliente",dto);
+    oss.subscribe(c=>this.clienti=c.listaClienti);
+
   }
 
   mostraConti(c:Cliente){
