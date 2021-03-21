@@ -1,1 +1,17 @@
-<p>gestione-cd works!</p>
+<input type="text" placeholder="codice" [(ngModel)]="codice">
+<button (click)="aggiungi()"> aggiungi </button>
+<br>
+<table>
+    <tr>
+        <th>Codice</th>
+    </tr>
+    <tr *ngFor="let c  of listaConti">
+        <td>{{c.codice}}</td>
+        <td>
+            <button (click)="modifica(c)"> modifica </button>
+        </td>
+        <td>
+            <button (click)="elimina(c)"> elimina </button>
+        </td>
+    </tr>
+</table>

@@ -5,7 +5,7 @@ import { ContoCorrente } from './contoCorrente';
 import { ContoCorrenteDto } from './contoCorrenteDto';
 import { ListaCCDto } from './listaCCDto';
 import { numContoCCDto } from './numContoCCDto';
-import {ModificaCCDto} from './ModificaCCDto';
+import {ModificaCCDto} from './modificaCCDto';
 
 @Component({
   selector: 'app-gestione-cc',
