@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente,Long>{
-  List<Cliente> findByCognomeContains(String string);
+ // List<Cliente> findByCognomeContains(String s);
 }

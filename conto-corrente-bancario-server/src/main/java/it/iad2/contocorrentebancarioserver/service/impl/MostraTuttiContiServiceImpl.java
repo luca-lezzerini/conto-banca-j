@@ -17,30 +17,30 @@ import org.springframework.stereotype.Service;
 import it.iad2.contocorrentebancarioserver.service.MostraTuttiContiService;
 
 @Service
-public class MostraTuttiContiServiceImpl implements MostraTuttiContiService {
+public class MostraTuttiContiServiceImpl //implements MostraTuttiContiService {
 
-    @Autowired
-    ContoCorrenteRepository contoCorrenteRepository;
-
-    @Autowired
-    ContoDepositoRepository contoDepositoRepository;
-    @Autowired
-    ContoPrestitoRepository contoPrestitoRepository;
-
-    @Autowired
-    ClienteRepository clienteRepository;
-
-    @Override
-    public ListaClientiDto cercaCliente(String cognome) {
-        return new ListaClientiDto(clienteRepository.findByCognomeContains(cognome));
-    }
-
-    @Override
-    public ListaContiClienteDto CaricaConti(Cliente cliente) {
-
-        List<ContoCorrente> cc = new ArrayList<>(contoCorrenteRepository.findByIdCliente(cliente.getId()));
-        List<ContoDeposito> cd = new ArrayList<>(contoDepositoRepository.findByIdCliente(cliente.getId()));
-        List<ContoPrestito> cp = new ArrayList<>(contoPrestitoRepository.findByIdCliente(cliente.getId()));
-        return new ListaContiClienteDto(cc, cd, cp);
-    }
-}
+//    @Autowired
+//    ContoCorrenteRepository contoCorrenteRepository;
+//
+//    @Autowired
+//    ContoDepositoRepository contoDepositoRepository;
+//    @Autowired
+//    ContoPrestitoRepository contoPrestitoRepository;
+//
+//    @Autowired
+//    ClienteRepository clienteRepository;
+//
+//    @Override
+//    public ListaClientiDto cercaCliente(String cognome) {
+//        return new ListaClientiDto(clienteRepository.findByCognomeContains(cognome));
+//    }
+//
+//    @Override
+//    public ListaContiClienteDto CaricaConti(Cliente cliente) {
+//
+//        List<ContoCorrente> cc = new ArrayList<>(contoCorrenteRepository.findByIdCliente(cliente.getId()));
+//        List<ContoDeposito> cd = new ArrayList<>(contoDepositoRepository.findByIdCliente(cliente.getId()));
+//        List<ContoPrestito> cp = new ArrayList<>(contoPrestitoRepository.findByIdCliente(cliente.getId()));
+//        return new ListaContiClienteDto(cc, cd, cp);
+//    }
+{}

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface ContoPrestitoRepository extends JpaRepository<ContoPrestito, Long> {
 
     ContoPrestito findByCodice(String s);
-    List<ContoPrestito>findByIdCliente(Long id);
+   // List<ContoPrestito>findByIdCliente(Long id);
 
 }
