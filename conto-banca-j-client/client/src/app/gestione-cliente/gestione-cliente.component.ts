@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../cliente';
+import { Observable } from 'rxjs';
+import { Cliente } from './cliente';
+import { ClienteDto } from './cliente-dto';
+import { ListaClientiDto } from './lista-clienti-dto';
 
 @Component({
   selector: 'app-gestione-cliente',
@@ -12,42 +16,65 @@ export class GestioneClienteComponent implements OnInit {
   clienti: Cliente[] = [];
   inputEnabled: boolean;
   buttonVisible: boolean;
+  stato: string;
 
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  nuovo(){
+  nuovo() {
     //Abilita i campi di input
     this.inputEnabled = true;
   }
 
-  aggiungi(){
+  aggiungi() {
     // aggiunge nuovo cliente
+    let dto: ClienteDto = new ClienteDto();
+    dto.cliente = this.cliente;
+    let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
+      ("http://localhost:8080/aggiungi-cliente", dto);
+    oss.subscribe(v => this.clienti = v.listaClienti);
+    this.cliente = new Cliente();
   }
 
-  conferma(){
+  conferma() {
     //TODO
     //conferma la modifica o la cancellazione
+    let dto: ClienteDto = new ClienteDto();
+    dto.cliente = this.cliente;
+    if (this.stato = "mod") {
+      let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
+        ("http://localhost:8080/modifica-cliente", dto);
+      oss.subscribe(v => this.clienti = v.listaClienti);
+    } else if (this.stato = "canc") {
+      let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
+        ("http://localhost:8080/cancella-cliente", dto);
+      oss.subscribe(v => this.clienti = v.listaClienti);
+    }
+    dto.cliente = this.cliente;
     this.buttonVisible = false;
     this.inputEnabled = false;
   }
 
-  annulla(){
+  annulla() {
     //TODO
     this.buttonVisible = false;
     this.inputEnabled = false;
   }
 
-  modifica(c: Cliente){
+  modifica(c: Cliente) {
     // richiama il conferma per la modifica
+    this.cliente = c;
     this.buttonVisible = true;
+    this.stato = "mod";
   }
 
-  cancella(c: Cliente){
+  cancella(c: Cliente) {
     // richiama il conferma per la cancellazione
+    this.cliente = c;
     this.buttonVisible = true;
+    this.stato = "canc";
   }
 
 }
