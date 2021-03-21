@@ -16,18 +16,12 @@ export class GestioneCcComponent implements OnInit {
 
   numConto: string;
   listaConti: Array<ContoCorrente>;
-  numContoEditable = false;
   constructor(private http: HttpClient) {
     this.aggiorna();
   }
 
   ngOnInit(): void {
   }
-
-  nuovo(): void{
-    this.numContoEditable = false;
-  }
-
   aggiungi(): void{
     const dto: numContoCCDto = new numContoCCDto();
     dto.numConto = this.numConto;
