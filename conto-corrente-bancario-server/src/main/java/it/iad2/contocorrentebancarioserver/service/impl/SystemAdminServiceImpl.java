@@ -77,52 +77,6 @@ public class SystemAdminServiceImpl implements SystemAdminService {
             contiPrestiti.add(new ContoPrestito("CP" + i));
         }
 
-//        //Popola Tabella Movimenti Conto Corrente 
-//        List<MovCC> movimentiCC = new ArrayList<>();
-//        movimentiCC.add(new MovCC(LocalDate.now(), "versamento", 10000));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "versamento", 10000));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "versamento", 10000));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "versamento", 10000));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "prelievo", 200));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "prelievo", 200));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "prelievo", 200));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "prelievo", 200));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "bonificoUscita", 300));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "bonificoUscita", 300));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "bonificoUscita", 300));
-//        movimentiCC.add(new MovCC(LocalDate.now(), "bonificoUscita", 300));
-//        movCCRepository.saveAll(movimentiCC);
-//
-//        //Popola Tabella Movimenti Conto Deposito
-//        List<MovCD> movimentiCD = new ArrayList<>();
-//        movimentiCD.add(new MovCD(LocalDate.now(), "deposito", 10000));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "deposito", 10000));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "deposito", 10000));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "deposito", 10000));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "deposito", 10000));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "riscatto", 500));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "riscatto", 500));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "riscatto", 500));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "riscatto", 500));
-//        movimentiCD.add(new MovCD(LocalDate.now(), "riscatto", 500));
-//        movCDRepository.saveAll(movimentiCD);
-//
-//        //Popola Tabella Movimenti Conto Prestito
-//        List<MovCP> movimentiCP = new ArrayList<>();
-//        movimentiCP.add(new MovCP(LocalDate.now(), "concessione", 150000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "concessione", 150000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "concessione", 150000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "concessione", 150000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "rimborso", 100));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "rimborso", 100));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "rimborso", 100));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "rimborso", 100));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "erogazione", 20000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "erogazione", 20000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "erogazione", 20000));
-//        movimentiCP.add(new MovCP(LocalDate.now(), "erogazione", 20000));
-//        movCPRepository.saveAll(movimentiCP);
-//
         //Associazioni Cliente-ContoCorrente
         clienteRepository.getOne(clienti.get(0).getId()).getListaContiC().add(contiCorrenti.get(5));
         contiCorrenti.get(5).setCliente(clienti.get(0));
@@ -170,34 +124,123 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoDepositoRepository.saveAll(contiDepositi);
         contoPrestitoRepository.saveAll(contiPrestiti);
         clienteRepository.saveAll(clienti);
-        
-        // stampe varie
-        // lista dei clienti e dei conti associati
-        List<Cliente> listaClienti = clienteRepository.findAll();
-        listaClienti.forEach(cl ->  {
-                                    System.out.println("Cliente : " + cl.getCognome() + " " + cl.getCognome());
-                                    List<ContoCorrente> listaContiCorrenti = cl.getListaContiC();
-                                    listaContiCorrenti.forEach  (cc ->  {System.out.println("\t Conto Corrente: " + cc.getNumConto().toString());
-                                                                        }
-                                                                );
-                                    List<ContoDeposito> listaContiDepositi = cl.getListaContiD();
-                                    listaContiDepositi.forEach  (cd ->  {System.out.println("\t Conto Deposito: " + cd.getCodice().toString());
-                                                                        }
-                                                                );
-                                    List<ContoPrestito> listaContiPrestiti = cl.getListaContiP();                                    
-                                    listaContiPrestiti.forEach  (cp ->  {System.out.println("\t Conto Prestito: " + cp.getCodice().toString());
-                                                                        }
-                                                                );
-                                    }
-                            );        
-
 
         // Crea liste movimenti 
         List<MovCC> movimentiCC = new ArrayList<>();
         List<MovCD> movimentiCD = new ArrayList<>();
         List<MovCP> movimentiCP = new ArrayList<>();
+        
+        // Associo CONTO DEPOSITO cd1 con indice 0 ai movimenti
+        MovCD movcd0 = new MovCD(LocalDate.now(), "deposito", 500);
+        contoDepositoRepository.getOne(contiDepositi.get(0).getId()).getListaMovCD().add(movcd0);
+        movimentiCD.add(movcd0);
+        movimentiCD.get(0).setContoD(contiDepositi.get(0));
 
-        // Associo CONTO CORRENTE cc1 con indice 0 ai movimenti *ok********************************************************************************
+        MovCD movcd1 = new MovCD(LocalDate.now(), "riscatto", 200);
+        contoDepositoRepository.getOne(contiDepositi.get(0).getId()).getListaMovCD().add(movcd1);
+        movimentiCD.add(movcd1);
+        movimentiCD.get(1).setContoD(contiDepositi.get(0));
+        
+        // Associo CONTO DEPOSITO cd2 con indice 1 ai movimenti
+        MovCD movcd2 = new MovCD(LocalDate.now(), "deposito", 700);
+        contoDepositoRepository.getOne(contiDepositi.get(1).getId()).getListaMovCD().add(movcd2);
+        movimentiCD.add(movcd2);
+        movimentiCD.get(2).setContoD(contiDepositi.get(1));
+
+        MovCD movcd3 = new MovCD(LocalDate.now(), "riscatto", 300);
+        contoDepositoRepository.getOne(contiDepositi.get(1).getId()).getListaMovCD().add(movcd3);
+        movimentiCD.add(movcd3);
+        movimentiCD.get(3).setContoD(contiDepositi.get(1));
+        
+        // Associo CONTO DEPOSITO cd3 con indice 2 ai movimenti 
+        MovCD movcd4 = new MovCD(LocalDate.now(), "deposito", 600);
+        contoDepositoRepository.getOne(contiDepositi.get(2).getId()).getListaMovCD().add(movcd4);
+        movimentiCD.add(movcd4);
+        movimentiCD.get(4).setContoD(contiDepositi.get(2));
+
+        MovCD movcd5 = new MovCD(LocalDate.now(), "riscatto", 100);
+        contoDepositoRepository.getOne(contiDepositi.get(2).getId()).getListaMovCD().add(movcd5);
+        movimentiCD.add(movcd5);
+        movimentiCD.get(5).setContoD(contiDepositi.get(2));
+        
+        // Associo CONTO DEPOSITO cd4 con indice 3 ai movimenti 
+        MovCD movcd6 = new MovCD(LocalDate.now(), "deposito", 1000);
+        contoDepositoRepository.getOne(contiDepositi.get(3).getId()).getListaMovCD().add(movcd6);
+        movimentiCD.add(movcd6);
+        movimentiCD.get(6).setContoD(contiDepositi.get(3));
+
+        MovCD movcd7 = new MovCD(LocalDate.now(), "riscatto", 500);
+        contoDepositoRepository.getOne(contiDepositi.get(3).getId()).getListaMovCD().add(movcd7);
+        movimentiCD.add(movcd7);
+        movimentiCD.get(7).setContoD(contiDepositi.get(3));
+        
+        // Associo CONTO DEPOSITO cd5 con indice 4 ai movimenti 
+        MovCD movcd8 = new MovCD(LocalDate.now(), "deposito", 2000);
+        contoDepositoRepository.getOne(contiDepositi.get(4).getId()).getListaMovCD().add(movcd8);
+        movimentiCD.add(movcd8);
+        movimentiCD.get(8).setContoD(contiDepositi.get(4));
+
+        MovCD movcd9 = new MovCD(LocalDate.now(), "riscatto", 800);
+        contoDepositoRepository.getOne(contiDepositi.get(4).getId()).getListaMovCD().add(movcd9);
+        movimentiCD.add(movcd9);
+        movimentiCD.get(9).setContoD(contiDepositi.get(4));
+        
+        // Associo CONTO PRESTITO cp1 con indice 0 ai movimenti 
+        MovCP movcp0 = new MovCP(LocalDate.now(), "concessione", 15000);
+        contoPrestitoRepository.getOne(contiPrestiti.get(0).getId()).getListaMovCP().add(movcp0);
+        movimentiCP.add(movcp0);
+        movimentiCP.get(0).setContoP(contiPrestiti.get(0));
+
+        MovCP movcp1 = new MovCP(LocalDate.now(), "rimborso", 500);
+        contoPrestitoRepository.getOne(contiPrestiti.get(0).getId()).getListaMovCP().add(movcp1);
+        movimentiCP.add(movcp1);
+        movimentiCP.get(1).setContoP(contiPrestiti.get(0));
+        
+        // Associo CONTO PRESTITO cp2 con indice 1 ai movimenti 
+        MovCP movcp2 = new MovCP(LocalDate.now(), "erogazione", 5000);
+        contoPrestitoRepository.getOne(contiPrestiti.get(1).getId()).getListaMovCP().add(movcp2);
+        movimentiCP.add(movcp2);
+        movimentiCP.get(2).setContoP(contiPrestiti.get(1));
+
+        MovCP movcp3 = new MovCP(LocalDate.now(), "rimborso", 200);
+        contoPrestitoRepository.getOne(contiPrestiti.get(1).getId()).getListaMovCP().add(movcp3);
+        movimentiCP.add(movcp3);
+        movimentiCP.get(3).setContoP(contiPrestiti.get(1));
+        
+        // Associo CONTO PRESTITO cp3 con indice 2 ai movimenti 
+        MovCP movcp4 = new MovCP(LocalDate.now(), "concessione", 20000);
+        contoPrestitoRepository.getOne(contiPrestiti.get(2).getId()).getListaMovCP().add(movcp4);
+        movimentiCP.add(movcp4);
+        movimentiCP.get(4).setContoP(contiPrestiti.get(2));
+
+        MovCP movcp5 = new MovCP(LocalDate.now(), "erogazione", 1000);
+        contoPrestitoRepository.getOne(contiPrestiti.get(2).getId()).getListaMovCP().add(movcp5);
+        movimentiCP.add(movcp5);
+        movimentiCP.get(5).setContoP(contiPrestiti.get(2));
+        
+        // Associo CONTO PRESTITO cp4 con indice 3 ai movimenti
+        MovCP movcp6 = new MovCP(LocalDate.now(), "rimborso", 3000);
+        contoPrestitoRepository.getOne(contiPrestiti.get(3).getId()).getListaMovCP().add(movcp6);
+        movimentiCP.add(movcp6);
+        movimentiCP.get(6).setContoP(contiPrestiti.get(3));
+
+        MovCP movcp7 = new MovCP(LocalDate.now(), "erogazione", 200);
+        contoPrestitoRepository.getOne(contiPrestiti.get(3).getId()).getListaMovCP().add(movcp7);
+        movimentiCP.add(movcp7);
+        movimentiCP.get(7).setContoP(contiPrestiti.get(3));
+        
+        // Associo CONTO PRESTITO cp5 con indice 4 ai movimenti
+        MovCP movcp8 = new MovCP(LocalDate.now(), "concessione", 10000);
+        contoPrestitoRepository.getOne(contiPrestiti.get(4).getId()).getListaMovCP().add(movcp8);
+        movimentiCP.add(movcp8);
+        movimentiCP.get(8).setContoP(contiPrestiti.get(4));
+
+        MovCP movcp9 = new MovCP(LocalDate.now(), "rimborso", 900);
+        contoPrestitoRepository.getOne(contiPrestiti.get(4).getId()).getListaMovCP().add(movcp9);
+        movimentiCP.add(movcp9);
+        movimentiCP.get(9).setContoP(contiPrestiti.get(4));
+
+        // Associo CONTO CORRENTE cc1 con indice 0 ai movimenti
         MovCC movcc0 = new MovCC(LocalDate.now(), "versamento", 10000);
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCC().add(movcc0);
         movimentiCC.add(movcc0);
@@ -217,24 +260,14 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCC().add(movcc3);
         movimentiCC.add(movcc3);
         movimentiCC.get(3).setContoC(contiCorrenti.get(0));
-
-        // Associo CONTO CORRENTE cc2 con indice 1 ai movimenti *********************************************************************************
+        
+        // Associo CONTO CORRENTE cc2 con indice 1 ai movimenti 
         MovCC movcc4 = new MovCC(LocalDate.now(), "versamento", 10000);
         contoCorrenteRepository.getOne(contiCorrenti.get(1).getId()).getListaMovCC().add(movcc4);
         movimentiCC.add(movcc4);
         movimentiCC.get(4).setContoC(contiCorrenti.get(1));
 
-//        MovCD movcd0 = new MovCD(LocalDate.now(), "deposito", 200);
-//        contoCorrenteRepository.getOne(contiCorrenti.get(1).getId()).getListaMovCD().add(movcd0);
-//        movimentiCD.add(movcd0);
-//        movimentiCD.get(0).setContoC(contiCorrenti.get(1));
-//        
-//        MovCP movcp0 = new MovCP(LocalDate.now(), "concessione", 400000);
-//        contoCorrenteRepository.getOne(contiCorrenti.get(1).getId()).getListaMovCP().add(movcp0);
-//        movimentiCP.add(movcp0);
-//        movimentiCP.get(0).setContoC(contiCorrenti.get(1));
-        
-        // Associo CONTO CORRENTE cc3 con indice 2 ai movimenti *ok********************************************************************************
+        // Associo CONTO CORRENTE cc3 con indice 2 ai movimenti
         MovCC movcc5 = new MovCC(LocalDate.now(), "versamento", 5000);
         contoCorrenteRepository.getOne(contiCorrenti.get(2).getId()).getListaMovCC().add(movcc5);
         movimentiCC.add(movcc5);
@@ -250,11 +283,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         movimentiCC.add(movcc7);
         movimentiCC.get(7).setContoC(contiCorrenti.get(2));
 
-        // Associo CONTO CORRENTE 4 con indice 3 ai movimenti *ok********************************************************************************
-        //MovCP movcp1 = new MovCP(LocalDate.now(), "concessione", 200000);
-        //contoCorrenteRepository.getOne(contiCorrenti.get(3).getId()).getListaMovCP().add(movcp1);
-        //movimentiCP.add(movcp1);
-        //movimentiCP.get(1).setContoC(contiCorrenti.get(3));
+        // Associo CONTO CORRENTE cc4 con indice 3 ai movimenti
         MovCC movcc8 = new MovCC(LocalDate.now(), "versamento", 1000);
         contoCorrenteRepository.getOne(contiCorrenti.get(3).getId()).getListaMovCC().add(movcc8);
         movimentiCC.add(movcc8);
@@ -270,7 +299,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         movimentiCC.add(movcc10);
         movimentiCC.get(10).setContoC(contiCorrenti.get(3));
 
-        // Associo CONTO CORRENTE 5 con indice 4 ai movimenti *********************************************************************************
+        // Associo CONTO CORRENTE cc5 con indice 4 ai movimenti
         MovCC movcc11 = new MovCC(LocalDate.now(), "versamento", 10000);
         contoCorrenteRepository.getOne(contiCorrenti.get(4).getId()).getListaMovCC().add(movcc11);
         movimentiCC.add(movcc11);
@@ -281,33 +310,19 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         movimentiCC.add(movcc12);
         movimentiCC.get(12).setContoC(contiCorrenti.get(4));
 
-        //MovCD movcd1 = new MovCD(LocalDate.now(), "deposito", 200);
-        //contoCorrenteRepository.getOne(contiCorrenti.get(4).getId()).getListaMovCD().add(movcd1);
-        //movimentiCD.add(movcd1);
-        //movimentiCD.get(1).setContoC(contiCorrenti.get(4));
-        //MovCD movcd2 = new MovCD(LocalDate.now(), "riscatto", 50);
-        //contoCorrenteRepository.getOne(contiCorrenti.get(4).getId()).getListaMovCD().add(movcd2);
-        //movimentiCD.add(movcd2);
-        //movimentiCD.get(2).setContoC(contiCorrenti.get(4));
-        
-        // Associo CONTO CORRENTE 6 con indice 5 ai movimenti *ok********************************************************************************
+        // Associo CONTO CORRENTE cc6 con indice 5 ai movimenti
         MovCC movcc13 = new MovCC(LocalDate.now(), "versamento", 400);
         contoCorrenteRepository.getOne(contiCorrenti.get(5).getId()).getListaMovCC().add(movcc13);
         movimentiCC.add(movcc13);
         movimentiCC.get(13).setContoC(contiCorrenti.get(5));
-
-        //MovCP movcp2 = new MovCP(LocalDate.now(), "erogazione", 2000);
-        //contoCorrenteRepository.getOne(contiCorrenti.get(5).getId()).getListaMovCP().add(movcp2);
-        //movimentiCP.add(movcp2);
-        //movimentiCP.get(13).setContoC(contiCorrenti.get(5));
         
-        // Associo CONTO CORRENTE 7 con indice 6 ai movimenti *********************************************************************************
+        // Associo CONTO CORRENTE cc7 con indice 6 ai movimenti
         MovCC movcc14 = new MovCC(LocalDate.now(), "versamento", 3500);
         contoCorrenteRepository.getOne(contiCorrenti.get(6).getId()).getListaMovCC().add(movcc14);
         movimentiCC.add(movcc14);
         movimentiCC.get(14).setContoC(contiCorrenti.get(6));
 
-        // Associo CONTO CORRENTE 8 con indice 7 ai movimenti *ok********************************************************************************
+        // Associo CONTO CORRENTE cc8 con indice 7 ai movimenti
         MovCC movcc15 = new MovCC(LocalDate.now(), "versamento", 1500);
         contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCC().add(movcc15);
         movimentiCC.add(movcc15);
@@ -317,71 +332,61 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCC().add(movcc16);
         movimentiCC.add(movcc16);
         movimentiCC.get(16).setContoC(contiCorrenti.get(7));
+        
+        
+        //movimenti depositi-prestiti da conti correnti 
+        MovCD movcd10 = new MovCD(LocalDate.now(), "deposito", 500);
+        contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCD().add(movcd10);
+        movimentiCD.add(movcd10);
+        movimentiCD.get(10).setContoC(contiCorrenti.get(7));
+        
+        MovCD movcd11 = new MovCD(LocalDate.now(), "deposito", 700);
+        contoCorrenteRepository.getOne(contiCorrenti.get(5).getId()).getListaMovCD().add(movcd11);
+        movimentiCD.add(movcd11);
+        movimentiCD.get(11).setContoC(contiCorrenti.get(5));
+        
+        MovCP movcp10 = new MovCP(LocalDate.now(), "erogazione", 300);
+        contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCP().add(movcp10);
+        movimentiCP.add(movcp10);
+        movimentiCP.get(10).setContoC(contiCorrenti.get(0));
 
-        //MovCP movcp3 = new MovCP(LocalDate.now(), "erogazione", 4000);
-        //contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCP().add(movcp3);
-        //movimentiCP.add(movcp3);
-        //movimentiCP.get(3).setContoC(contiCorrenti.get(7));
-//
-// Associo CONTO DEPOSITO 0 ai movimenti *********************************************************************************
-        // to do        
-// Associo CONTO DEPOSITO 1 ai movimenti *********************************************************************************
-        // to do
-// Associo CONTO DEPOSITO 2 ai movimenti *********************************************************************************
-        // to do
-// Associo CONTO DEPOSITO 3 ai movimenti *********************************************************************************
-        // to do
-// Associo CONTO DEPOSITO 4 ai movimenti *********************************************************************************
-        // to do
-//
-//
-//
-// Associo CONTO PRESTITO 0 ai movimenti *********************************************************************************
-        // to do
-// Associo CONTO PRESTITO 1 ai movimenti *********************************************************************************
-        // to do
-// Associo CONTO PRESTITO 2 ai movimenti *********************************************************************************
-        // to do
-// Associo CONTO PRESTITO 3 ai movimenti *********************************************************************************
-        // to do        
-// Associo CONTO PRESTITO 4 ai movimenti *********************************************************************************
-        // to do
-//--------------------------------------------------------------------------------
+        
         // salva tutti i dati dei movimenti nel DB
         movCCRepository.saveAll(movimentiCC);
         movCDRepository.saveAll(movimentiCD);
         movCPRepository.saveAll(movimentiCP);
         contoCorrenteRepository.saveAll(contiCorrenti);
 
-        // stampe varie
-        // lista dei clienti, dei conti associati e dei movimenti
+        // stampa: lista dei clienti, dei conti associati e dei movimenti
         List<Cliente> listaClienti1 = clienteRepository.findAll();
-        listaClienti1.forEach(cl ->  {
-                                    System.out.println("Cliente : " + cl.getNome() + " " + cl.getCognome());
-                                    List<ContoCorrente> listaContiCorrenti = cl.getListaContiC();
-                                    listaContiCorrenti.forEach  (cc ->  {
-                                                                        System.out.println("\t Conto Corrente: " + cc.getNumConto().toString());
-                                                                        List<MovCC> listaMovCC = cc.getListaMovCC();
-                                                                        listaMovCC.forEach(mcc -> System.out.println("\t\t Movimento Conto Corrente: data - " + mcc.getDataMov().toString() + " | tipo - " + mcc.getTipoMov() + " | importo - " + mcc.getImportoMov()));
-                                                                        }
-                                                                );
-                                    List<ContoDeposito> listaContiDepositi = cl.getListaContiD();
-                                    listaContiDepositi.forEach  (cd ->  {          
-                                                                        System.out.println("\t Conto Deposito: " + cd.getCodice().toString());
-                                                                        List<MovCD> listaMovCD = cd.getListaMovCD();
-                                                                        listaMovCD.forEach(mcd -> System.out.println("\t\t Movimento Conto Deposito: data - " + mcd.getDataMov().toString() + " | tipo - " + mcd.getTipoMov() + " | importo - " + mcd.getImportoMov()));
-                                                                        }
-                                                                );
-                                    List<ContoPrestito> listaContiPrestiti = cl.getListaContiP();                                    
-                                    listaContiPrestiti.forEach  (cp ->  {
-                                                                        System.out.println("\t Conto Prestito: " + cp.getCodice().toString());
-                                                                        List<MovCP> listaMovCP = cp.getListaMovCP();
-                                                                        listaMovCP.forEach(mcp -> System.out.println("\t\t Movimento Conto Prestito: data - " + mcp.getDataMov().toString() + " | tipo - " + mcp.getTipoMov() + " | importo - " + mcp.getImportoMov()));
-                                                                        }
-                                                                );
-                                    }
-                            );
+        listaClienti1.forEach(cl -> {
+            System.out.println("Cliente : " + cl.getNome() + " " + cl.getCognome());
+            List<ContoCorrente> listaContiCorrenti = cl.getListaContiC();
+            listaContiCorrenti.forEach(cc -> {
+                System.out.println("\t Conto Corrente: " + cc.getNumConto().toString());
+                List<MovCC> listaMovCC = cc.getListaMovCC();
+                listaMovCC.forEach(mcc -> System.out.println("\t\t Movimento Conto Corrente: data - " + mcc.getDataMov().toString() + " | tipo - " + mcc.getTipoMov() + " | importo - " + mcc.getImportoMov()));
+                List<MovCD> listaMovCD = cc.getListaMovCD();
+                listaMovCD.forEach(mcd -> System.out.println("\t\t Movimento Conto Deposito: data - " + mcd.getDataMov().toString() + " | tipo - " + mcd.getTipoMov() + " | importo - " + mcd.getImportoMov()));
+                List<MovCP> listaMovCP = cc.getListaMovCP();
+                listaMovCP.forEach(mcp -> System.out.println("\t\t Movimento Conto Prestito: data - " + mcp.getDataMov().toString() + " | tipo - " + mcp.getTipoMov() + " | importo - " + mcp.getImportoMov()));
+            }
+            );
+            List<ContoDeposito> listaContiDepositi = cl.getListaContiD();
+            listaContiDepositi.forEach(cd -> {
+                System.out.println("\t Conto Deposito: " + cd.getCodice().toString());
+                List<MovCD> listaMovCD = cd.getListaMovCD();
+                listaMovCD.forEach(mcd -> System.out.println("\t\t Movimento Conto Deposito: data - " + mcd.getDataMov().toString() + " | tipo - " + mcd.getTipoMov() + " | importo - " + mcd.getImportoMov()));
+            }
+            );
+            List<ContoPrestito> listaContiPrestiti = cl.getListaContiP();
+            listaContiPrestiti.forEach(cp -> {
+                System.out.println("\t Conto Prestito: " + cp.getCodice().toString());
+                List<MovCP> listaMovCP = cp.getListaMovCP();
+                listaMovCP.forEach(mcp -> System.out.println("\t\t Movimento Conto Prestito: data - " + mcp.getDataMov().toString() + " | tipo - " + mcp.getTipoMov() + " | importo - " + mcp.getImportoMov()));
+            }
+            );
+        }
+        );
     }
 }
-            
-        
