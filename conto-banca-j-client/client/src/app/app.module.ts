@@ -10,6 +10,7 @@ import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
+import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { from } from 'rxjs';
     GestioneClienteComponent,
     GestioneCcComponent,
     GestioneCpComponent,
-    GestioneCdComponent
+    GestioneCdComponent,
+    MostraTuttiIContiComponent
   ],
   imports: [
     BrowserModule,

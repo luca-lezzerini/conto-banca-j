@@ -1,0 +1,23 @@
+<input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome cliente">
+<button (click)="cerca()"> Cerca </button>
+<tr> 
+<th>Nome</th>
+<th>Cognome</th>
+<th>Codice Fiscale</th>
+<th>Data di nascita</th>
+<th>Indirizzo</th>
+<th>Telefono</th>
+<th>Azioni</th>
+</tr>
+<table>
+<tr *ngFor=" let c of clienti">
+<td>{{c.nome}}</td>
+<td>{{c.cognome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td>{{c.dataDiNascita}}</td>
+        <td>{{c.indirizzo}}</td>
+        <td>{{c.telefono}}</td>
+        <td><button (click)="mostraConti(c)">Mostra conti</button></td>
+    </tr>
+</table>
+
