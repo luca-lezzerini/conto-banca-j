@@ -16,19 +16,23 @@ export class GestioneCpComponent implements OnInit {
   codice: string;
   listaCodici: ContoPrestito[] = [];
   codiceEdit = true;
-  addVisibile: boolean;
-  constructor(private http: HttpClient) { this.aggiorna() }
+  addVisibileAdd: boolean;
+  addVisibileInput: boolean;
+  addVisibileIntestazioneTabella: boolean;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-
   new(): void {
+    this.aggiorna();
     this.codiceEdit = false;
-    this.addVisibile = true;
+    this.addVisibileAdd = true;
+    this.addVisibileInput = true;
+    this.addVisibileIntestazioneTabella = true;
+
   }
-
-
 
   add() {
     let dto: NumCpDto = new NumCpDto();
@@ -37,7 +41,6 @@ export class GestioneCpComponent implements OnInit {
     ox.subscribe(a => this.listaCodici = a.listaCodici);
 
     this.codice = ""
-
   }
 
   edit(c: ContoPrestito) {
@@ -49,8 +52,6 @@ export class GestioneCpComponent implements OnInit {
 
     this.codice = ""
   }
-
-
 
   delete(c: ContoPrestito) {
     let dto: NumCpDto = new NumCpDto();
