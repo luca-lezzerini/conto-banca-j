@@ -25,20 +25,18 @@ public class GestioneCPServiceImpl implements GestioneCPService {
 
     @Override
     public ListaCPDto delete(String stringa) {
-        ContoPrestito c =contoPrestitoRepository.findByCodice(stringa);
+        ContoPrestito c = contoPrestitoRepository.findByCodice(stringa);
         contoPrestitoRepository.deleteById(c.getId());
-        
+
         ListaCPDto dtoLista = new ListaCPDto(contoPrestitoRepository.findAll());
         return dtoLista;
 
     }
 
     @Override
-    public ListaCPDto edit(String stringa) {
-        ContoPrestito contoPrestito = new ContoPrestito();
-        contoPrestito.setCodice(stringa);
+    public ListaCPDto edit(ContoPrestito contoPrestito) {
         contoPrestito = contoPrestitoRepository.save(contoPrestito);
-        
+
         ListaCPDto dtoLista = new ListaCPDto(contoPrestitoRepository.findAll());
         return dtoLista;
 

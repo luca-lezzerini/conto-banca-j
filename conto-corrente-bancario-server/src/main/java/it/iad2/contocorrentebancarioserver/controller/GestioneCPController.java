@@ -1,6 +1,6 @@
 package it.iad2.contocorrentebancarioserver.controller;
 
-import it.iad2.contocorrentebancarioserver.dto.ListaCCDto;
+import it.iad2.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaCPDto;
 import it.iad2.contocorrentebancarioserver.dto.NumCPDto;
 import it.iad2.contocorrentebancarioserver.service.GestioneCPService;
@@ -26,8 +26,8 @@ public class GestioneCPController {
 
     @ResponseBody
     @RequestMapping("/edit")
-    public ListaCPDto edit(@RequestBody NumCPDto dto) {
-        return cpService.edit(dto.getCodice());
+    public ListaCPDto edit(@RequestBody ContoPrestitoDto dto) {
+        return cpService.edit(dto.getContoPrestito());
     }
 
     @ResponseBody

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContoPrestito } from './conto-prestito';
+import { ContoPrestitoDto } from './conto-prestito-dto';
 import { ListaCpDto } from './lista-cp-dto';
 import { NumCpDto } from './num-cp-dto';
 
@@ -17,7 +18,7 @@ export class GestioneCpComponent implements OnInit {
   
   id: number=0;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { this.add()}
 
   ngOnInit(): void {
   }
@@ -31,13 +32,19 @@ export class GestioneCpComponent implements OnInit {
     dto.codice = this.codice;
     let ox: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/add", dto);
     ox.subscribe(a => this.listaCodici = a.listaCodici);
+
+    this.codice = ""
+
   }
 
   edit(c: ContoPrestito) {
-    let dto: NumCpDto = new NumCpDto;
-    dto.codice = c.codice;
+    let dto: ContoPrestitoDto = new ContoPrestitoDto;
+    dto.contoPrestito = c;
+    c.codice = this.codice;
     let ov: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/edit", dto);
     ov.subscribe(e => this.listaCodici = e.listaCodici);
+
+    this.codice = ""
   }
 
 
@@ -47,6 +54,7 @@ export class GestioneCpComponent implements OnInit {
     dto.codice = c.codice;
     let oz: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/delete", dto);
     oz.subscribe(d => this.listaCodici = d.listaCodici);
+
   }
 
 

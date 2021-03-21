@@ -9,7 +9,7 @@ public interface GestioneCPService {
 
     ListaCPDto delete(String stringa);
 
-    ListaCPDto edit(String stringa);
+    ListaCPDto edit(ContoPrestito contoPrestito);
 
     ListaCPDto aggiorna();
 
