@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ContoDepositoRepository extends JpaRepository<ContoDeposito,Long>{
-    // List<ContoDeposito>findByIdCliente(Long id);
-    
+public interface ContoDepositoRepository extends JpaRepository<ContoDeposito, Long> {
+
+    List<ContoDeposito> findByCliente(Long id);
+
 }
