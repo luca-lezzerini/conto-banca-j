@@ -12,24 +12,28 @@ public class GestioneClientiServiceImpl implements GestioneClientiService {
 
     @Autowired
     ClienteRepository clienteRepository;
+    
     @Override
     public ListaClientiDto aggiungi(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clienteRepository.save(cliente);
+        return aggiorna();
     }
 
     @Override
     public ListaClientiDto modifica(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clienteRepository.save(cliente);
+        return aggiorna();
     }
 
     @Override
     public ListaClientiDto cancella(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clienteRepository.delete(cliente);
+        return aggiorna();
     }
 
     @Override
     public ListaClientiDto aggiorna() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaClientiDto(clienteRepository.findAll());
     }
 
 }

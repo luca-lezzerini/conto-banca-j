@@ -13,12 +13,15 @@ import { ListaClientiDto } from './lista-clienti-dto';
 export class GestioneClienteComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
+  clienteMod: Cliente = new Cliente();
   clienti: Cliente[] = [];
   inputEnabled: boolean;
   buttonVisible: boolean;
-  stato: string;
+  stato: string = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.aggiorna();
+   }
 
   ngOnInit(): void {
   }
@@ -39,19 +42,23 @@ export class GestioneClienteComponent implements OnInit {
   }
 
   conferma() {
-    //TODO
     //conferma la modifica o la cancellazione
     let dto: ClienteDto = new ClienteDto();
     dto.cliente = this.cliente;
-    if (this.stato = "mod") {
+
+    console.log(this.stato);
+    if (this.stato == "mod") {
+      console.log("siamo nell if mod");
       let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
         ("http://localhost:8080/modifica-cliente", dto);
       oss.subscribe(v => this.clienti = v.listaClienti);
-    } else if (this.stato = "canc") {
+    } else if (this.stato == "canc") {
+      console.log("siamo nell if canc");
       let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
         ("http://localhost:8080/cancella-cliente", dto);
       oss.subscribe(v => this.clienti = v.listaClienti);
-    }
+    } 
+    this.cliente = new Cliente();
     dto.cliente = this.cliente;
     this.buttonVisible = false;
     this.inputEnabled = false;
@@ -67,6 +74,7 @@ export class GestioneClienteComponent implements OnInit {
     // richiama il conferma per la modifica
     this.cliente = c;
     this.buttonVisible = true;
+    this.inputEnabled = true;
     this.stato = "mod";
   }
 
@@ -74,7 +82,14 @@ export class GestioneClienteComponent implements OnInit {
     // richiama il conferma per la cancellazione
     this.cliente = c;
     this.buttonVisible = true;
+    this.inputEnabled = false;
     this.stato = "canc";
+  }
+
+  aggiorna(){
+    let oss: Observable<ListaClientiDto> = this.http.get<ListaClientiDto>
+        ("http://localhost:8080/aggiorna-cliente");
+    oss.subscribe(v => this.clienti = v.listaClienti);
   }
 
 }

@@ -1,5 +1,6 @@
 package it.iad2.contocorrentebancarioserver.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class MovCP {
+public class MovCP implements Serializable {
 
     @Id
     @GeneratedValue

@@ -1,5 +1,6 @@
 package it.iad2.contocorrentebancarioserver.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class ContoDeposito {
+public class ContoDeposito implements Serializable {
     
     @Id
     @GeneratedValue

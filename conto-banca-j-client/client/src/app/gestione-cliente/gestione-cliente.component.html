@@ -5,7 +5,7 @@
     <button (click)="nuovo()">Nuovo</button>
 </div>
 <div>
-    <input type="text" placeholder="Codice fiscale" [(ngModel)] = "cliente.codicefiscale" [disabled] = "!inputEnabled">
+    <input type="text" placeholder="Codice fiscale" [(ngModel)] = "cliente.codiceFiscale" [disabled] = "!inputEnabled">
     <input type="text" placeholder="Indirizzo" [(ngModel)] = "cliente.indirizzo" [disabled] = "!inputEnabled">
     <button (click)="aggiungi()" [disabled] = "!inputEnabled">Aggiungi</button>
 </div>
