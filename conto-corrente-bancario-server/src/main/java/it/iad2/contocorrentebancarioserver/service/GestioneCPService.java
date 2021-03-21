@@ -5,11 +5,11 @@ import it.iad2.contocorrentebancarioserver.model.ContoPrestito;
 
 public interface GestioneCPService {
 
-    ListaCPDto add(ContoPrestito cp);
+    ListaCPDto add(String stringa);
 
-    ListaCPDto delete(ContoPrestito cp);
+    ListaCPDto delete(String stringa);
 
-    ListaCPDto edit(ContoPrestito cp);
+    ListaCPDto edit(String stringa);
 
     ListaCPDto aggiorna();
 

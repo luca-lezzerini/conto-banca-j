@@ -4,27 +4,23 @@ import it.iad2.contocorrentebancarioserver.model.ContoPrestito;
 
 public class NumCPDto {
 
-    private ContoPrestito contoprestito;
+    private String codice;
 
     public NumCPDto() {
     }
 
-    public NumCPDto(ContoPrestito contoprestito) {
-        this.contoprestito = contoprestito;
+    public NumCPDto(String codice) {
+        this.codice = codice;
     }
 
-    public ContoPrestito getContoprestito() {
-        return contoprestito;
+    public String getCodice() {
+        return codice;
     }
 
-    public void setContoprestito(ContoPrestito contoprestito) {
-        this.contoprestito = contoprestito;
+    public void setCodice(String codice) {
+        this.codice = codice;
     }
 
-    @Override
-    public String toString() {
-        return "NumCPDto{" + "contoprestito=" + contoprestito + '}';
-    }
     
 
     

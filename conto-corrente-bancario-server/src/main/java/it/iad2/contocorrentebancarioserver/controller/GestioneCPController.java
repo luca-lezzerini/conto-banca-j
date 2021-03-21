@@ -21,18 +21,18 @@ public class GestioneCPController {
     @ResponseBody
     @RequestMapping("/add")
     public ListaCPDto add(@RequestBody NumCPDto dto) {
-        return cpService.add(dto.getContoprestito());
+        return cpService.add(dto.getCodice());
     }
 
     @ResponseBody
     @RequestMapping("/edit")
     public ListaCPDto edit(@RequestBody NumCPDto dto) {
-        return cpService.edit(dto.getContoprestito());
+        return cpService.edit(dto.getCodice());
     }
 
     @ResponseBody
     @RequestMapping("/delete")
     public ListaCPDto delete(@RequestBody NumCPDto dto) {
-        return cpService.delete(dto.getContoprestito());
+        return cpService.delete(dto.getCodice());
     }
 }

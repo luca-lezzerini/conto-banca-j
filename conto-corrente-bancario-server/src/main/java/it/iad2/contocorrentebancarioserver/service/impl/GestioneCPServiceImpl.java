@@ -14,43 +14,41 @@ public class GestioneCPServiceImpl implements GestioneCPService {
     ContoPrestitoRepository contoPrestitoRepository;
 
     @Override
-    public ListaCPDto add(ContoPrestito contoPrestito) {
-
+    public ListaCPDto add(String stringa) {
+        ContoPrestito contoPrestito = new ContoPrestito();
+        contoPrestito.setCodice(stringa);
         contoPrestito = contoPrestitoRepository.save(contoPrestito);
 
         ListaCPDto dtoLista = new ListaCPDto(contoPrestitoRepository.findAll());
-        
         return dtoLista;
     }
 
     @Override
-    public ListaCPDto delete(ContoPrestito c) {
+    public ListaCPDto delete(String stringa) {
+        ContoPrestito c =contoPrestitoRepository.findByCodice(stringa);
+        contoPrestitoRepository.deleteById(c.getId());
         
-         contoPrestitoRepository.delete(c);
-        
-         ListaCPDto dtoLista = new ListaCPDto(contoPrestitoRepository.findAll());
-        
-        return dtoLista;
-        
-        
-    }
-
-    @Override
-    public ListaCPDto edit(ContoPrestito c) {
-        
-     c =  contoPrestitoRepository.save(c);
-
         ListaCPDto dtoLista = new ListaCPDto(contoPrestitoRepository.findAll());
-        
         return dtoLista;
+
+    }
+
+    @Override
+    public ListaCPDto edit(String stringa) {
+        ContoPrestito contoPrestito = new ContoPrestito();
+        contoPrestito.setCodice(stringa);
+        contoPrestito = contoPrestitoRepository.save(contoPrestito);
         
+        ListaCPDto dtoLista = new ListaCPDto(contoPrestitoRepository.findAll());
+        return dtoLista;
+
     }
 
     @Override
     public ListaCPDto aggiorna() {
-        
-        return new ListaCPDto(contoPrestitoRepository.findAll()); 
-        
+
+        return new ListaCPDto(contoPrestitoRepository.findAll());
+
     }
 
 }

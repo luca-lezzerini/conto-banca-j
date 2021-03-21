@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ContoPrestito } from '../conto-prestito';
+import { Observable } from 'rxjs';
+import { ContoPrestito } from './conto-prestito';
+import { ListaCpDto } from './lista-cp-dto';
+import { NumCpDto } from './num-cp-dto';
 
 @Component({
   selector: 'app-gestione-cp',
@@ -8,11 +12,12 @@ import { ContoPrestito } from '../conto-prestito';
 })
 export class GestioneCpComponent implements OnInit {
 
-  codice:string;
+  codice: string;
   listaCodici: ContoPrestito[] = [];
+  
+  id: number=0;
 
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -21,16 +26,29 @@ export class GestioneCpComponent implements OnInit {
 
   }
 
-  add(){
-
+  add() {
+    let dto: NumCpDto = new NumCpDto();
+    dto.codice = this.codice;
+    let ox: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/add", dto);
+    ox.subscribe(a => this.listaCodici = a.listaCodici);
   }
 
-  edit(c: ContoPrestito){
-
+  edit(c: ContoPrestito) {
+    let dto: NumCpDto = new NumCpDto;
+    dto.codice = c.codice;
+    let ov: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/edit", dto);
+    ov.subscribe(e => this.listaCodici = e.listaCodici);
   }
 
-  delete(c: ContoPrestito){
 
+
+  delete(c: ContoPrestito) {
+    let dto: NumCpDto = new NumCpDto;
+    dto.codice = c.codice;
+    let oz: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/delete", dto);
+    oz.subscribe(d => this.listaCodici = d.listaCodici);
   }
+
+
 
 }
