@@ -35,4 +35,10 @@ public class GestioneCPController {
     public ListaCPDto delete(@RequestBody NumCPDto dto) {
         return cpService.delete(dto.getCodice());
     }
+
+    @ResponseBody
+    @RequestMapping("/aggiorna")
+    public ListaCPDto aggiorna() {
+        return cpService.aggiorna();
+    }
 }

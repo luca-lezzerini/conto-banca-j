@@ -15,17 +15,20 @@ export class GestioneCpComponent implements OnInit {
 
   codice: string;
   listaCodici: ContoPrestito[] = [];
-  
-  id: number=0;
-
-  constructor(private http: HttpClient) { this.add()}
+  codiceEdit = true;
+  addVisibile: boolean;
+  constructor(private http: HttpClient) { this.aggiorna() }
 
   ngOnInit(): void {
   }
 
-  new() {
 
+  new(): void {
+    this.codiceEdit = false;
+    this.addVisibile = true;
   }
+
+
 
   add() {
     let dto: NumCpDto = new NumCpDto();
@@ -38,7 +41,7 @@ export class GestioneCpComponent implements OnInit {
   }
 
   edit(c: ContoPrestito) {
-    let dto: ContoPrestitoDto = new ContoPrestitoDto;
+    let dto: ContoPrestitoDto = new ContoPrestitoDto();
     dto.contoPrestito = c;
     c.codice = this.codice;
     let ov: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/edit", dto);
@@ -50,13 +53,18 @@ export class GestioneCpComponent implements OnInit {
 
 
   delete(c: ContoPrestito) {
-    let dto: NumCpDto = new NumCpDto;
+    let dto: NumCpDto = new NumCpDto();
     dto.codice = c.codice;
     let oz: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/delete", dto);
     oz.subscribe(d => this.listaCodici = d.listaCodici);
 
+    this.codice = ""
+
   }
 
-
+  aggiorna() {
+    let ow: Observable<ListaCpDto> = this.http.get<ListaCpDto>("http://localhost:8080/aggiorna")
+    ow.subscribe(a => this.listaCodici = a.listaCodici)
+  }
 
 }

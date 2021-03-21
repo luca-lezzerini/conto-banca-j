@@ -1,8 +1,10 @@
 Conto prestito
 <button (click)="new()">New</button>
 <br>
-<input type="text" [(ngModel)]="codice" placeholder="codice conto prestito">
-<button (click)="add()">Add</button>
+<div>
+  <input type="text" placeholder="codice conto prestito"  [disabled]="codiceEdit"[(ngModel)]="codice">
+  <button (click)="add()" *ngIf="addVisibile">Add</button>
+</div>
 <br>
 <br>
 <table>
