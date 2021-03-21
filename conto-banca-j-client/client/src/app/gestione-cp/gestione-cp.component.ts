@@ -15,10 +15,12 @@ export class GestioneCpComponent implements OnInit {
 
   codice: string;
   listaCodici: ContoPrestito[] = [];
+  messaggioErrore: string;
   codiceEdit = true;
   addVisibileAdd: boolean;
   addVisibileInput: boolean;
   addVisibileIntestazioneTabella: boolean;
+
 
   constructor(private http: HttpClient) { }
 
@@ -35,35 +37,46 @@ export class GestioneCpComponent implements OnInit {
   }
 
   add() {
-    let dto: NumCpDto = new NumCpDto();
-    dto.codice = this.codice;
-    let ox: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/add", dto);
-    ox.subscribe(a => this.listaCodici = a.listaCodici);
+    if (this.codice == "") {
+      this.messaggioErrore = "Errore nella compilazione. Inserire un codice conto valido"
+    }
+    else {
+      this.messaggioErrore = "";
+      let dto: NumCpDto = new NumCpDto();
+      dto.codice = this.codice;
+      let ox: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/add", dto);
+      ox.subscribe(a => this.listaCodici = a.listaCodici);
 
-    this.codice = ""
+      this.codice = ""
+    }
   }
-
   edit(c: ContoPrestito) {
-    let dto: ContoPrestitoDto = new ContoPrestitoDto();
-    dto.contoPrestito = c;
-    c.codice = this.codice;
-    let ov: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/edit", dto);
-    ov.subscribe(e => this.listaCodici = e.listaCodici);
 
-    this.codice = ""
+    if (this.codice == "") {
+      this.messaggioErrore = "Errore nella compilazione. Inserire un codice conto valido"
+    }
+    else {
+      this.messaggioErrore = "";
+      let dto: ContoPrestitoDto = new ContoPrestitoDto();
+      dto.contoPrestito = c;
+      c.codice = this.codice;
+      let ov: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/edit", dto);
+      ov.subscribe(e => this.listaCodici = e.listaCodici);
+
+      this.codice = ""
+    }
   }
-
   delete(c: ContoPrestito) {
+    this.messaggioErrore = "";
     let dto: NumCpDto = new NumCpDto();
     dto.codice = c.codice;
     let oz: Observable<ListaCpDto> = this.http.post<ListaCpDto>("http://localhost:8080/delete", dto);
     oz.subscribe(d => this.listaCodici = d.listaCodici);
 
     this.codice = ""
-
   }
-
   aggiorna() {
+    this.codice = "";
     let ow: Observable<ListaCpDto> = this.http.get<ListaCpDto>("http://localhost:8080/aggiorna")
     ow.subscribe(a => this.listaCodici = a.listaCodici)
   }
