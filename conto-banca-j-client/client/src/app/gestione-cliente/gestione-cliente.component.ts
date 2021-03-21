@@ -13,7 +13,6 @@ import { ListaClientiDto } from './lista-clienti-dto';
 export class GestioneClienteComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
-  clienteMod: Cliente = new Cliente();
   clienti: Cliente[] = [];
   inputEnabled: boolean;
   buttonVisible: boolean;
@@ -73,7 +72,7 @@ export class GestioneClienteComponent implements OnInit {
     this.cliente.id = c.id;
     this.cliente.nome = c.nome;
     this.cliente.cognome = c.cognome;
-    this.cliente.dataNascita = c.dataNascita;
+    //this.cliente.dataNascita = c.dataNascita;
     this.cliente.indirizzo = c.indirizzo;
     this.cliente.telefono = c.telefono;
     this.cliente.codiceFiscale = c.codiceFiscale;

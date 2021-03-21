@@ -1,9 +1,9 @@
 export class Cliente{
-    id: string;
+    id: number;
     nome: string;
     cognome: string;
     indirizzo: string;
-    dataNascita: Date;
+    //dataNascita: Date;
     codiceFiscale: string;
     telefono: string;
 }
