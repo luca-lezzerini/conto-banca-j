@@ -27,12 +27,12 @@ public class MovCC {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoCorrente contoC;
-    
+
     public MovCC() {
     }
 
-    public MovCC(LocalDate datamov, String tipoMov, double importoMov) {
-        this.dataMov = datamov;
+    public MovCC(LocalDate dataMov, String tipoMov, double importoMov) {
+        this.dataMov = dataMov;
         this.tipoMov = tipoMov;
         this.importoMov = importoMov;
     }
@@ -45,12 +45,12 @@ public class MovCC {
         this.id = id;
     }
 
-    public LocalDate getDatamov() {
+    public LocalDate getDataMov() {
         return dataMov;
     }
 
-    public void setDatamov(LocalDate datamov) {
-        this.dataMov = datamov;
+    public void setDataMov(LocalDate dataMov) {
+        this.dataMov = dataMov;
     }
 
     public String getTipoMov() {
@@ -69,14 +69,6 @@ public class MovCC {
         this.importoMov = importoMov;
     }
 
-    public LocalDate getDataMov() {
-        return dataMov;
-    }
-
-    public void setDataMov(LocalDate dataMov) {
-        this.dataMov = dataMov;
-    }
-
     public ContoCorrente getContoC() {
         return contoC;
     }
@@ -84,6 +76,5 @@ public class MovCC {
     public void setContoC(ContoCorrente contoC) {
         this.contoC = contoC;
     }
-    
     
 }

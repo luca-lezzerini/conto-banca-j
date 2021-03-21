@@ -35,8 +35,8 @@ public class MovCP {
     public MovCP() {
     }
 
-    public MovCP(LocalDate datamov, String tipoMov, double importoMov) {
-        this.dataMov = datamov;
+    public MovCP(LocalDate dataMov, String tipoMov, double importoMov) {
+        this.dataMov = dataMov;
         this.tipoMov = tipoMov;
         this.importoMov = importoMov;
     }
@@ -49,12 +49,12 @@ public class MovCP {
         this.id = id;
     }
 
-    public LocalDate getDatamov() {
+    public LocalDate getDataMov() {
         return dataMov;
     }
 
-    public void setDatamov(LocalDate datamov) {
-        this.dataMov = datamov;
+    public void setDataMov(LocalDate dataMov) {
+        this.dataMov = dataMov;
     }
 
     public String getTipoMov() {
@@ -73,14 +73,6 @@ public class MovCP {
         this.importoMov = importoMov;
     }
 
-    public LocalDate getDataMov() {
-        return dataMov;
-    }
-
-    public void setDataMov(LocalDate dataMov) {
-        this.dataMov = dataMov;
-    }
-
     public ContoCorrente getContoC() {
         return contoC;
     }
@@ -96,6 +88,5 @@ public class MovCP {
     public void setContoP(ContoPrestito contoP) {
         this.contoP = contoP;
     }
-    
-    
+
 }
