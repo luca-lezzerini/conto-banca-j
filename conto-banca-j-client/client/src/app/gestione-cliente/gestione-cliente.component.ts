@@ -45,7 +45,6 @@ export class GestioneClienteComponent implements OnInit {
     //conferma la modifica o la cancellazione
     let dto: ClienteDto = new ClienteDto();
     dto.cliente = this.cliente;
-
     console.log(this.stato);
     if (this.stato == "mod") {
       console.log("siamo nell if mod");
@@ -59,20 +58,25 @@ export class GestioneClienteComponent implements OnInit {
       oss.subscribe(v => this.clienti = v.listaClienti);
     } 
     this.cliente = new Cliente();
-    dto.cliente = this.cliente;
     this.buttonVisible = false;
     this.inputEnabled = false;
   }
 
   annulla() {
-    //TODO
+    this.cliente = new Cliente();
     this.buttonVisible = false;
     this.inputEnabled = false;
   }
 
   modifica(c: Cliente) {
     // richiama il conferma per la modifica
-    this.cliente = c;
+    this.cliente.id = c.id;
+    this.cliente.nome = c.nome;
+    this.cliente.cognome = c.cognome;
+    this.cliente.dataNascita = c.dataNascita;
+    this.cliente.indirizzo = c.indirizzo;
+    this.cliente.telefono = c.telefono;
+    this.cliente.codiceFiscale = c.codiceFiscale;
     this.buttonVisible = true;
     this.inputEnabled = true;
     this.stato = "mod";
