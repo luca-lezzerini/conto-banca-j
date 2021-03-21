@@ -1,53 +1,51 @@
-<input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome cliente">
-<button (click)="cerca()"> Cerca </button>
-<table>
- <tr>    
-<th>Nome</th>
-<th>Cognome</th>
-<th>Codice Fiscale</th>
-<th>Data di nascita</th>
-<th>Indirizzo</th>
-<th>Telefono</th>
-<th>Todo</th>
-</tr>
-<tr *ngFor=" let c of clienti">
-<td>{{c.nome}}</td>
-<td>{{c.cognome}}</td>
-        <td>{{c.codiceFiscale}}</td>
-        <td>{{c.dataDiNascita}}</td>
-        <td>{{c.indirizzo}}</td>
-        <td>{{c.telefono}}</td>
-        <td><button (click)="mostraConti(c)">Mostra conti</button></td>
-    </tr>
-</table>
+<body>
+    <input type="text" [(ngModel)]="cliente.cognome" placeholder="cognome cliente">
+    <button (click)="cerca()"> Cerca </button>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Codice Fiscale</th>
+            <th>Data di nascita</th>
+            <th>Indirizzo</th>
+            <th>Telefono</th>
+            <th>Todo</th>
+        </tr>
+        <tr *ngFor=" let c of clienti">
+            <td>{{c.nome}}</td>
+            <td>{{c.cognome}}</td>
+            <td>{{c.codiceFiscale}}</td>
+            <td>{{c.dataDiNascita}}</td>
+            <td>{{c.indirizzo}}</td>
+            <td>{{c.telefono}}</td>
+            <td><button (click)="mostraConti(c)">Mostra conti</button></td>
+        </tr>
+    </table>
 
-<table>
-    <tr>
-    <th>Conti Correnti</th>
-    </tr>
-    <tr *ngFor="let d of contiCorrenti">
-        <td>{{d.numConto}}}</td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Conti Correnti</th>
+        </tr>
+        <tr *ngFor="let d of contiCorrenti">
+            <td>{{d.numConto}}}</td>
+        </tr>
+    </table>
 
-<table>
-    <tr>
-    <th>Conti Prestiti</th>
-    </tr>
-    <tr *ngFor="let e of contiPrestiti">
-        <td>{{d.codice}}}</td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Conti Prestiti</th>
+        </tr>
+        <tr *ngFor="let e of contiPrestiti">
+            <td>{{d.codice}}}</td>
+        </tr>
+    </table>
 
-<table>
-    <tr>
-    <th>Conti Depositi</th>
-    </tr>
-    <tr *ngFor="let f of contiDepositi">
-        <td>{{d.codice}}}</td>
-    </tr>
-</table>
-
-
-
-
+    <table>
+        <tr>
+            <th>Conti Depositi</th>
+        </tr>
+        <tr *ngFor="let f of contiDepositi">
+            <td>{{d.codice}}}</td>
+        </tr>
+    </table>
+</body>

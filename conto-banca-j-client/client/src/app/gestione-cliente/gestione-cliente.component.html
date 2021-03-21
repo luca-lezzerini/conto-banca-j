@@ -1,41 +1,47 @@
-<div><h1>Gestione Cliente</h1></div>
-<div>
-    <input type="text" placeholder="Nome" [(ngModel)] = "cliente.nome" [disabled] = "!inputEnabled">
-    <input type="text" placeholder="Cognome" [(ngModel)] = "cliente.cognome" [disabled] = "!inputEnabled">
-    <!--<input type="text" placeholder="DataNascita: yyyy-MM-dd" [(ngModel)] = "cliente.dataNascita" [disabled] = "!inputEnabled">-->
-    <button (click)="nuovo()">Nuovo</button>
-</div>
-<div>
-    <input type="text" placeholder="Codice fiscale" [(ngModel)] = "cliente.codiceFiscale" [disabled] = "!inputEnabled">
-    <input type="text" placeholder="Indirizzo" [(ngModel)] = "cliente.indirizzo" [disabled] = "!inputEnabled">
-    <input type="text" placeholder="Telefono" [(ngModel)] = "cliente.telefono" [disabled] = "!inputEnabled">
-    <button (click)="aggiungi()" [disabled] = "!inputEnabled">Aggiungi</button>
-</div>
-<button (click)="conferma()" *ngIf="buttonVisible">Conferma</button>
-<button (click)="annulla()" *ngIf="buttonVisible">Annulla</button>
-<br>
-<div>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <!--<th>Data Di Nascita</th>-->
-            <th>Codice Fiscale</th>
-            <th>Indirizzo</th>
-            <th>Telefono</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let c of clienti">
-            <td>{{c.nome}}</td>
-            <td>{{c.cognome}}</td>
-            <!--<td>{{c.dataNascita}}</td>-->
-            <td>{{c.codiceFiscale}}</td>
-            <td>{{c.indirizzo}}</td>
-            <td>{{c.telefono}}</td>
-            <td><button (click)="modifica(c)">Modifica</button></td>
-            <td><button (click)="cancella(c)">Cancella</button></td>
-        </tr>
-    </table>
-</div>
-
+<body>
+    <div>
+        <h1>Gestione Cliente</h1>
+    </div>
+    <hr>
+    <div id="inputInpt">
+    <div>
+        <input type="text" placeholder="Nome" [(ngModel)]="cliente.nome" [disabled]="!inputEnabled">
+        <input type="text" placeholder="Cognome" [(ngModel)]="cliente.cognome" [disabled]="!inputEnabled">
+        <!--<input type="text" placeholder="DataNascita: yyyy-MM-dd" [(ngModel)] = "cliente.dataNascita" [disabled] = "!inputEnabled">-->
+        <button (click)="nuovo()">Nuovo</button>
+    </div>
+    <div>
+        <input type="text" placeholder="Codice fiscale" [(ngModel)]="cliente.codiceFiscale" [disabled]="!inputEnabled">
+        <input type="text" placeholder="Indirizzo" [(ngModel)]="cliente.indirizzo" [disabled]="!inputEnabled">
+        <input type="text" placeholder="Telefono" [(ngModel)]="cliente.telefono" [disabled]="!inputEnabled">
+        <button (click)="aggiungi()" [disabled]="!inputEnabled">Aggiungi</button>
+    </div>
+    <button (click)="conferma()" *ngIf="buttonVisible">Conferma</button>
+    <button (click)="annulla()" *ngIf="buttonVisible">Annulla</button>
+    </div>
+    <hr>
+    <div id="tabella">
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <!--<th>Data Di Nascita</th>-->
+                <th>Codice Fiscale</th>
+                <th>Indirizzo</th>
+                <th>Telefono</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let c of clienti">
+                <td>{{c.nome}}</td>
+                <td>{{c.cognome}}</td>
+                <!--<td>{{c.dataNascita}}</td>-->
+                <td>{{c.codiceFiscale}}</td>
+                <td>{{c.indirizzo}}</td>
+                <td>{{c.telefono}}</td>
+                <td><button (click)="modifica(c)">Modifica</button></td>
+                <td><button (click)="cancella(c)">Cancella</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
