@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,8 @@ public class ContoDeposito implements Serializable {
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
     
-    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
-    @OneToMany (mappedBy = "contoD")
+    @JsonIgnoreProperties(value = "contoD", allowSetters = true, allowGetters = true)
+    @OneToMany (cascade = CascadeType.REMOVE , mappedBy = "contoD")
     private List<MovCD> listaMovCD;
 
     public ContoDeposito() {

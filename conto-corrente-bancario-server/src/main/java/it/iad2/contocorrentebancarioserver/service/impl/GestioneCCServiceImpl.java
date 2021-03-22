@@ -6,7 +6,13 @@
 package it.iad2.contocorrentebancarioserver.service.impl;
 
 import it.iad2.contocorrentebancarioserver.model.ContoCorrente;
+import it.iad2.contocorrentebancarioserver.repository.ClienteRepository;
 import it.iad2.contocorrentebancarioserver.repository.ContoCorrenteRepository;
+import it.iad2.contocorrentebancarioserver.repository.ContoDepositoRepository;
+import it.iad2.contocorrentebancarioserver.repository.ContoPrestitoRepository;
+import it.iad2.contocorrentebancarioserver.repository.MovCCRepository;
+import it.iad2.contocorrentebancarioserver.repository.MovCDRepository;
+import it.iad2.contocorrentebancarioserver.repository.MovCPRepository;
 import it.iad2.contocorrentebancarioserver.service.GestioneCCService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +27,14 @@ public class GestioneCCServiceImpl implements GestioneCCService {
 
     @Autowired
     ContoCorrenteRepository contoCorrenteRepository;
+    @Autowired
+    MovCCRepository movCCRepository;
+    @Autowired
+    MovCDRepository movCDRepository;
+    @Autowired
+    MovCPRepository movCPRepository;
+    @Autowired
+    ClienteRepository clienteRepository;
 
     @Override
     public List<ContoCorrente> aggiungi(String numConto) {
@@ -34,7 +48,6 @@ public class GestioneCCServiceImpl implements GestioneCCService {
     public List<ContoCorrente> aggiorna() {
         return contoCorrenteRepository.findAll();
     }
-
 
     @Override
     public List<ContoCorrente> elimina(ContoCorrente conto) {

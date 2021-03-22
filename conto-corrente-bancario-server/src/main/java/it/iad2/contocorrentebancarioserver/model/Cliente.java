@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,15 +38,15 @@ public class Cliente implements Serializable {
     private LocalDate dataNascita;
     
     @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
-    @OneToMany (mappedBy = "cliente")
+    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "cliente")
     private List<ContoCorrente> listaContiC;
     
     @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
-    @OneToMany (mappedBy = "cliente")
+    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "cliente")
     private List<ContoDeposito> listaContiD;
     
     @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
-    @OneToMany (mappedBy = "cliente")
+    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "cliente")
     private List<ContoPrestito> listaContiP;
 
     public Cliente() {
