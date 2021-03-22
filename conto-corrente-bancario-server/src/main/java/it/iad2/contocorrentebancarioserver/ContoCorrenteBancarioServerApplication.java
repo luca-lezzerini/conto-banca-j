@@ -8,12 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author use
  */
-
 @SpringBootApplication
 public class ContoCorrenteBancarioServerApplication {
     /**
-     *punto di partenza del programma
-     * @param args
+     * metodo di avvio del programma
+     * @param args 
      */
     public static void main(String[] args) {
         SpringApplication.run(ContoCorrenteBancarioServerApplication.class, args);
