@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Classe di avvio dell'applicazione
  * @author use
  */
+
 @SpringBootApplication
 public class ContoCorrenteBancarioServerApplication {
 
