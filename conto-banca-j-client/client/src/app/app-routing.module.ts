@@ -7,6 +7,7 @@ import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
 // rotte del router
 //richieste per il routing
+//123456 Aulicino
 const routes: Routes = [
   {path: 'gestione-cliente', component: GestioneClienteComponent},
   {path: 'gestione-conto-corrente', component: GestioneCcComponent},
