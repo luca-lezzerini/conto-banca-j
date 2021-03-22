@@ -8,19 +8,19 @@
         <input type="text" placeholder="Nome" [(ngModel)]="cliente.nome" [disabled]="!inputEnabled">
         <input type="text" placeholder="Cognome" [(ngModel)]="cliente.cognome" [disabled]="!inputEnabled">
         <!--<input type="text" placeholder="DataNascita: yyyy-MM-dd" [(ngModel)] = "cliente.dataNascita" [disabled] = "!inputEnabled">-->
-        <button (click)="nuovo()">Nuovo</button>
+        <button class="inpt" (click)="nuovo()">Nuovo</button>
     </div>
     <div>
         <input type="text" placeholder="Codice fiscale" [(ngModel)]="cliente.codiceFiscale" [disabled]="!inputEnabled">
         <input type="text" placeholder="Indirizzo" [(ngModel)]="cliente.indirizzo" [disabled]="!inputEnabled">
         <input type="text" placeholder="Telefono" [(ngModel)]="cliente.telefono" [disabled]="!inputEnabled">
-        <button (click)="aggiungi()" [disabled]="!inputEnabled">Aggiungi</button>
+        <button class="inpt" (click)="aggiungi()" [disabled]="!inputEnabled">Aggiungi</button>
     </div>
-    <button (click)="conferma()" *ngIf="buttonVisible">Conferma</button>
-    <button (click)="annulla()" *ngIf="buttonVisible">Annulla</button>
+    <button class="btn" (click)="conferma()" *ngIf="buttonVisible">Conferma</button>
+    <button class="btn" (click)="annulla()" *ngIf="buttonVisible">Annulla</button>
     </div>
     <hr>
-    <div id="tabella">
+    <div class="tabella">
         <table>
             <tr>
                 <th>Nome</th>
@@ -39,8 +39,8 @@
                 <td>{{c.codiceFiscale}}</td>
                 <td>{{c.indirizzo}}</td>
                 <td>{{c.telefono}}</td>
-                <td><button (click)="modifica(c)">Modifica</button></td>
-                <td><button (click)="cancella(c)">Cancella</button></td>
+                <td><button class="tbl" (click)="modifica(c)">Modifica</button></td>
+                <td><button class="tbl" (click)="cancella(c)">Cancella</button></td>
             </tr>
         </table>
     </div>

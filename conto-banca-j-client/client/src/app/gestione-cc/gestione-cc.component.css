@@ -1,4 +1,4 @@
-/* *{
+*{
     -moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	box-sizing:border-box;
@@ -6,12 +6,17 @@
 }
 
 body{
-    background-color: rgb(154, 211, 246);
     max-width: 960px;
+    max-height: 710px;
     border: solid 1px;
     border-radius: 4px;
     margin: 0 auto;
     padding: 0;
+}
+
+h1{
+    text-align: center;
+    color: darkblue;
 }
 
 hr{
@@ -21,40 +26,59 @@ hr{
     margin-bottom: 30px;
 }
 
-#inputInpt{
+.center{
 	line-height: 40px;
 	width: 100%;
     text-align: center;
+}
+
+.add{
+    margin-left: 20px;
 }
 
 input{
     margin-left: 10px;
 }
 
-button{
+.inpt{
     margin-left: 20px;
+}
+
+button{
     cursor: pointer;
     border: solid 1.8px;
     border-radius: 5px;
 }
 
+button:hover{
+    border: solid 2px;
+    border-color: seagreen;
+}
+
 input{
     border: solid 1.8px;
     border-radius: 5px;
+    text-transform: capitalize;
 }
 
 input:hover{
     border: solid 2px;
+    text-transform: capitalize;
 }
 
-input:focus{
-    color: mediumseagreen;
-    background-color: black;
+#tabella{
+    border: solid 1px;
+    text-align: center;
+    width: 96%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    overflow-y: scroll;
 }
 
 table{
-    width: 600px;
-    margin-left: 200px;
+    width: 100%;
 }
 
 th, td{
@@ -68,4 +92,26 @@ th{
     border-bottom: 2px solid #111111;
     border-top: 1px solid #999;
     text-align: center;
-} */
+}
+
+td{
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.trline {
+    border-bottom: 1px solid #000;
+}
+
+tr:nth-child(even) {
+    background-color: sandybrown;
+}
+
+th {
+    background-color:lightblue;
+    height: 20px;
+}
+
+

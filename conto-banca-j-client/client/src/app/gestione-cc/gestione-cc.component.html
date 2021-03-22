@@ -1,17 +1,27 @@
-<input type="text" placeholder="numConto" [(ngModel)]="numConto">
-<button (click)="aggiungi()"> aggiungi </button>
-<br>
-<table>
-    <tr>
-        <th>numConto</th>
-    </tr>
-    <tr *ngFor="let c  of listaConti">
-        <td>{{c.numConto}}</td>
-        <td>
-            <button (click)="modifica(c)"> modifica </button>
-        </td>
-        <td>
-            <button (click)="elimina(c)"> elimina </button>
-        </td>
-    </tr>
-</table>
+<body>
+    <h1>Gestione Conto Corrente</h1>
+    <hr>
+    <div class="center">
+        <input type="text" placeholder="numConto" [(ngModel)]="numConto">
+        <button class="add" (click)="aggiungi()"> aggiungi </button>
+    </div>
+    <hr>
+    <div id="tabella">
+    <table>
+        <tr>
+            <th>numConto</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let c  of listaConti">
+            <td>{{c.numConto}}</td>
+            <td>
+                <button class="btn"(click)="modifica(c)"> modifica </button>
+            </td>
+            <td>
+                <button class="btn" (click)="elimina(c)"> elimina </button>
+            </td>
+        </tr>
+    </table>
+    </div>
+</body>
