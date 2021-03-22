@@ -8,7 +8,9 @@
 body{
     max-width: 960px;
     max-height: 710px;
-    border: solid 1px;
+    border: solid 10px;
+    border-style:groove;
+    border-color: darkcyan;
     border-radius: 4px;
     margin: 0 auto;
     padding: 0;
@@ -16,11 +18,13 @@ body{
 
 h1{
     text-align: center;
-    color: darkblue;
+    text-transform: uppercase;
+    color: black;
 }
 
 hr{
     border: solid 0.5px;
+    border-color:darkcyan;
     width: 50%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -30,10 +34,6 @@ hr{
 	line-height: 40px;
 	width: 100%;
     text-align: center;
-}
-
-input{
-    margin-left: 10px;
 }
 
 .inpt{
@@ -52,12 +52,14 @@ button{
 
 button:hover{
     border: solid 2px;
-    border-color: seagreen;
+    border-color: darkcyan;
 }
 
 input{
+    background-color: white;
     border: solid 1.8px;
     border-radius: 5px;
+    margin-left: 10px;
     text-transform: capitalize;
 }
 
@@ -67,7 +69,8 @@ input:hover{
 }
 
 .tabella{
-    border: solid 1px;
+    border: solid 2px;
+    border-radius: 4px;
     text-align: center;
     width: 96%;
     height: 250px;
@@ -90,8 +93,11 @@ th{
     letter-spacing: 0.1em;
     font-size: 90%;
     border-bottom: 2px solid #111111;
+    border-right: solid 2px;
     border-top: 1px solid #999;
     text-align: center;
+    background-color: lightgray;
+    height: 20px;
 }
 
 td{
@@ -106,11 +112,9 @@ td{
 }
 
 tr:nth-child(even) {
-    background-color: sandybrown;
+    background-color: lightsteelblue;
 }
 
-th {
-    background-color:lightblue;
-    height: 20px;
+tr:nth-child(odd) {
+    background-color: lightslategrey;
 }
-

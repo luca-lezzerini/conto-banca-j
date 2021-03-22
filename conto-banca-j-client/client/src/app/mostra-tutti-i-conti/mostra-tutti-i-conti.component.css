@@ -7,7 +7,9 @@
 
 body{
     max-width: 960px;
-    border: solid 1px;
+    border: solid 10px;
+    border-style:groove;
+    border-color: darkcyan;
     border-radius: 4px;
     margin: 0 auto;
     padding: 0;
@@ -15,24 +17,22 @@ body{
 
 h1{
     text-align: center;
-    color: darkblue;
+    text-transform: uppercase;
+    color: black;
 }
 
 hr{
     border: solid 0.5px;
+    border-color: darkcyan;
     width: 50%;
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
-div{
+#inputInpt{
 	line-height: 40px;
 	width: 100%;
     text-align: center;
-}
-
-input{
-    margin-left: 10px;
 }
 
 #cerca{
@@ -47,10 +47,12 @@ button{
 
 button:hover{
     border: solid 2px;
-    border-color: seagreen;
+    border-color: darkcyan;
 }
 
 input{
+    margin-left: 10px;
+    background-color: white;
     border: solid 1.8px;
     border-radius: 5px;
     text-transform: capitalize;
@@ -62,7 +64,8 @@ input:hover{
 }
 
 #tabella{
-    border: solid 1px;
+    border: solid 2px;
+    border-radius: 4px;
     text-align: center;
     width: 96%;
     height: 250px;
@@ -85,9 +88,10 @@ th{
     letter-spacing: 0.1em;
     font-size: 90%;
     border-bottom: 2px solid #111111;
+    border-right: solid 2px;
+    border-top: 1px solid #999;
     text-align: center;
-    margin-left: 180px;
-    background-color:lightblue;
+    background-color: lightgray;
     height: 20px;
 }
 
@@ -103,5 +107,9 @@ td{
 }
 
 tr:nth-child(even) {
-    background-color: sandybrown;
+    background-color: lightsteelblue;
+}
+
+tr:nth-child(odd) {
+    background-color: lightslategrey;
 }
