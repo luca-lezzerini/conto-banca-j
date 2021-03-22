@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ContoCorrenteBancarioServerApplication {
     /**
-     * metodo di avvio del programma
+     * punto di inizio del programma
      * @param args 
      */
     public static void main(String[] args) {
