@@ -40,7 +40,7 @@ export class MostraTuttiIContiComponent implements OnInit {
     dto.cognome = this.cliente.cognome;
     let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhost:8080/cerca-cliente", dto);
     oss.subscribe(c => this.clienti = c.listaClienti);
-
+    this.cliente.cognome = "";
   }
 
   mostraConti(c: Cliente) {

@@ -37,10 +37,16 @@ public class MostraTuttiContiServiceImpl implements MostraTuttiContiService {
 
     @Override
     public ListaContiClienteDto CaricaConti(Cliente cliente) {
+        
+        cliente = clienteRepository.findById(cliente.getId()).get();
+        List<ContoCorrente> cc = cliente.getListaContiC();
+        List<ContoDeposito> cd = cliente.getListaContiD();
+        List<ContoPrestito> cp = cliente.getListaContiP();
+        return new ListaContiClienteDto(cc,cd,cp);
 
-        List<ContoCorrente> cc = new ArrayList<>(contoCorrenteRepository.findByCliente(cliente.getId()));
-        List<ContoDeposito> cd = new ArrayList<>(contoDepositoRepository.findByCliente(cliente.getId()));
-        List<ContoPrestito> cp = new ArrayList<>(contoPrestitoRepository.findByCliente(cliente.getId()));
-        return new ListaContiClienteDto(cc, cd, cp);
+        //List<ContoCorrente> cc = new ArrayList<>(contoCorrenteRepository.findByCliente(cliente.getId()));
+        //List<ContoDeposito> cd = new ArrayList<>(contoDepositoRepository.findByCliente(cliente.getId()));
+        //List<ContoPrestito> cp = new ArrayList<>(contoPrestitoRepository.findByCliente(cliente.getId()));
+        //return new ListaContiClienteDto(cc, cd, cp);
     }
 }
