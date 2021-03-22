@@ -112,6 +112,10 @@ public class ContoCorrente implements Serializable {
     public void setListaMovCP(List<MovCP> listaMovCP) {
         this.listaMovCP = listaMovCP;
     }
-    
+
+    @Override
+    public String toString() {
+        return "ContoCorrente{" + "id=" + id + ", numConto=" + numConto + ", cliente=" + cliente.getCodiceFiscale() + ", listaMovCC=" + listaMovCC + ", listaMovCD=" + listaMovCD + ", listaMovCP=" + listaMovCP + '}';
+    }
     
 }

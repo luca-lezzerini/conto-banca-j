@@ -14,39 +14,39 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente implements Serializable {
- 
+
     @Id
     @GeneratedValue
     private Long id;
-    
+
     @Column
     private String nome;
-    
+
     @Column
     private String cognome;
-    
+
     @Column
     private String codiceFiscale;
-    
+
     @Column
     private String indirizzo;
-    
+
     @Column
     private String telefono;
-    
+
     @Column
     private LocalDate dataNascita;
-    
+
     @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
-    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "cliente")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cliente")
     private List<ContoCorrente> listaContiC;
-    
+
     @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
-    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "cliente")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cliente")
     private List<ContoDeposito> listaContiD;
-    
+
     @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
-    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "cliente")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cliente")
     private List<ContoPrestito> listaContiP;
 
     public Cliente() {
@@ -118,7 +118,7 @@ public class Cliente implements Serializable {
     }
 
     public List<ContoCorrente> getListaContiC() {
-        if (listaContiC == null){
+        if (listaContiC == null) {
             listaContiC = new ArrayList<>();
         }
         return listaContiC;
@@ -129,7 +129,7 @@ public class Cliente implements Serializable {
     }
 
     public List<ContoDeposito> getListaContiD() {
-        if (listaContiD == null){
+        if (listaContiD == null) {
             listaContiD = new ArrayList<>();
         }
         return listaContiD;
@@ -140,7 +140,7 @@ public class Cliente implements Serializable {
     }
 
     public List<ContoPrestito> getListaContiP() {
-        if (listaContiP == null){
+        if (listaContiP == null) {
             listaContiP = new ArrayList<>();
         }
         return listaContiP;
@@ -149,7 +149,10 @@ public class Cliente implements Serializable {
     public void setListaContiP(List<ContoPrestito> listaContiP) {
         this.listaContiP = listaContiP;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", indirizzo=" + indirizzo + ", telefono=" + telefono + ", dataNascita=" + dataNascita + ", listaContiC=" + listaContiC + ", listaContiD=" + listaContiD + ", listaContiP=" + listaContiP + '}';
+    }
     
 }
