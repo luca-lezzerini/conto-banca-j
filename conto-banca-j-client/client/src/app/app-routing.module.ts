@@ -6,7 +6,8 @@ import { GestioneCpComponent } from './gestione-cp/gestione-cp.component';
 import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
 // rotte del router
-//richieste per il routing
+// richieste per il routing
+// commento Lezzerini 
 const routes: Routes = [
   {path: 'gestione-cliente', component: GestioneClienteComponent},
   {path: 'gestione-conto-corrente', component: GestioneCcComponent},
