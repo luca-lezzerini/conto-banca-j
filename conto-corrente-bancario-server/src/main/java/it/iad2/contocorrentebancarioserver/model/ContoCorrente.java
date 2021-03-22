@@ -1,5 +1,7 @@
 package it.iad2.contocorrentebancarioserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +23,20 @@ public class ContoCorrente implements Serializable {
     @Column
     private String numConto;
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
     
+    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
     @OneToMany (mappedBy = "contoC")
     private List<MovCC> listaMovCC;
     
+    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
     @OneToMany (mappedBy = "contoC")
     private List<MovCD> listaMovCD;
     
+    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
     @OneToMany (mappedBy = "contoC")
     private List<MovCP> listaMovCP;
 

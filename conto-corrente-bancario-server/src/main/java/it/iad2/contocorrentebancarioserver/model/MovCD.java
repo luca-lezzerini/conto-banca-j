@@ -1,5 +1,6 @@
 package it.iad2.contocorrentebancarioserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -24,11 +25,13 @@ public class MovCD implements Serializable {
 
     @Column
     private double importoMov;
-
+    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoCorrente contoC;
-
+    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoDeposito contoD;

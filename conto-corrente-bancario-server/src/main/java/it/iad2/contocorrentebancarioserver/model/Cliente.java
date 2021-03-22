@@ -1,5 +1,6 @@
 package it.iad2.contocorrentebancarioserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,12 +36,15 @@ public class Cliente implements Serializable {
     @Column
     private LocalDate dataNascita;
     
+    @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
     @OneToMany (mappedBy = "cliente")
     private List<ContoCorrente> listaContiC;
     
+    @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
     @OneToMany (mappedBy = "cliente")
     private List<ContoDeposito> listaContiD;
     
+    @JsonIgnoreProperties(value = "cliente", allowSetters = true, allowGetters = true)
     @OneToMany (mappedBy = "cliente")
     private List<ContoPrestito> listaContiP;
 
