@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
+import { AssociaCpComponent } from './associa-cp/associa-cp.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-
     GestioneCcComponent,
     GestioneCpComponent,
     GestioneCdComponent,
-    MostraTuttiIContiComponent
+    MostraTuttiIContiComponent,
+    AssociaCpComponent
   ],
   imports: [
     BrowserModule,

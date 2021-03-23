@@ -5,6 +5,7 @@ import {GestioneCcComponent} from './gestione-cc/gestione-cc.component';
 import { GestioneCpComponent } from './gestione-cp/gestione-cp.component';
 import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
+import { AssociaCpComponent } from './associa-cp/associa-cp.component';
 
 const routes: Routes = [
   {path: 'gestione-cliente', component: GestioneClienteComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'gestione-conto-prestito', component: GestioneCpComponent},
   {path: 'gestione-conto-deposito', component: GestioneCdComponent},
   {path: 'mostra-tutti-i-conti',component: MostraTuttiIContiComponent},
+  {path: 'associa-cp', component: AssociaCpComponent},
 ];
 
 @NgModule({
