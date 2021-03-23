@@ -2,10 +2,13 @@ package it.iad2.contocorrentebancarioserver.service.impl;
 
 import it.iad2.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaContoPrestitoDto;
+import it.iad2.contocorrentebancarioserver.dto.ListaMovCpDto;
 import it.iad2.contocorrentebancarioserver.model.Cliente;
 import it.iad2.contocorrentebancarioserver.model.ContoPrestito;
+import it.iad2.contocorrentebancarioserver.model.MovCP;
 import it.iad2.contocorrentebancarioserver.repository.ClienteRepository;
 import it.iad2.contocorrentebancarioserver.repository.ContoPrestitoRepository;
+import it.iad2.contocorrentebancarioserver.repository.MovCPRepository;
 import it.iad2.contocorrentebancarioserver.service.EstrattoCPService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,9 @@ public class EstrattoCPServiceImpl implements EstrattoCPService {
 
     @Autowired
     ClienteRepository clienteRepository;
+    
+    @Autowired
+    MovCPRepository movCPRepository;
 
     @Override
     public ListaClientiDto cercaCliente(String cognome) {
@@ -26,9 +32,16 @@ public class EstrattoCPServiceImpl implements EstrattoCPService {
     }
 
     @Override
-    public ListaContoPrestitoDto CaricaConti(Cliente cliente) {
+    public ListaContoPrestitoDto caricaConti(Cliente cliente) {
         cliente = clienteRepository.findById(cliente.getId()).get();
         List<ContoPrestito> cp = cliente.getListaContiP();
         return new ListaContoPrestitoDto(cp);
+    }
+
+    @Override
+    public ListaMovCpDto estrattoContoCp(ContoPrestito cp) {
+        List<MovCP> listaMovCp = movCPRepository.findAll();
+        return new ListaMovCpDto(listaMovCp);
+        
     }
 }

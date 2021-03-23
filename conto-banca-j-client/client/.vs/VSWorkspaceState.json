@@ -3,8 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\gestione-cp"
+    "\\src\\app\\associa-cc",
+    "\\src\\app\\estratto-conto-cp",
+    "\\src\\app\\mostra-tutti-i-conti"
   ],
-  "SelectedNode": "\\src\\app\\gestione-cp\\gestione-cp.component.ts",
+  "SelectedNode": "\\src\\app\\ec-cc",
   "PreviewInSolutionExplorer": false
 }

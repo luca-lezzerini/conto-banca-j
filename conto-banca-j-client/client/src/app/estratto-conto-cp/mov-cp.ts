@@ -1,6 +1,6 @@
 
 export class MovCp{
-    movDataCp:Date;
-    tipoMovCp:string;
-    importoMovCp:number;
+    dataMov:Date;
+    tipoMov:string;
+    importoMov:number;
 }

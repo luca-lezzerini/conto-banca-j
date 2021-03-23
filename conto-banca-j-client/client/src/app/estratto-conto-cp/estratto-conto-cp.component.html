@@ -1,58 +1,71 @@
 <body>
-    <h1>EstrattoContoPrestito</h1>
+  <h2>EstrattoContoPrestito</h2>
 
-    
-        <h1>Conti</h1>
-        <hr>
-        <div id="inputInpt">
-            <input type="text" [(ngModel)]="cliente.cognome" placeholder="cerca per cognome">
-            <button id="cerca" (click)="cerca()"> Cerca </button>
-        </div>
-        <hr>
-        <br>
-        <div id="tabella">
-            <table>
-                <tr>
-                    <th>Nome</th>
-                    <th>Cognome</th>
-                    <th>Codice Fiscale</th>
-                    <th>Data di nascita</th>
-                    <th>Indirizzo</th>
-                    <th>Telefono</th>
-                    <th>Todo</th>
-                </tr>
-                <tr *ngFor=" let c of clienti">
-                    <td>{{c.nome}}</td>
-                    <td>{{c.cognome}}</td>
-                    <td>{{c.codiceFiscale}}</td>
-                    <td>{{c.dataDiNascita}}</td>
-                    <td>{{c.indirizzo}}</td>
-                    <td>{{c.telefono}}</td>
-                    <td><button (click)="mostraContiCp(c)">Seleziona</button></td>
-                    </tr>
-                 </table> 
-                </div>
-                <br>
-                <div id="tabella">
-                    <table>
-                        <tr>
-                            <th>Conti prestito associati</th>
-                        </tr>
-                        <tr *ngFor="let e of contiPrestiti">
-                            <td>{{e.codice}}</td>
-                            <td>{{e.id}}</td>
-                            <td><button (click)="mostraEstrattoConto()">Mostra estratto conto</button></td>
-                        </tr>
-                    </table>
-                </div>
-                <table>
-                    <tr>
-                        <th>Estratto conto prestito</th>
-                    </tr>
-                    <tr *ngFor="let m of listaMovCp">
-                        <td>{{m.id}}</td>
-               
-                    </table>
+  <h3>Conti</h3>
+  <hr>
+  <div id="inputInpt">
+    <input type="text" [(ngModel)]="cliente.cognome" placeholder="cerca per cognome">
+    <button id="cerca" (click)="cerca()"> Cerca </button>
+  </div>
+  <hr>
+  <br>
 
-                
-            </body>    
+  <div id="tabella">
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Codice Fiscale</th>
+        <th>Data di nascita</th>
+        <th>Indirizzo</th>
+        <th>Telefono</th>
+        <th>Todo</th>
+      </tr>
+      <tr *ngFor=" let c of clienti">
+        <td>{{c.nome}}</td>
+        <td>{{c.cognome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td>{{c.dataNascita}}</td>
+        <td>{{c.indirizzo}}</td>
+        <td>{{c.telefono}}</td>
+        <td><button (click)="mostraContiCp(c)">Seleziona</button></td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <hr>
+
+  <div id="tabella">
+    <table>
+      <tr>
+        <th>Conti prestito associati</th>
+      </tr>
+      <tr *ngFor="let e of contiPrestiti">
+        <td>{{e.codice}}</td>
+        <td>{{e.id}}</td>
+        <td><button (click)="mostraEstrattoConto()">Mostra estratto conto</button></td>
+      </tr>
+    </table>
+  </div>
+  <hr>
+
+
+  <table>
+    <tr>
+      <th>Estratto conto prestito</th>
+    </tr>
+    <tr>
+      <th>Id operazione</th>
+      <th>Data</th>
+      <th>Movimento</th>
+      <th>Importo</th>
+    </tr>
+    <tr *ngFor="let m of listaMovCp">
+      <td width="100px">{{m.id}}</td>
+      <td width="150px">{{m.dataMov	}}</td>
+      <td width="150px">{{m.tipoMov}}</td>
+      <td width="150px">{{m.importoMov}}</td>
+    </tr>
+  </table>
+  <hr>
+</body>

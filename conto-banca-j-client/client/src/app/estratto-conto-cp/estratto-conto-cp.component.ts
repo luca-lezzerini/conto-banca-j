@@ -6,9 +6,9 @@ import { Cliente } from '../gestione-cliente/cliente';
 import { ClienteDto } from '../gestione-cliente/cliente-dto';
 import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
 import { ContoPrestito } from '../gestione-cp/conto-prestito';
+import { ContoPrestitoDto } from '../gestione-cp/conto-prestito-dto';
 import { FiltroCognomeDto } from '../mostra-tutti-i-conti/filtro-cognome-dto';
 import { ListaContiClienteDto } from '../mostra-tutti-i-conti/lista-conti-cliente-dto';
-import { ContoCpDto } from './conto-cp-dto';
 import { ListaContoPrestitoDto } from './lista-conto-prestito-dto';
 import { ListaMovCpDto } from './lista-mov-cp-dto';
 import { MovCp } from './mov-cp';
@@ -49,7 +49,7 @@ export class EstrattoContoCpComponent implements OnInit {
   }
       
    mostraEstrattoConto(e:ContoPrestito) {
-     let dto:ContoCpDto= new ContoCpDto();
+     let dto:ContoPrestitoDto= new ContoPrestitoDto();
      dto.contoPrestito=e;
      let ec: Observable<ListaMovCpDto>= this.http.post<ListaMovCpDto>("http://localhost:8080/mov-cp",dto);
      ec.subscribe(s=>this.listaMovCp=s.listaMovCp);
