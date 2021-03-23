@@ -1,0 +1,42 @@
+<body>
+  <h1>Saldo Conto Corrente</h1>
+  <hr>
+  <div class="center">
+    <input type="text" placeholder="Ricerca Cliente" [(ngModel)]="ricercaCliente">
+    <button class="add" (click)="cercaCliente()"> Cerca </button>
+  </div>
+  <hr>
+  <div id="tabella">
+    <table>
+      <tr>
+        <th>Cognome</th>
+        <th>Nome</th>
+        <th>Cod. Fiscale</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let c  of listaClienti">
+        <td>{{c.cognome}}</td>
+        <td>{{c.nome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td>
+          <button class="btn" (click)="selezionaCliente(c)"> Seleziona </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="tabella">
+    <table>
+      <tr>
+        <th>N° Conto</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let cc  of listaCC">
+        <td>{{cc.numConto}}</td>
+        <td>{{saldoCCor}}</td>
+        <td>
+          <button class="btn" (click)="saldoCC(cc)"> Saldo </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
