@@ -9,6 +9,7 @@ import { AssociaCpComponent } from './associa-cp/associa-cp.component';
 import { EstrattoContoCpComponent } from './estratto-conto-cp/estratto-conto-cp.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AssociaCcComponent } from './associa-cc/associa-cc.component';
+import { AssociaCdComponent } from './associa-cd/associa-cd.component';
 
 const routes: Routes = [
   { path: 'gestione-cliente', component: GestioneClienteComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'mostra-tutti-i-conti', component: MostraTuttiIContiComponent },
   { path: 'associa-cp', component: AssociaCpComponent },
   { path: 'associa-cc', component: AssociaCcComponent },
+  { path: 'associa-cd', component: AssociaCdComponent },
   { path: 'estratto-conto-cp', component: EstrattoContoCpComponent },
   { path: 'homepage', component: HomePageComponent },
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },

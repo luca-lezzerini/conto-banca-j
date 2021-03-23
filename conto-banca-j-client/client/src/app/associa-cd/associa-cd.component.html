@@ -1,0 +1,34 @@
+<body>
+    <h1>Associa Conto Deposito</h1>
+    <hr>
+    <div class="center">
+        <input type="text" placeholder="Ricerca Cliente" [(ngModel)]="cognomeCliente">
+        <button class="add" (click)="cercaCliente()"> Cerca </button>
+    </div>
+    <hr>
+    <div id="tabella">
+        <table>
+            <tr>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Cod. Fiscale</th>
+            </tr>
+            <tr *ngFor="let c  of listaClienti">
+                <td>{{c.cognome}}</td>
+                <td>{{c.nome}}</td>
+                <td>{{c.codicefiscale}}</td>
+                <td>
+                    <button class="btn" (click)="associaCliente(c)"> Associa </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="center">
+        <input type="text" placeholder="Ricerca Conto Deposito" [(ngModel)]="numConto">
+        <button class="add" (click)="cercaConto()"> Cerca </button>
+    </div>
+    <div class="center">
+        <label>C/D trovato:
+            {{conto.codice}}</label>
+    </div>
+</body>
