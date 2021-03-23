@@ -20,19 +20,22 @@ public class AssociaCCServiceImpl implements AssociaCCService {
     @Override
     public ContoCorrente cercaCCEquals(String numConto) {
         ContoCorrente c = contoCorrenteRepository.findByNumConto(numConto);
-        if (c==null){
+        if (c == null) {
             return new ContoCorrente();
+        } else {
+            return c;
         }
-        else{return c;}
     }
 
     @Override
     public String associaCC(Cliente cliente, ContoCorrente contoCorrente) {
+        if (contoCorrenteRepository.findByNumConto(contoCorrente.getNumConto()).getCliente() != null) {
+            return "il conto corrente è già associato!";
+        }
         contoCorrente.setCliente(cliente);
         contoCorrenteRepository.save(contoCorrente);
         cliente.getListaContiC().add(contoCorrente);
         ClienteRepository.save(cliente);
         return "il conto corrente è stato associato!";
     }
-
 }
