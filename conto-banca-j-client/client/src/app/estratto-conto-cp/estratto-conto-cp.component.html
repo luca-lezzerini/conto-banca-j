@@ -40,10 +40,19 @@
                         </tr>
                         <tr *ngFor="let e of contiPrestiti">
                             <td>{{e.codice}}</td>
+                            <td>{{e.id}}</td>
                             <td><button (click)="mostraEstrattoConto()">Mostra estratto conto</button></td>
                         </tr>
                     </table>
                 </div>
+                <table>
+                    <tr>
+                        <th>Estratto conto prestito</th>
+                    </tr>
+                    <tr *ngFor="let m of listaMovCp">
+                        <td>{{m.id}}</td>
+               
+                    </table>
 
                 
             </body>    

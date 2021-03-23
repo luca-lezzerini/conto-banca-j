@@ -1,13 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ContoDeposito } from '../gestione-cd/contoDeposito';
 import { Cliente } from '../gestione-cliente/cliente';
 import { ClienteDto } from '../gestione-cliente/cliente-dto';
 import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
 import { ContoPrestito } from '../gestione-cp/conto-prestito';
 import { FiltroCognomeDto } from '../mostra-tutti-i-conti/filtro-cognome-dto';
 import { ListaContiClienteDto } from '../mostra-tutti-i-conti/lista-conti-cliente-dto';
+import { ContoCpDto } from './conto-cp-dto';
 import { ListaContoPrestitoDto } from './lista-conto-prestito-dto';
+import { ListaMovCpDto } from './lista-mov-cp-dto';
+import { MovCp } from './mov-cp';
 
 @Component({
   selector: 'app-estratto-conto-cp',
@@ -18,9 +22,7 @@ export class EstrattoContoCpComponent implements OnInit {
 
   cliente = new Cliente();
   clienti: Cliente[] = [];
-  cognomeContains: string;
-
-
+  listaMovCp:MovCp[];
   contoPrestito = new ContoPrestito();
   contiPrestiti: ContoPrestito[] = [];
 
@@ -46,7 +48,11 @@ export class EstrattoContoCpComponent implements OnInit {
     fx.subscribe(m => this.contiPrestiti = m.listaCP);
   }
       
-   mostraEstrattoConto() {
+   mostraEstrattoConto(e:ContoPrestito) {
+     let dto:ContoCpDto= new ContoCpDto();
+     dto.contoPrestito=e;
+     let ec: Observable<ListaMovCpDto>= this.http.post<ListaMovCpDto>("http://localhost:8080/mov-cp",dto);
+     ec.subscribe(s=>this.listaMovCp=s.listaMovCp);
 
    }    
      
