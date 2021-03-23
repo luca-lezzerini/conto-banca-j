@@ -15,6 +15,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { EstrattoContoCpComponent } from './estratto-conto-cp/estratto-conto-cp.component';
 import { AssociaCcComponent } from './associa-cc/associa-cc.component';
 import { AssociaCdComponent } from './associa-cd/associa-cd.component';
+import { EcCcComponent } from './ec-cc/ec-cc.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AssociaCdComponent } from './associa-cd/associa-cd.component';
     EstrattoContoCpComponent,
     AssociaCcComponent,
     AssociaCdComponent,
+    EcCcComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
