@@ -33,23 +33,27 @@ export class EstrattoContoCpComponent implements OnInit {
 
   cerca() {
     let dto: FiltroCognomeDto = new FiltroCognomeDto();
-    dto.cognome = this.cognomeContains;
+    dto.cognome = this.cliente.cognome;
     let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhost:8080/cerca-cliente-cp", dto);
     oss.subscribe(c => this.clienti = c.listaClienti);
     this.cliente.cognome = "";
   }
 
   mostraContiCp(c: Cliente) {
-    let dto: ClienteDto = new ClienteDto();
-    dto.cliente = c;
-    let fx: Observable<ListaContoPrestitoDto> = this.http.post<ListaContoPrestitoDto>("http://localhost:8080/mostra-conti-cp", dto);
-    fx.subscribe(m => this.contiPrestiti = m.listaContiPrestito);
+    let dto:ClienteDto = new ClienteDto();
+    dto.cliente=c;
+    let fx: Observable<ListaContiClienteDto> = this.http.post<ListaContiClienteDto>("http://localhost:8080/carica-conti", dto);
+    fx.subscribe(m => this.contiPrestiti = m.listaCP);
   }
       
-    
+   mostraEstrattoConto() {
 
+   }    
+     
+  }  
+      
   
-}
 
-
+    
+  
 
