@@ -17,8 +17,8 @@ import { associaCDDto } from './associa-cd-dto';
 export class AssociaCdComponent implements OnInit {
 
   cognomeCliente: string;
-  listaClienti: Cliente[];
-  conto: ContoDeposito;
+  listaClienti: Cliente[] = [];
+  conto: ContoDeposito = new ContoDeposito();
   numConto: string;
 
   constructor(private http: HttpClient) {
@@ -27,35 +27,36 @@ export class AssociaCdComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  cercaCliente() {
+  cercaCliente(): void {
     const dto: FiltroCognomeDto = new FiltroCognomeDto();
     dto.cognome = this.cognomeCliente;
     const oss: Observable<ListaClientiDto> = this.http
       .post<ListaClientiDto>('http://localhost:8080/cerca-cliente-equals', dto);
     oss.subscribe(g => this.listaClienti = g.listaClienti);
-    this.cognomeCliente = "";
+    this.cognomeCliente = '';
   }
 
-  associaCliente(c: Cliente) {
+  associaCliente(c: Cliente): void {
     const dto: associaCDDto = new associaCDDto();
-    dto.cliente= c;
+    dto.cliente = c;
     dto.conto = this.conto;
     const oss: Observable<null> = this.http
       .post<null>('http://localhost:8080/associa-cd', dto);
     oss.subscribe();
     this.aggiornaLista();
+    this.conto = new ContoDeposito();
   }
 
-  cercaConto() {
+  cercaConto(): void {
     const dto: NumContoCDDto = new NumContoCDDto();
     dto.codice = this.numConto;
     const oss: Observable<ContoDepositoDto> = this.http
       .post<ContoDepositoDto>('http://localhost:8080/cerca-conto-deposito', dto);
     oss.subscribe(r => this.conto = r.conto);
-    this.numConto = "";
+    this.numConto = '';
   }
 
-  aggiornaLista() {
+  aggiornaLista(): void {
     const oss: Observable<ListaClientiDto> = this.http
       .get<ListaClientiDto>('http://localhost:8080/aggiorna-cliente');
     oss.subscribe(l => this.listaClienti = l.listaClienti);
