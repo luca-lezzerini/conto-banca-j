@@ -6,7 +6,7 @@ import it.iad2.contocorrentebancarioserver.model.ContoCorrente;
 
 public interface AssociaCCService {
 
-    ContoCorrente cercaCCEquals(ContoCorrente conto);
+    ContoCorrente cercaCCEquals(String numConto);
 
     String associaCC(Cliente cliente, ContoCorrente contoCorrente);
 
