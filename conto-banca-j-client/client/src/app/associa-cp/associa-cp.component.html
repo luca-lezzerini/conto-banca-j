@@ -1,1 +1,22 @@
-<p>associa-cp works!</p>
+<input type="text" placeholder="ricercaCliente" [(ngModel)]="cognome">
+<button (click)="cercaCognomeEquals()">Cerca</button>
+<table>
+    <tr>
+        <th>Cognome</th>
+        <th>Nome</th>
+        <th>Codice Fiscale</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let c of clienti">
+        <td>{{c.cognome}}</td>
+        <td>{{c.nome}}</td>
+        <td>{{c.codiceFiscale}}</td>
+        <td><button class="tbl" (click)="associaCP(c)">Associa</button></td>
+    </tr>
+</table>
+<input type="text" placeholder="ricercaContoPrestito" [(ngModel)]="codice">
+<button (click)="cercaCodiceEquals()">Cerca</button>
+<br>
+Conto Prestito trovato: {{cp.codice}}
+<br>
+{{risposta}}
