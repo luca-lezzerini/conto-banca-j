@@ -2,8 +2,8 @@
   <h1>Associa Conto Corrente</h1>
   <hr>
   <div class="center">
-    <input type="text" placeholder="Ricerca Cliente">
-    <button class="add"> Cerca </button>
+    <input type="text" placeholder="Ricerca Cliente" [(ngModel)]="ricercaCliente">
+    <button class="add" (click)="cercaCliente()"> Cerca </button>
   </div>
   <hr>
   <div id="tabella">
@@ -19,17 +19,16 @@
         <td>{{c.nome}}</td>
         <td>{{c.codicefiscale}}</td>
         <td>
-          <button class="btn"> Associa </button>
+          <button class="btn" (click)="associaCC(c)"> Associa </button>
         </td>
       </tr>
     </table>
-
   </div>
   <div class="center">
-    <input type="text" placeholder="Ricerca Conto Corrente">
-    <button class="add"> Cerca </button>
+    <input type="text" placeholder="Ricerca Conto Corrente" [(ngModel)]="ricercaCC">
+    <button class="add" (click)="cercaCC()"> Cerca </button>
   </div>
   <div class="center">
-    <label>C/C trovato:</label>
+    <label>C/C trovato:{{contoCorrente.numConto}}</label>
   </div>
 </body>
