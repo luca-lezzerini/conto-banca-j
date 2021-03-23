@@ -1,0 +1,35 @@
+<body>
+  <h1>Associa Conto Corrente</h1>
+  <hr>
+  <div class="center">
+    <input type="text" placeholder="Ricerca Cliente">
+    <button class="add"> Cerca </button>
+  </div>
+  <hr>
+  <div id="tabella">
+    <table>
+      <tr>
+        <th>Cognome</th>
+        <th>Nome</th>
+        <th>Cod. Fiscale</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let c  of listaClienti">
+        <td>{{c.cognome}}</td>
+        <td>{{c.nome}}</td>
+        <td>{{c.codicefiscale}}</td>
+        <td>
+          <button class="btn"> Associa </button>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="center">
+    <input type="text" placeholder="Ricerca Conto Corrente">
+    <button class="add"> Cerca </button>
+  </div>
+  <div class="center">
+    <label>C/C trovato:</label>
+  </div>
+</body>

@@ -1,0 +1,119 @@
+*{
+    -moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    max-width: 960px;
+    max-height: 710px;
+    border: solid 10px;
+    border-style:groove;
+    border-color: darkcyan;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+}
+
+hr{
+    border: solid 0.5px;
+    border-color: darkcyan;
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.center{
+	line-height: 40px;
+	width: 100%;
+    text-align: center;
+}
+
+.add{
+    margin-left: 20px;
+}
+
+.inpt{
+    margin-left: 20px;
+}
+
+button{
+    cursor: pointer;
+    border: solid 1.8px;
+    border-radius: 5px;
+}
+
+button:hover{
+    border: solid 2px;
+    border-color: darkcyan;
+}
+
+input{
+    border: solid 1.8px;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-transform: capitalize;
+}
+
+input:hover{
+    border: solid 2px;
+    text-transform: capitalize;
+}
+
+#tabella{
+    border: solid 2px;
+    border-radius: 4px;
+    text-align: center;
+    width: 96%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    overflow-y: scroll;
+}
+
+table{
+    width: 100%;
+}
+
+th, td{
+    padding: 7px 10px 10px 10px;
+}
+
+th{
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 90%;
+    border-bottom: 2px solid #111111;
+    border-right: solid 2px;
+    border-top: 1px solid #999;
+    text-align: center;
+    background-color: lightgray;
+    height: 20px;
+}
+
+td{
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.trline {
+    border-bottom: 1px solid #000;
+}
+
+tr:nth-child(even) {
+    background-color: lightsteelblue;
+}
+
+tr:nth-child(odd) {
+    background-color: lightslategrey;
+}

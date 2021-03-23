@@ -7,13 +7,13 @@ import { GestioneClienteComponent } from './gestione-cliente/gestione-cliente.co
 import { GestioneCcComponent } from './gestione-cc/gestione-cc.component';
 import { GestioneCpComponent } from './gestione-cp/gestione-cp.component';
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { from } from 'rxjs';
 import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
 import { AssociaCpComponent } from './associa-cp/associa-cp.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EstrattoContoCpComponent } from './estratto-conto-cp/estratto-conto-cp.component';
+import { AssociaCcComponent } from './associa-cc/associa-cc.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +26,10 @@ import { EstrattoContoCpComponent } from './estratto-conto-cp/estratto-conto-cp.
     AssociaCpComponent,
     HomePageComponent,
     EstrattoContoCpComponent,
+    AssociaCcComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
