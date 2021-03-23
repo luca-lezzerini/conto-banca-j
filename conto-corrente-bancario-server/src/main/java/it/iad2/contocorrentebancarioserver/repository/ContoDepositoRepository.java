@@ -11,4 +11,6 @@ public interface ContoDepositoRepository extends JpaRepository<ContoDeposito, Lo
 
     List<ContoDeposito> findByCliente(Long id);
 
+    ContoDeposito findByCodiceEquals(String codice);
+
 }
