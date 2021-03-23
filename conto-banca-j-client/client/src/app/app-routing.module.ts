@@ -6,6 +6,8 @@ import { GestioneCpComponent } from './gestione-cp/gestione-cp.component';
 import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
 import { GestioneCdComponent } from './gestione-cd/gestione-cd.component';
 import { AssociaCpComponent } from './associa-cp/associa-cp.component';
+import { EstrattoContoCpComponent } from './estratto-conto-cp/estratto-conto-cp.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {path: 'gestione-cliente', component: GestioneClienteComponent},
@@ -14,6 +16,10 @@ const routes: Routes = [
   {path: 'gestione-conto-deposito', component: GestioneCdComponent},
   {path: 'mostra-tutti-i-conti',component: MostraTuttiIContiComponent},
   {path: 'associa-cp', component: AssociaCpComponent},
+  {path: 'estratto-conto-cp', component: EstrattoContoCpComponent},
+  {path: 'homepage', component: HomePageComponent},
+  {path:"", redirectTo:"/homepage", pathMatch:"full"},
+
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { MostraTuttiIContiComponent } from './mostra-tutti-i-conti/mostra-tutti-i-conti.component';
 import { AssociaCpComponent } from './associa-cp/associa-cp.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { EstrattoContoCpComponent } from './estratto-conto-cp/estratto-conto-cp.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AssociaCpComponent } from './associa-cp/associa-cp.component';
     GestioneCpComponent,
     GestioneCdComponent,
     MostraTuttiIContiComponent,
-    AssociaCpComponent
+    AssociaCpComponent,
+    HomePageComponent,
+    EstrattoContoCpComponent,
   ],
   imports: [
     BrowserModule,
