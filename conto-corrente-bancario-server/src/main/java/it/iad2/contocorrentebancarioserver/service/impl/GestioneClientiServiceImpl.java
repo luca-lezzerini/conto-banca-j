@@ -36,4 +36,19 @@ public class GestioneClientiServiceImpl implements GestioneClientiService {
         return new ListaClientiDto(clienteRepository.findAll());
     }
 
+    @Override
+    public ListaClientiDto ricercaContains(String s) {
+        return new ListaClientiDto(clienteRepository.findByCognomeContains(s));
+    }
+
+    @Override
+    public ListaClientiDto ricercaEquals(String s) {
+        return new ListaClientiDto(clienteRepository.findByCognomeEquals(s));
+    }
+
+    @Override
+    public ListaClientiDto ricercaLike(String s) {
+        return new ListaClientiDto(clienteRepository.findByCognomeLike(s));
+    }
+
 }

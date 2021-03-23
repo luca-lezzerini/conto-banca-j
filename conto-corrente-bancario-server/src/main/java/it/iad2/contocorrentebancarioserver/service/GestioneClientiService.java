@@ -12,4 +12,10 @@ public interface GestioneClientiService {
     ListaClientiDto cancella(Cliente cliente);
 
     ListaClientiDto aggiorna();
+    
+    ListaClientiDto ricercaContains(String s);
+    
+    ListaClientiDto ricercaEquals(String s);
+    
+    ListaClientiDto ricercaLike(String s);
 }

@@ -1,6 +1,7 @@
 package it.iad2.contocorrentebancarioserver.controller;
 
 import it.iad2.contocorrentebancarioserver.dto.ClienteDto;
+import it.iad2.contocorrentebancarioserver.dto.FiltroCognomeDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.iad2.contocorrentebancarioserver.service.GestioneClientiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,24 @@ public class GestioneClientiController {
     @ResponseBody
     public ListaClientiDto aggiorna() {
         return gestioneClientiService.aggiorna();
+    }
+    
+    @RequestMapping("/cerca-cliente-contains")
+    @ResponseBody
+    public ListaClientiDto cercaContains(@RequestBody FiltroCognomeDto dto){
+        return gestioneClientiService.ricercaContains(dto.getCognome());
+    }
+    
+    @RequestMapping("/cerca-cliente-equals")
+    @ResponseBody
+    public ListaClientiDto cercaEquals(@RequestBody FiltroCognomeDto dto){
+        return gestioneClientiService.ricercaEquals(dto.getCognome());
+    }
+    
+    @RequestMapping("/cerca-cliente-like")
+    @ResponseBody
+    public ListaClientiDto cercaLike(@RequestBody FiltroCognomeDto dto){
+        return gestioneClientiService.ricercaLike(dto.getCognome());
     }
 
 }
