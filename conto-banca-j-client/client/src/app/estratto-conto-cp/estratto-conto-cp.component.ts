@@ -42,13 +42,13 @@ export class EstrattoContoCpComponent implements OnInit {
   mostraContiCp(c: Cliente) {
     let dto: ClienteDto = new ClienteDto();
     dto.cliente = c;
-    let fx: Observable<ListaContoPrestitoDto> = this.http.post<ListaContoPrestitoDto>("http://localhost:8080/carica-conti-cp", dto);
-    fx.subscribe(m => {
-      this.contiPrestiti = m.listaContiPrestito;
-
-    });
-
+    let fx: Observable<ListaContoPrestitoDto> = this.http.post<ListaContoPrestitoDto>("http://localhost:8080/mostra-conti-cp", dto);
+    fx.subscribe(m => this.contiPrestiti = m.listaContiPrestito);
   }
+      
+    
+
+  
 }
 
 

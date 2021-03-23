@@ -1,9 +1,10 @@
 <body>
     <h1>EstrattoContoPrestito</h1>
-    <body>
+
+    
         <h1>Conti</h1>
         <hr>
-        <div id ="inputInpt">
+        <div id="inputInpt">
             <input type="text" [(ngModel)]="cognomeContains" placeholder="cerca per cognome">
             <button id="cerca" (click)="cerca()"> Cerca </button>
         </div>
@@ -27,9 +28,18 @@
                     <td>{{c.dataDiNascita}}</td>
                     <td>{{c.indirizzo}}</td>
                     <td>{{c.telefono}}</td>
-                    <td><button (click)="mostraConti(c)">Mostra conti</button></td>
-                </tr>
-            </table>
-        </div>
-        <br>
-    
+                    <td><button (click)="mostraContiCp(c)">Seleziona</button></td>
+                 </table> 
+               
+                 </div>
+                 <table>
+           
+                <th>Conti prestito associati</th>
+            <tr *ngFor="let e of contiPrestiti">
+                <td>{{e.codice}}</td>
+                </table>
+           </body>
+               
+
+                
+            
