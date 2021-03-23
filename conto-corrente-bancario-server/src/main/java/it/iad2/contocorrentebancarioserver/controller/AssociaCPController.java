@@ -5,8 +5,9 @@
  */
 package it.iad2.contocorrentebancarioserver.controller;
 
-import it.iad2.contocorrentebancarioserver.dto.ClienteDto;
+import it.iad2.contocorrentebancarioserver.dto.AssociaCPDto;
 import it.iad2.contocorrentebancarioserver.dto.ContoPrestitoDto;
+import it.iad2.contocorrentebancarioserver.dto.CriterioCPDto;
 import it.iad2.contocorrentebancarioserver.service.AssociaCPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,13 +23,19 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class AssociaCPController {
-    
+
     @Autowired
     AssociaCPService associaCpService;
-    
+
     @RequestMapping("/associa-cp")
     @ResponseBody
-    public void associaCP(@RequestBody ContoPrestitoDto dto){
-        associaCpService.associaCP(dto.getContoPrestito().getCliente(), dto.getContoPrestito());
+    public AssociaCPDto associaCP(@RequestBody AssociaCPDto dto) {
+        return associaCpService.associaCP(dto.getCliente(), dto.getContoPrestito());
+    }
+
+    @RequestMapping("/cerca-cp")
+    @ResponseBody
+    public ContoPrestitoDto cercaCP(@RequestBody CriterioCPDto dto) {
+        return associaCpService.cercaCP(dto.getRicerca());
     }
 }
