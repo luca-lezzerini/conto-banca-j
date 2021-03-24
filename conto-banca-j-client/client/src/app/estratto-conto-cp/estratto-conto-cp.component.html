@@ -6,7 +6,6 @@
   <div id="inputInpt">
     <input type="text" [(ngModel)]="cliente.cognome" placeholder="cerca per cognome">
     <button id="cerca" (click)="cerca()"> Cerca </button>
-    <button (click)="homepage()">Torna alla home page</button>
   </div>
   <hr>
   <br>
@@ -37,7 +36,7 @@
   <hr>
 
   <div id="tabella">
-    <table>
+    <table  *ngIf="contiPrestitoVisibile">
       <tr>
         <th>Conti prestito associati</th>
       </tr>
@@ -51,9 +50,9 @@
   <hr>
 
 
-  <table>
+  <table *ngIf="estrattocontoVisibile" >
     <tr>
-      <th>Estratto conto prestito</th>
+      <th >Estratto conto prestito</th>
     </tr>
     <tr>
       <th>Id operazione</th>

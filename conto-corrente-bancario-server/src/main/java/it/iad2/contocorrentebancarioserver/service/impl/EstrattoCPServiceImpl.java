@@ -43,5 +43,6 @@ public class EstrattoCPServiceImpl implements EstrattoCPService {
         List<MovCP> listaMovCp = movCPRepository.findAll();
         return new ListaMovCpDto(listaMovCp);
         
+        
     }
 }
