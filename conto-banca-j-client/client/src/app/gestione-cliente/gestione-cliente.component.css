@@ -6,8 +6,8 @@
 }
 
 body{
-    max-width: 960px;
-    max-height: 710px;
+    max-width: 100%;
+    max-height: auto;
     border: solid 10px;
     border-style:groove;
     border-color: darkcyan;

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContoDeposito } from '../gestione-cd/contoDeposito';
 import { Cliente } from '../gestione-cliente/cliente';
@@ -23,20 +22,18 @@ export class EstrattoContoCpComponent implements OnInit {
 
   cliente = new Cliente();
   clienti: Cliente[] = [];
-  listaMovCp: MovCp[] = [];
+  listaMovCp: MovCp[];
   contoPrestito = new ContoPrestito();
   contiPrestiti: ContoPrestito[] = [];
+  estrattocontoVisibile: boolean;
+  contiPrestitoVisibile: boolean
 
 
 
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
-
-  homepage(){
-    this.router.navigateByUrl('/homepage')
-   }
 
   cerca() {
     let dto: FiltroCognomeDto = new FiltroCognomeDto();
@@ -44,26 +41,46 @@ export class EstrattoContoCpComponent implements OnInit {
     let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhost:8080/cerca-cliente-cp", dto);
     oss.subscribe(c => this.clienti = c.listaClienti);
     this.cliente.cognome = "";
-    this.listaMovCp
+    this.listaMovCp = null;
+    this.contiPrestiti = null;
+    this.estrattocontoVisibile = false;
+
 
   }
 
   mostraContiCp(c: Cliente) {
-    let dto:ClienteDto = new ClienteDto();
-    dto.cliente=c;
+    this.contiPrestitoVisibile = true;
+    let dto: ClienteDto = new ClienteDto();
+    dto.cliente = c;
     let fx: Observable<ListaContiClienteDto> = this.http.post<ListaContiClienteDto>("http://localhost:8080/carica-conti", dto);
     fx.subscribe(m => this.contiPrestiti = m.listaCP);
+    this.listaMovCp = null;
   }
-      
-  mostraEstrattoConto(e: ContoPrestito) {
-     let dto:ContoPrestitoDto= new ContoPrestitoDto();
-     dto.contoPrestito=e;
-     let ec: Observable<ListaMovCpDto>= this.http.post<ListaMovCpDto>("http://localhost:8080/mov-cp",dto);
-     ec.subscribe(s=>this.listaMovCp=s.listaMovCp);
 
-   }    
-     
-  }  
+  mostraEstrattoConto(e: ContoPrestito) {
+    this.listaMovCp = null;
+    this.contiPrestitoVisibile = true;
+    this.estrattocontoVisibile = true;
+    let dto: ContoPrestitoDto = new ContoPrestitoDto();
+    dto.contoPrestito = e;
+    let ec: Observable<ListaMovCpDto> = this.http.post<ListaMovCpDto>("http://localhost:8080/mov-cp", dto);
+    ec.subscribe(s => this.listaMovCp = s.listaMovCp);
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
       
   
 

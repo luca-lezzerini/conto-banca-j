@@ -6,7 +6,7 @@
 }
 
 body{
-    max-width: 960px;
+    max-width: 100%;
     max-height: 710px;
     border: solid 10px;
     border-style:groove;

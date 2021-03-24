@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AssociaCCDto } from '../associa-cc/associa-cc-dto';
 import { ContoCorrente } from '../gestione-cc/contoCorrente';
 import { ContoCorrenteDto } from '../gestione-cc/contoCorrenteDto';
 import { ListaCCDto } from '../gestione-cc/listaCCDto';
