@@ -43,10 +43,7 @@ public class SaldoCDServiceImpl implements SaldoCDService {
             if (movCD.getTipoMov().equalsIgnoreCase("versamento")) {
                 saldo += movCD.getImportoMov();
             } else if (movCD.getTipoMov().equalsIgnoreCase("prelievo")) {
-                saldo -= movCD.getImportoMov();
-            } else if (movCD.getTipoMov().equalsIgnoreCase("bonificoUscita")) {
-                saldo -= movCD.getImportoMov();
-            }
+                saldo -= movCD.getImportoMov();}
         }
         return new SaldoCDDto(saldo, cd);
     }
