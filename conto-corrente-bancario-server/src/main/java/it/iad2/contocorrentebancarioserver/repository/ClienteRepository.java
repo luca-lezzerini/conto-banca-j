@@ -41,8 +41,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     Set<Cliente> trovaPerNome(@Param("name") String s);
 
     @Query("select c from Cliente c where c.nome = :nome")
-    Set<Cliente> trovaInBaseAlNome(@Param("nome") String n, Sort sort, Pageable p);
+    Page<Cliente> trovaInBaseAlNome(@Param("nome") String n, Pageable p);
 
     @Query("select c from Cliente c where c.nome = :nome")
-    Set<Cliente> trovaInBaseAlNome(@Param("nome") String n, Pageable p);
+    List<Cliente> trovaInBaseAlNome(@Param("nome") String n, Sort s);
 }
