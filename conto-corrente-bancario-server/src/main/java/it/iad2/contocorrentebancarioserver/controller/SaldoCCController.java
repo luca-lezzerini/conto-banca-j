@@ -30,7 +30,4 @@ public class SaldoCCController {
     public SaldoCCDto saldoCC(@RequestBody ContoCorrenteDto dto) {
         return saldoCCService.saldoCC(dto.getConto().getNumConto());
     }
-    
-    
-    
 }
