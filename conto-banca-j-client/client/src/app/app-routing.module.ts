@@ -14,6 +14,7 @@ import { EcCcComponent } from './ec-cc/ec-cc.component';
 import { SaldoCcComponent } from './saldo-cc/saldo-cc.component';
 import { SaldoCpComponent } from './saldo-cp/saldo-cp.component';
 import { SaldoCdComponent } from './saldo-cd/saldo-cd.component';
+import { EstrattoContoCdComponent } from './estratto-conto-cd/estratto-conto-cd.component';
 
 const routes: Routes = [
   { path: 'gestione-cliente', component: GestioneClienteComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'associa-cd', component: AssociaCdComponent },
   { path: 'estratto-conto-cp', component: EstrattoContoCpComponent },
   { path: 'estratto-conto-cc', component: EcCcComponent },
+  { path: 'estratto-conto-cd', component: EstrattoContoCdComponent},
   { path: 'saldo-cc', component: SaldoCcComponent },
   { path: 'saldo-cd', component: SaldoCdComponent },
   { path: 'saldo-cp', component: SaldoCpComponent },
