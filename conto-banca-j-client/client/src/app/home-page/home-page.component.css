@@ -1,0 +1,54 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  body {
+    text-align: center;
+    max-width: 100%;
+    border: solid 10px;
+    border-style: groove;
+    border-color: darkcyan;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 5%;
+  }
+  
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+  }
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+  }
+  hr {
+    border: solid 0.5px;
+    border-color: darkcyan;
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  button {
+    cursor: pointer;
+    border: solid 1.8px;
+    border-radius: 5px;
+    margin-left: 20px;
+  }
+  
+    button:hover {
+      border: solid 2px;
+      border-color: darkcyan;
+    }
+
+    #foot{
+        font-size: ;
+        border: solid 3px;
+        border-radius: 5px;
+        background-color: coral;
+    }
