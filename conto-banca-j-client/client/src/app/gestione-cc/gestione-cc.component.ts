@@ -10,7 +10,7 @@ import {ModificaCCDto} from './modificaCCDto';
 @Component({
   selector: 'app-gestione-cc',
   templateUrl: './gestione-cc.component.html',
-  styleUrls: ['./gestione-cc.component.css']
+  styleUrls: ['../theme.css']
 })
 export class GestioneCcComponent implements OnInit {
 
