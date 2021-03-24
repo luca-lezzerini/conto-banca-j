@@ -10,7 +10,7 @@ import { NumContoCDDto } from './numCDDto';
 @Component({
   selector: 'app-gestione-cd',
   templateUrl: './gestione-cd.component.html',
-  styleUrls: ['./gestione-cd.component.css']
+  styleUrls: ['../theme.css']
 })
 export class GestioneCdComponent implements OnInit {
 codice: string;

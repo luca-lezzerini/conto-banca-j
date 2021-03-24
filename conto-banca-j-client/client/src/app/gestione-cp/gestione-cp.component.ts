@@ -10,7 +10,7 @@ import { NumCpDto } from './num-cp-dto';
 @Component({
   selector: 'app-gestione-cp',
   templateUrl: './gestione-cp.component.html',
-  styleUrls: ['./gestione-cp.component.css']
+  styleUrls: ['../theme.css']
 })
 export class GestioneCpComponent implements OnInit {
 

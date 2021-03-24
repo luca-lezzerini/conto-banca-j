@@ -12,7 +12,7 @@ import { CriterioCPDto } from './criterio-cp-dto';
 @Component({
   selector: 'app-associa-cp',
   templateUrl: './associa-cp.component.html',
-  styleUrls: ['./associa-cp.component.css']
+  styleUrls: ['../theme.css']
 })
 export class AssociaCpComponent implements OnInit {
 

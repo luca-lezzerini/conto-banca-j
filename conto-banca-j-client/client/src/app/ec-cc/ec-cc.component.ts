@@ -14,7 +14,7 @@ import { MovCC } from './mov-cc';
 @Component({
   selector: 'app-ec-cc',
   templateUrl: './ec-cc.component.html',
-  styleUrls: ['./ec-cc.component.css']
+  styleUrls: ['../theme.css']
 })
 export class EcCcComponent implements OnInit {
 

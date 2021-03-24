@@ -12,7 +12,7 @@ import { associaCDDto } from './associa-cd-dto';
 @Component({
   selector: 'app-associa-cd',
   templateUrl: './associa-cd.component.html',
-  styleUrls: ['./associa-cd.component.css']
+  styleUrls: ['../theme.css']
 })
 export class AssociaCdComponent implements OnInit {
 

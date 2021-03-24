@@ -13,7 +13,7 @@ import { SaldoCPDto } from './saldo-cp-dto';
 @Component({
   selector: 'app-saldo-cp',
   templateUrl: './saldo-cp.component.html',
-  styleUrls: ['./saldo-cp.component.css']
+  styleUrls: ['../theme.css']
 })
 export class SaldoCpComponent implements OnInit {
 

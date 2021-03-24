@@ -13,7 +13,7 @@ import { numContoCCDto } from '../gestione-cc/numContoCCDto';
 @Component({
   selector: 'app-associa-cc',
   templateUrl: './associa-cc.component.html',
-  styleUrls: ['./associa-cc.component.css'],
+  styleUrls: ['../theme.css'],
 })
 export class AssociaCcComponent implements OnInit {
   cliente: Cliente = new Cliente();

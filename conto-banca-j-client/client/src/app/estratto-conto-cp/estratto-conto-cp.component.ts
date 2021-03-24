@@ -16,7 +16,7 @@ import { MovCp } from './mov-cp';
 @Component({
   selector: 'app-estratto-conto-cp',
   templateUrl: './estratto-conto-cp.component.html',
-  styleUrls: ['./estratto-conto-cp.component.css']
+  styleUrls: ['../theme.css']
 })
 export class EstrattoContoCpComponent implements OnInit {
 

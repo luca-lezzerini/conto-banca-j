@@ -13,7 +13,7 @@ import { SaldoCCDto } from './saldo-cc-dto';
 @Component({
   selector: 'app-saldo-cc',
   templateUrl: './saldo-cc.component.html',
-  styleUrls: ['./saldo-cc.component.css'],
+  styleUrls: ['../theme.css']
 })
 export class SaldoCcComponent implements OnInit {
   client: Cliente = new Cliente();

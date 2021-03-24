@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-mostra-tutti-i-conti',
   templateUrl: './mostra-tutti-i-conti.component.html',
-  styleUrls: ['./mostra-tutti-i-conti.component.css']
+  styleUrls: ['../theme.css']
 })
 export class MostraTuttiIContiComponent implements OnInit {
 

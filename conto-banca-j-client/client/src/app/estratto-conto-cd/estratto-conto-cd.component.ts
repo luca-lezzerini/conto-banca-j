@@ -14,7 +14,7 @@ import { MovCD } from './mov-cd';
 @Component({
   selector: 'app-estratto-conto-cd',
   templateUrl: './estratto-conto-cd.component.html',
-  styleUrls: ['./estratto-conto-cd.component.css']
+  styleUrls: ['../theme.css']
 })
 export class EstrattoContoCdComponent implements OnInit {
 
