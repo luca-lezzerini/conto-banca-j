@@ -17,4 +17,9 @@ public class SystemAdminController {
     public void generaDatiTest() {
         systemAdminService.generaDatiTest();
     }
+
+    @RequestMapping("/prova-query")
+    public void provaQuery() {
+        systemAdminService.provaQuery();
+    }
 }

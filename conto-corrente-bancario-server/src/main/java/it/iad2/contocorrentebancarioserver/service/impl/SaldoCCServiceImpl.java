@@ -27,8 +27,10 @@ public class SaldoCCServiceImpl implements SaldoCCService {
     @Override
     public SaldoCCDto saldoCC(String conto) {
 
+        // recupera tutti i conti del cliente intestatario di un dato conto
         List<ContoCorrente> cc = contoCorrenteRepository.findByNumConto(conto).getCliente().getListaContiC();
 
+        // calcola il saldo
         double saldoCC = 0;
         List<MovCC> listaMovCC = contoCorrenteRepository.findByNumConto(conto).getListaMovCC();
         for (MovCC movCC : listaMovCC) {
@@ -41,5 +43,54 @@ public class SaldoCCServiceImpl implements SaldoCCService {
             }
         }
         return new SaldoCCDto(cc, saldoCC);
+    }
+
+    private void calcolaSaldo2(String conto) {
+        List<MovCC> listaMovCC = contoCorrenteRepository.findByNumConto(conto).getListaMovCC();
+        double saldoCC = 0;
+        for (MovCC movCC : listaMovCC) {
+            switch (movCC.getTipoMov()) {
+                case "versamento":
+                    saldoCC += movCC.getImportoMov();
+                    break;
+                case "prelievo":
+                case "bonificoUscita":
+                    saldoCC -= movCC.getImportoMov();
+                    break;
+            }
+        }
+    }
+
+    private void calcolaSaldo3(String conto) {
+        List<MovCC> listaMovCC = contoCorrenteRepository.findByNumConto(conto).getListaMovCC();
+        double saldoCC = 0;
+        for (MovCC movCC : listaMovCC) {
+
+            saldoCC += switch (movCC.getTipoMov()) {
+                case "versamento" ->
+                    movCC.getImportoMov();
+                case "prelievo", "bonificoUscita" ->
+                    -movCC.getImportoMov();
+                default ->
+                    0;
+            };
+        }
+    }
+
+    private void calcolaSaldo4(String conto) {
+        List<MovCC> listaMovCC = contoCorrenteRepository.findByNumConto(conto).getListaMovCC();
+        
+        double saldoCC = listaMovCC
+                .parallelStream()
+                .mapToDouble(movCC
+                        -> switch (movCC.getTipoMov()) {
+                                case "versamento" ->
+                                    movCC.getImportoMov();
+                                case "prelievo", "bonificoUscita" ->
+                                    -movCC.getImportoMov();
+                                default ->
+                                    0;
+                    })
+                .sum();
     }
 }

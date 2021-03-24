@@ -1,5 +1,6 @@
 package it.iad2.contocorrentebancarioserver.service.impl;
 
+import it.iad2.contocorrentebancarioserver.TipoMovimentoCC;
 import it.iad2.contocorrentebancarioserver.model.Cliente;
 import it.iad2.contocorrentebancarioserver.model.ContoCorrente;
 import it.iad2.contocorrentebancarioserver.model.ContoDeposito;
@@ -17,13 +18,17 @@ import it.iad2.contocorrentebancarioserver.repository.MovCPRepository;
 import it.iad2.contocorrentebancarioserver.service.SystemAdminService;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SystemAdminServiceImpl implements SystemAdminService {
-    
+
     @Autowired
     ClienteRepository clienteRepository;
     @Autowired
@@ -38,7 +43,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
     MovCDRepository movCDRepository;
     @Autowired
     MovCPRepository movCPRepository;
-    
+
     @Override
     public void generaDatiTest() {
         //Cancellare tutti i dati del DB
@@ -135,7 +140,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoDepositoRepository.getOne(contiDepositi.get(0).getId()).getListaMovCD().add(movcd0);
         movimentiCD.add(movcd0);
         movimentiCD.get(0).setContoD(contiDepositi.get(0));
-        
+
         MovCD movcd1 = new MovCD(LocalDate.now(), "riscatto", 200);
         contoDepositoRepository.getOne(contiDepositi.get(0).getId()).getListaMovCD().add(movcd1);
         movimentiCD.add(movcd1);
@@ -146,7 +151,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoDepositoRepository.getOne(contiDepositi.get(1).getId()).getListaMovCD().add(movcd2);
         movimentiCD.add(movcd2);
         movimentiCD.get(2).setContoD(contiDepositi.get(1));
-        
+
         MovCD movcd3 = new MovCD(LocalDate.now(), "riscatto", 300);
         contoDepositoRepository.getOne(contiDepositi.get(1).getId()).getListaMovCD().add(movcd3);
         movimentiCD.add(movcd3);
@@ -157,7 +162,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoDepositoRepository.getOne(contiDepositi.get(2).getId()).getListaMovCD().add(movcd4);
         movimentiCD.add(movcd4);
         movimentiCD.get(4).setContoD(contiDepositi.get(2));
-        
+
         MovCD movcd5 = new MovCD(LocalDate.now(), "riscatto", 100);
         contoDepositoRepository.getOne(contiDepositi.get(2).getId()).getListaMovCD().add(movcd5);
         movimentiCD.add(movcd5);
@@ -168,7 +173,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoDepositoRepository.getOne(contiDepositi.get(3).getId()).getListaMovCD().add(movcd6);
         movimentiCD.add(movcd6);
         movimentiCD.get(6).setContoD(contiDepositi.get(3));
-        
+
         MovCD movcd7 = new MovCD(LocalDate.now(), "riscatto", 500);
         contoDepositoRepository.getOne(contiDepositi.get(3).getId()).getListaMovCD().add(movcd7);
         movimentiCD.add(movcd7);
@@ -179,7 +184,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoDepositoRepository.getOne(contiDepositi.get(4).getId()).getListaMovCD().add(movcd8);
         movimentiCD.add(movcd8);
         movimentiCD.get(8).setContoD(contiDepositi.get(4));
-        
+
         MovCD movcd9 = new MovCD(LocalDate.now(), "riscatto", 800);
         contoDepositoRepository.getOne(contiDepositi.get(4).getId()).getListaMovCD().add(movcd9);
         movimentiCD.add(movcd9);
@@ -190,7 +195,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoPrestitoRepository.getOne(contiPrestiti.get(0).getId()).getListaMovCP().add(movcp0);
         movimentiCP.add(movcp0);
         movimentiCP.get(0).setContoP(contiPrestiti.get(0));
-        
+
         MovCP movcp1 = new MovCP(LocalDate.now(), "rimborso", 500);
         contoPrestitoRepository.getOne(contiPrestiti.get(0).getId()).getListaMovCP().add(movcp1);
         movimentiCP.add(movcp1);
@@ -201,7 +206,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoPrestitoRepository.getOne(contiPrestiti.get(1).getId()).getListaMovCP().add(movcp2);
         movimentiCP.add(movcp2);
         movimentiCP.get(2).setContoP(contiPrestiti.get(1));
-        
+
         MovCP movcp3 = new MovCP(LocalDate.now(), "rimborso", 200);
         contoPrestitoRepository.getOne(contiPrestiti.get(1).getId()).getListaMovCP().add(movcp3);
         movimentiCP.add(movcp3);
@@ -212,7 +217,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoPrestitoRepository.getOne(contiPrestiti.get(2).getId()).getListaMovCP().add(movcp4);
         movimentiCP.add(movcp4);
         movimentiCP.get(4).setContoP(contiPrestiti.get(2));
-        
+
         MovCP movcp5 = new MovCP(LocalDate.now(), "erogazione", 1000);
         contoPrestitoRepository.getOne(contiPrestiti.get(2).getId()).getListaMovCP().add(movcp5);
         movimentiCP.add(movcp5);
@@ -223,7 +228,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoPrestitoRepository.getOne(contiPrestiti.get(3).getId()).getListaMovCP().add(movcp6);
         movimentiCP.add(movcp6);
         movimentiCP.get(6).setContoP(contiPrestiti.get(3));
-        
+
         MovCP movcp7 = new MovCP(LocalDate.now(), "erogazione", 200);
         contoPrestitoRepository.getOne(contiPrestiti.get(3).getId()).getListaMovCP().add(movcp7);
         movimentiCP.add(movcp7);
@@ -234,7 +239,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoPrestitoRepository.getOne(contiPrestiti.get(4).getId()).getListaMovCP().add(movcp8);
         movimentiCP.add(movcp8);
         movimentiCP.get(8).setContoP(contiPrestiti.get(4));
-        
+
         MovCP movcp9 = new MovCP(LocalDate.now(), "rimborso", 900);
         contoPrestitoRepository.getOne(contiPrestiti.get(4).getId()).getListaMovCP().add(movcp9);
         movimentiCP.add(movcp9);
@@ -245,17 +250,17 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCC().add(movcc0);
         movimentiCC.add(movcc0);
         movimentiCC.get(0).setContoC(contiCorrenti.get(0));
-        
+
         MovCC movcc1 = new MovCC(LocalDate.now(), "prelievo", 200);
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCC().add(movcc1);
         movimentiCC.add(movcc1);
         movimentiCC.get(1).setContoC(contiCorrenti.get(0));
-        
+
         MovCC movcc2 = new MovCC(LocalDate.now(), "prelievo", 100);
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCC().add(movcc2);
         movimentiCC.add(movcc2);
         movimentiCC.get(2).setContoC(contiCorrenti.get(0));
-        
+
         MovCC movcc3 = new MovCC(LocalDate.now(), "bonificoUscita", 300);
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCC().add(movcc3);
         movimentiCC.add(movcc3);
@@ -272,12 +277,12 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(2).getId()).getListaMovCC().add(movcc5);
         movimentiCC.add(movcc5);
         movimentiCC.get(5).setContoC(contiCorrenti.get(2));
-        
+
         MovCC movcc6 = new MovCC(LocalDate.now(), "prelievo", 100);
         contoCorrenteRepository.getOne(contiCorrenti.get(2).getId()).getListaMovCC().add(movcc6);
         movimentiCC.add(movcc6);
         movimentiCC.get(6).setContoC(contiCorrenti.get(2));
-        
+
         MovCC movcc7 = new MovCC(LocalDate.now(), "bonificoUscita", 400);
         contoCorrenteRepository.getOne(contiCorrenti.get(2).getId()).getListaMovCC().add(movcc7);
         movimentiCC.add(movcc7);
@@ -288,12 +293,12 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(3).getId()).getListaMovCC().add(movcc8);
         movimentiCC.add(movcc8);
         movimentiCC.get(8).setContoC(contiCorrenti.get(3));
-        
+
         MovCC movcc9 = new MovCC(LocalDate.now(), "bonificoUscita", 400);
         contoCorrenteRepository.getOne(contiCorrenti.get(3).getId()).getListaMovCC().add(movcc9);
         movimentiCC.add(movcc9);
         movimentiCC.get(9).setContoC(contiCorrenti.get(3));
-        
+
         MovCC movcc10 = new MovCC(LocalDate.now(), "bonificoUscita", 400);
         contoCorrenteRepository.getOne(contiCorrenti.get(3).getId()).getListaMovCC().add(movcc10);
         movimentiCC.add(movcc10);
@@ -304,7 +309,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(4).getId()).getListaMovCC().add(movcc11);
         movimentiCC.add(movcc11);
         movimentiCC.get(11).setContoC(contiCorrenti.get(4));
-        
+
         MovCC movcc12 = new MovCC(LocalDate.now(), "prelievo", 10000);
         contoCorrenteRepository.getOne(contiCorrenti.get(4).getId()).getListaMovCC().add(movcc12);
         movimentiCC.add(movcc12);
@@ -327,7 +332,7 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCC().add(movcc15);
         movimentiCC.add(movcc15);
         movimentiCC.get(15).setContoC(contiCorrenti.get(7));
-        
+
         MovCC movcc16 = new MovCC(LocalDate.now(), "versamento", 200);
         contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCC().add(movcc16);
         movimentiCC.add(movcc16);
@@ -338,12 +343,12 @@ public class SystemAdminServiceImpl implements SystemAdminService {
         contoCorrenteRepository.getOne(contiCorrenti.get(7).getId()).getListaMovCD().add(movcd10);
         movimentiCD.add(movcd10);
         movimentiCD.get(10).setContoC(contiCorrenti.get(7));
-        
+
         MovCD movcd11 = new MovCD(LocalDate.now(), "deposito", 700);
         contoCorrenteRepository.getOne(contiCorrenti.get(5).getId()).getListaMovCD().add(movcd11);
         movimentiCD.add(movcd11);
         movimentiCD.get(11).setContoC(contiCorrenti.get(5));
-        
+
         MovCP movcp10 = new MovCP(LocalDate.now(), "erogazione", 300);
         contoCorrenteRepository.getOne(contiCorrenti.get(0).getId()).getListaMovCP().add(movcp10);
         movimentiCP.add(movcp10);
@@ -386,8 +391,35 @@ public class SystemAdminServiceImpl implements SystemAdminService {
             );
         }
         );
-        
+
         System.out.println("----------------------------------------------");
         listaClienti1.forEach(c -> System.out.println(c));
+
+        // genera 500 clienti
+        for (int i = 0; i < 500; i++) {
+            Cliente cx = new Cliente();
+            cx.setNome("Nome Cliente " + i);
+            cx.setCognome("Cognome Cliente " + i);
+            cx.setCodiceFiscale("Codice Fiscale " + i);
+            cx.setTelefono("Telefono " + i);
+            cx.setIndirizzo("Indirizzo " + i);
+            clienteRepository.save(cx);
+        }
     }
+
+    @Override
+    public void provaQuery() {
+        // ordina per nome i clienti
+        Collection<Cliente> coll1 = clienteRepository.trovaTutti(Sort.by(Sort.Direction.DESC, "nome"));
+        coll1.forEach(t -> System.out.println("Cliente " + t));
+        // ordina per nome i clienti
+        Collection<Cliente> coll2 = clienteRepository.trovaTutti(Sort.by(Sort.Direction.DESC, "codiceFiscale"));
+        coll2.forEach(t -> System.out.println("Cliente " + t));
+
+        // Query paginata
+        Pageable p = PageRequest.of(3, 10);
+        List<Cliente> listaClienti = clienteRepository.trovaTuttiPaginati(p);
+        System.out.println(listaClienti);
+    }
+
 }
