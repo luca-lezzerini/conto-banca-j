@@ -15,6 +15,7 @@ import { SaldoCcComponent } from './saldo-cc/saldo-cc.component';
 import { SaldoCpComponent } from './saldo-cp/saldo-cp.component';
 import { SaldoCdComponent } from './saldo-cd/saldo-cd.component';
 import { EstrattoContoCdComponent } from './estratto-conto-cd/estratto-conto-cd.component';
+import { MovimentaCpComponent } from './movimenta-cp/movimenta-cp.component';
 
 const routes: Routes = [
   { path: 'gestione-cliente', component: GestioneClienteComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'saldo-cc', component: SaldoCcComponent },
   { path: 'saldo-cd', component: SaldoCdComponent },
   { path: 'saldo-cp', component: SaldoCpComponent },
+  { path: 'movimenta-cp', component: MovimentaCpComponent },
   { path: 'homepage', component: HomePageComponent },
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
 ];
