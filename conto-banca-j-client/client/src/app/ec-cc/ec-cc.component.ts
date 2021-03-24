@@ -1,4 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AssociaCCDto } from '../associa-cc/associa-cc-dto';
+import { ContoCorrente } from '../gestione-cc/contoCorrente';
+import { ContoCorrenteDto } from '../gestione-cc/contoCorrenteDto';
+import { Cliente } from '../gestione-cliente/cliente';
+import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
+import { FiltroCognomeDto } from '../mostra-tutti-i-conti/filtro-cognome-dto';
+import { ListaMovCCDto } from './lista-mov-cc-dto';
+import { MovCC } from './mov-cc';
 
 @Component({
   selector: 'app-ec-cc',
@@ -7,9 +17,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EcCcComponent implements OnInit {
 
-  constructor() { }
+  cognome: string;
+  cliente: Cliente = new Cliente();
+  clienti: Cliente[] = [];
+  conto: ContoCorrente;
+  conti: ContoCorrente [] = [];
+  movimenti: MovCC [] = [];
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+  }
+
+  cercaCognomeLike(){
+    let dto: FiltroCognomeDto = new FiltroCognomeDto();
+    dto.cognome = this.cognome + "%";
+    let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
+      ("http://localhost:8080/cerca-cliente-like", dto);
+    oss.subscribe(s => this.clienti = s.listaClienti);
+    this.cognome = "";
+
+  }
+
+  seleziona(c: Cliente){
+    let dto: ListaClientiDto = new ListaClientiDto();
+    dto.listaClienti = this.clienti;
+    let oss: Observable<AssociaCCDto> = this.http.post<AssociaCCDto>
+      ("http://localhost:8080/seleziona-cliente", dto);
+      oss.subscribe(s => this.conto = s.contoCorrente);
+  }
+
+  mostraEC(c: ContoCorrente){
+    let dto: ContoCorrenteDto = new ContoCorrenteDto();
+    dto.conto = c;
+    let oss: Observable<ListaMovCCDto> = this.http.post<ListaMovCCDto>
+      ("http://localhost:8080/mostra-ec-cc", dto);
+      oss.subscribe(s => this.movimenti = s.listaMov);
   }
 
 }
