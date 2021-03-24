@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { AssociaCCDto } from '../associa-cc/associa-cc-dto';
 import { ContoCorrente } from '../gestione-cc/contoCorrente';
 import { ContoCorrenteDto } from '../gestione-cc/contoCorrenteDto';
+import { ListaCCDto } from '../gestione-cc/listaCCDto';
 import { Cliente } from '../gestione-cliente/cliente';
+import { ClienteDto } from '../gestione-cliente/cliente-dto';
 import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
 import { FiltroCognomeDto } from '../mostra-tutti-i-conti/filtro-cognome-dto';
 import { ListaMovCCDto } from './lista-mov-cc-dto';
@@ -33,18 +35,19 @@ export class EcCcComponent implements OnInit {
     let dto: FiltroCognomeDto = new FiltroCognomeDto();
     dto.cognome = this.cognome + "%";
     let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
-      ("http://localhost:8080/cerca-cliente-like", dto);
+      ("http://localhost:8080/cerca-cliente-cc", dto);
     oss.subscribe(s => this.clienti = s.listaClienti);
     this.cognome = "";
 
   }
 
   seleziona(c: Cliente){
-    let dto: ListaClientiDto = new ListaClientiDto();
-    dto.listaClienti = this.clienti;
-    let oss: Observable<AssociaCCDto> = this.http.post<AssociaCCDto>
-      ("http://localhost:8080/seleziona-cliente", dto);
-      oss.subscribe(s => this.conto = s.contoCorrente);
+    this.movimenti = [];
+    let dto: ClienteDto = new ClienteDto();
+    dto.cliente = c;
+    let oss: Observable<ListaCCDto> = this.http.post<ListaCCDto>
+      ("http://localhost:8080/mostra-cc-cliente", dto);
+      oss.subscribe(s => this.conti = s.listaCC);
   }
 
   mostraEC(c: ContoCorrente){

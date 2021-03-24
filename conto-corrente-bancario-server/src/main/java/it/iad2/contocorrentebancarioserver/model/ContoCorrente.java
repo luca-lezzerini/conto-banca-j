@@ -56,13 +56,13 @@ public class ContoCorrente implements Serializable {
         this.id = id;
     }
 
-    public String getCodice() {
-        return numConto;
-    }
-
-    public void setCodice(String codice) {
-        this.numConto = codice;
-    }
+//    public String getCodice() {
+//        return numConto;
+//    }
+//
+//    public void setCodice(String codice) {
+//        this.numConto = codice;
+//    }
 
     public String getNumConto() {
         return numConto;

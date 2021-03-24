@@ -21,7 +21,7 @@
         <th></th>
     </tr>
     <tr *ngFor="let c of conti">
-        <td>{{c.codice}}</td>
+        <td>{{c.numConto}}</td>
         <td><button class="tbl" (click)="mostraEC(c)">Estratto Conto</button></td>
     </tr>
 </table>
@@ -34,7 +34,7 @@
     </tr>
     <tr *ngFor="let m of movimenti">
         <td>{{m.id}}</td>
-        <td>{{m.data}}</td>
-        <td>{{m.importo}}</td>
+        <td>{{m.dataMov}}</td>
+        <td>{{m.importoMov}}</td>
     </tr>
 </table>
