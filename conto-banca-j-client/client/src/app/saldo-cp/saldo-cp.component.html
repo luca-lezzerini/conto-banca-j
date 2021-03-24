@@ -1,0 +1,43 @@
+<body>
+    <h1>Saldo Conto Prestito</h1>
+    <hr>
+    <div class="center">
+      <input type="text" placeholder="Ricerca Cliente" [(ngModel)]="ricercaCliente">
+      <button class="add" (click)="cercaCliente()"> Cerca </button>
+    </div>
+    <hr>
+    <div id="tabella">
+      <table>
+        <tr>
+          <th>Cognome</th>
+          <th>Nome</th>
+          <th>Cod. Fiscale</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let c  of listaClienti">
+          <td>{{c.cognome}}</td>
+          <td>{{c.nome}}</td>
+          <td>{{c.codiceFiscale}}</td>
+          <td>
+            <button class="btn" (click)="selezionaCliente(c)"> Seleziona </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="tabella" *ngIf = "showTabCP">
+      <table>
+        <tr>
+          <th>N° Conto</th>
+          <th>Saldo</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let cp  of listaCP; index as i">
+          <td>{{cp.numConto}}</td>
+          <td>{{saldoCPre[i]}}</td>
+          <td>
+            <button class="btn" (click)="saldoCP(cp, i)"> Saldo </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
