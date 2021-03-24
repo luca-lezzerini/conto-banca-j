@@ -3,6 +3,7 @@
     <hr>
     <div class="add">
         <button (click)="new()" *ngIf="newVisibile">Nuovo</button>
+        <button (click)="homepage()">Torna alla home page</button>
     </div>
     <div class="add">
         <input id="add" type="text" placeholder="codice conto prestito" [disabled]="codiceEdit" *ngIf="addVisibileInput"

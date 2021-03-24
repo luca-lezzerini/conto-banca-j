@@ -9,6 +9,7 @@ import { FiltroCognomeDto } from './filtro-cognome-dto';
 import { Observable } from 'rxjs';
 import { ListaContiClienteDto } from './lista-conti-cliente-dto';
 import { ClienteDto } from '../gestione-cliente/cliente-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostra-tutti-i-conti',
@@ -30,10 +31,14 @@ export class MostraTuttiIContiComponent implements OnInit {
   contoDeposito = new ContoDeposito;
   contiDepositi: ContoDeposito[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  homepage(){
+    this.router.navigateByUrl('/homepage')
+   }
 
   cerca() {
     let dto: FiltroCognomeDto = new FiltroCognomeDto();

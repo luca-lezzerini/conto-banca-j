@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContoDeposito } from '../gestione-cd/contoDeposito';
 import { Cliente } from '../gestione-cliente/cliente';
@@ -28,10 +29,14 @@ export class EstrattoContoCpComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  homepage(){
+    this.router.navigateByUrl('/homepage')
+   }
 
   cerca() {
     let dto: FiltroCognomeDto = new FiltroCognomeDto();

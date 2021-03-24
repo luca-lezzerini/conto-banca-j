@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContoPrestito } from './conto-prestito';
 import { ContoPrestitoDto } from './conto-prestito-dto';
@@ -23,7 +24,7 @@ export class GestioneCpComponent implements OnInit {
   newVisibile:boolean=true;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -36,6 +37,10 @@ export class GestioneCpComponent implements OnInit {
     this.addVisibileIntestazioneTabella = true;
     this.newVisibile=false;
 
+  }
+
+  homepage(){
+   this.router.navigateByUrl('/homepage')
   }
 
   add() {
