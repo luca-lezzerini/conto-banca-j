@@ -28,13 +28,14 @@
     <table>
       <tr>
         <th>N° Conto</th>
+        <th>Saldo</th>
         <th></th>
       </tr>
-      <tr *ngFor="let cc  of listaCC">
+      <tr *ngFor="let cc  of listaCC; index as i">
         <td>{{cc.numConto}}</td>
-        <td>{{saldoCCor}}</td>
+        <td>{{saldoCCor[i]}}</td>
         <td>
-          <button class="btn" (click)="saldoCC(cc)"> Saldo </button>
+          <button class="btn" (click)="saldoCC(cc, i)"> Saldo </button>
         </td>
       </tr>
     </table>

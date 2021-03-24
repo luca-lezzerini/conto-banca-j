@@ -19,7 +19,7 @@ export class SaldoCcComponent implements OnInit {
   client: Cliente = new Cliente();
   listaClienti: Cliente[] = [];
   listaCC: ContoCorrente[] = [];
-  saldoCCor: number;
+  saldoCCor: number[] = [];
   ricercaCliente: string = '';
   showTabCC : boolean = false;
 
@@ -35,6 +35,8 @@ export class SaldoCcComponent implements OnInit {
       dto
     );
     oss.subscribe(l => this.listaClienti = l.listaClienti);
+    this.showTabCC = false;
+    this.saldoCCor = [];
   }
 
   selezionaCliente(c: Cliente) {
@@ -50,7 +52,7 @@ export class SaldoCcComponent implements OnInit {
     });
   }
 
-  saldoCC(cc: ContoCorrente) {
+  saldoCC(cc: ContoCorrente, i) {
     let dto: ContoCorrenteDto = new ContoCorrenteDto();
     dto.conto = cc;
     let oss: Observable<SaldoCCDto> = this.http.post<SaldoCCDto>(
@@ -59,7 +61,7 @@ export class SaldoCcComponent implements OnInit {
     );
     oss.subscribe(s => {
       this.listaCC = s.listaCC;
-      this.saldoCCor = s.saldo
+      this.saldoCCor[i] = s.saldo;
     })
   }
 
