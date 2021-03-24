@@ -1,6 +1,6 @@
 import { ContoPrestito } from "../gestione-cp/conto-prestito";
 
 export class SaldoCPDto{
-    listaCC : ContoPrestito[];
+    listaCP : ContoPrestito[];
     saldo : number; 
 }

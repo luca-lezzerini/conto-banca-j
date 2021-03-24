@@ -44,7 +44,7 @@ export class SaldoCpComponent implements OnInit {
     let dto: ClienteDto = new ClienteDto();
     dto.cliente = c;
     let oss: Observable<ListaCpDto> = this.http.post<ListaCpDto>(
-      'http://localhost:8080/ricerca-cc',
+      'http://localhost:8080/ricerca-cp',
       dto
     );
     oss.subscribe(c => {
@@ -53,15 +53,15 @@ export class SaldoCpComponent implements OnInit {
     });
   }
 
-  saldoCC(cc: ContoPrestito, i) {
+  saldoCP(cc: ContoPrestito, i) {
     let dto: ContoPrestitoDto = new ContoPrestitoDto();
     dto.contoPrestito = cc;
     let oss: Observable<SaldoCPDto> = this.http.post<SaldoCPDto>(
-      'http://localhost:8080/saldo-cc',
+      'http://localhost:8080/saldo-cp',
       dto
     );
     oss.subscribe(s => {
-      this.listaCP = s.listaCC;
+      this.listaCP = s.listaCP;
       this.saldoCPre[i] = s.saldo;
     })
   }

@@ -32,7 +32,7 @@
           <th></th>
         </tr>
         <tr *ngFor="let cp  of listaCP; index as i">
-          <td>{{cp.numConto}}</td>
+          <td>{{cp.codice}}</td>
           <td>{{saldoCPre[i]}}</td>
           <td>
             <button class="btn" (click)="saldoCP(cp, i)"> Saldo </button>
