@@ -18,6 +18,7 @@ import { AssociaCdComponent } from './associa-cd/associa-cd.component';
 import { EcCcComponent } from './ec-cc/ec-cc.component';
 import { SaldoCcComponent } from './saldo-cc/saldo-cc.component';
 import { SaldoCpComponent } from './saldo-cp/saldo-cp.component';
+import { SaldoCdComponent } from './saldo-cd/saldo-cd.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SaldoCpComponent } from './saldo-cp/saldo-cp.component';
     AssociaCdComponent,
     EcCcComponent,
     SaldoCcComponent,
+    SaldoCdComponent,
     SaldoCpComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
