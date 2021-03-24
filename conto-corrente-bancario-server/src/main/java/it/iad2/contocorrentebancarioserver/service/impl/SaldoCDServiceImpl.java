@@ -40,11 +40,9 @@ public class SaldoCDServiceImpl implements SaldoCDService {
         List<ContoDeposito> cd = contoDepositoRepository.findByCodice(conto).getCliente().getListaContiD();
         List<MovCD> mov = contoDepositoRepository.findByCodice(conto).getListaMovCD();
         for (MovCD movCD : mov) {
-            if (movCD.getTipoMov().equalsIgnoreCase("versamento")) {
+            if (movCD.getTipoMov().equalsIgnoreCase("deposito")) {
                 saldo += movCD.getImportoMov();
-            } else if (movCD.getTipoMov().equalsIgnoreCase("prelievo")) {
-                saldo -= movCD.getImportoMov();
-            } else if (movCD.getTipoMov().equalsIgnoreCase("bonificoUscita")) {
+            } else if (movCD.getTipoMov().equalsIgnoreCase("riscatto")) {
                 saldo -= movCD.getImportoMov();
             }
         }
