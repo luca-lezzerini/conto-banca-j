@@ -4,9 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\associa-cc",
-    "\\src\\app\\estratto-conto-cp",
-    "\\src\\app\\mostra-tutti-i-conti"
+    "\\src\\app\\estratto-conto-cp"
   ],
-  "SelectedNode": "\\src\\app\\ec-cc",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }

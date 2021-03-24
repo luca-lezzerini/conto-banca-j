@@ -22,7 +22,7 @@ export class EstrattoContoCpComponent implements OnInit {
 
   cliente = new Cliente();
   clienti: Cliente[] = [];
-  listaMovCp:MovCp[];
+  listaMovCp: MovCp[] = [];
   contoPrestito = new ContoPrestito();
   contiPrestiti: ContoPrestito[] = [];
 
@@ -39,6 +39,8 @@ export class EstrattoContoCpComponent implements OnInit {
     let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>("http://localhost:8080/cerca-cliente-cp", dto);
     oss.subscribe(c => this.clienti = c.listaClienti);
     this.cliente.cognome = "";
+    this.listaMovCp
+
   }
 
   mostraContiCp(c: Cliente) {
@@ -48,7 +50,7 @@ export class EstrattoContoCpComponent implements OnInit {
     fx.subscribe(m => this.contiPrestiti = m.listaCP);
   }
       
-   mostraEstrattoConto(e:ContoPrestito) {
+  mostraEstrattoConto(e: ContoPrestito) {
      let dto:ContoPrestitoDto= new ContoPrestitoDto();
      dto.contoPrestito=e;
      let ec: Observable<ListaMovCpDto>= this.http.post<ListaMovCpDto>("http://localhost:8080/mov-cp",dto);
