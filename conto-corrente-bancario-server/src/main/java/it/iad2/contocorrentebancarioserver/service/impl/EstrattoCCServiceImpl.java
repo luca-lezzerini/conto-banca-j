@@ -19,8 +19,6 @@ public class EstrattoCCServiceImpl implements EstrattoCCService{
     @Autowired
     ContoCorrenteRepository contoCCRepository;
     @Autowired
-    MovCCRepository movCCRepository;
-    @Autowired
     ClienteRepository clienteRepository;
     
     @Override
