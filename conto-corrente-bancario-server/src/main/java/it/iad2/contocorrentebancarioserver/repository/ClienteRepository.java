@@ -45,4 +45,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     @Query("select c from Cliente c where c.nome = :nome")
     List<Cliente> trovaInBaseAlNome(@Param("nome") String n, Sort s);
+  
 }

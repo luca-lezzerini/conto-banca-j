@@ -3,6 +3,8 @@ package it.iad2.contocorrentebancarioserver.controller;
 import it.iad2.contocorrentebancarioserver.dto.ClienteDto;
 import it.iad2.contocorrentebancarioserver.dto.FiltroCognomeDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaClientiDto;
+import it.iad2.contocorrentebancarioserver.dto.DatiPageDto;
+import it.iad2.contocorrentebancarioserver.dto.PageDto;
 import it.iad2.contocorrentebancarioserver.service.GestioneClientiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -59,5 +61,11 @@ public class GestioneClientiController {
     public ListaClientiDto cercaLike(@RequestBody FiltroCognomeDto dto){
         return gestioneClientiService.ricercaLike(dto.getCognome());
     }
-
+    
+    
+    @RequestMapping("/clienti-paginati")
+    @ResponseBody
+    public PageDto clientiPaginati(@RequestBody DatiPageDto dto){
+        return new PageDto(gestioneClientiService.clientiPaginati(dto.getNumPag(),dto.getElemPag()));
+    }
 }
