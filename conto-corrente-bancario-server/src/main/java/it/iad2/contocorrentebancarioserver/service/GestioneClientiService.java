@@ -2,6 +2,7 @@ package it.iad2.contocorrentebancarioserver.service;
 
 import it.iad2.contocorrentebancarioserver.dto.ListaClientiDto;
 import it.iad2.contocorrentebancarioserver.model.Cliente;
+import org.springframework.data.domain.Page;
 
 public interface GestioneClientiService {
 
@@ -18,4 +19,6 @@ public interface GestioneClientiService {
     ListaClientiDto ricercaEquals(String s);
     
     ListaClientiDto ricercaLike(String s);
+    
+    Page<Cliente> clientiPaginati(int numPage, int elemPage);
 }

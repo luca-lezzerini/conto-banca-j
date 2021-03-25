@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cliente } from './cliente';
 import { ClienteDto } from './cliente-dto';
+import { DatiPageDto } from './dati-page-dto';
 import { ListaClientiDto } from './lista-clienti-dto';
+import { PageDto } from './page-dto';
 
 @Component({
   selector: 'app-gestione-cliente',
@@ -18,9 +20,20 @@ export class GestioneClienteComponent implements OnInit {
   buttonVisible: boolean;
   stato: string = "";
 
+  //variabili paginazione
+  numPag: number = 0;
+  elemPag: number = 10;
+  totalPages: number;
+  totalElements: number;
+  first: boolean;
+  last: boolean;
+  
+  numberOfElements: number;
+
   constructor(private http: HttpClient) {
-    this.aggiorna();
-   }
+    //this.aggiorna();
+    this.aggiornaPaginati();
+  }
 
   ngOnInit(): void {
   }
@@ -55,7 +68,7 @@ export class GestioneClienteComponent implements OnInit {
       let oss: Observable<ListaClientiDto> = this.http.post<ListaClientiDto>
         ("http://localhost:8080/cancella-cliente", dto);
       oss.subscribe(v => this.clienti = v.listaClienti);
-    } 
+    }
     this.cliente = new Cliente();
     this.buttonVisible = false;
     this.inputEnabled = false;
@@ -89,10 +102,29 @@ export class GestioneClienteComponent implements OnInit {
     this.stato = "canc";
   }
 
-  aggiorna(){
+  aggiorna() {
     let oss: Observable<ListaClientiDto> = this.http.get<ListaClientiDto>
-        ("http://localhost:8080/aggiorna-cliente");
+      ("http://localhost:8080/aggiorna-cliente");
     oss.subscribe(v => this.clienti = v.listaClienti);
+  }
+
+  aggiornaPaginati() {
+    let dto: DatiPageDto = new DatiPageDto();
+    dto.numPag = this.numPag;
+    dto.elemPag = this.elemPag;
+    let oss: Observable<PageDto> = this.http.post<PageDto>
+      ("http://localhost:8080/clienti-paginati", dto);
+    oss.subscribe(v => {
+      this.clienti = v.listaCliPag.content;
+      console.log("totalPages: " + v.listaCliPag.totalPages);
+      console.log("totalElements: " + v.listaCliPag.totalElements);
+      console.log("number: " + v.listaCliPag.number);
+      console.log("first: " + v.listaCliPag.first);
+      console.log("last: " + v.listaCliPag.last);
+      console.log("size. " + v.listaCliPag.size);
+      console.log("numberOfElements: " + v.listaCliPag.numberOfElements);
+
+    });
   }
 
 }

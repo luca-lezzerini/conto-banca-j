@@ -1,1 +1,24 @@
-<p>movimenta-cp works!</p>
+<input type="text" placeholder="codiceConto" [(ngModel)]="codice">
+<button (click)="cerca()">Cerca</button>
+<br>
+Conto selezionato: {{risposta}}
+<br>
+<select>
+    <option [ngValue]="null" disabled>Seleziona operazione</option>
+    <option *ngFor="let e of enumCP" [ngValue]="e.id">{{e.name}}</option>
+</select>
+<input type="text" placeholder="importo" [(ngModel)]="importo">
+<button (click)="esegui()">Esegui</button>
+<br>
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Tipo Movimento</th>
+        <th>Importo</th>
+    </tr>
+    <tr *ngFor="let m of movimenti">
+        <th>{{m.dataMov}}</th>
+        <th>{{m.tipoMov}}</th>
+        <th>{{m.importoMov}}</th>
+    </tr>
+</table>
