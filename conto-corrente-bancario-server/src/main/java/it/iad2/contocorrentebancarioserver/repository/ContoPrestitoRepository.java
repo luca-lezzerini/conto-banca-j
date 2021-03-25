@@ -13,5 +13,7 @@ public interface ContoPrestitoRepository extends JpaRepository<ContoPrestito, Lo
     List<ContoPrestito> findByCliente(Long id);
     
     List<ContoPrestito> findByCodiceEquals(String codice);
+    
+    
 
 }

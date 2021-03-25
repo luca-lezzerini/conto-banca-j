@@ -1,32 +1,35 @@
 <body>
-    <h1>Gestione Conto prestito</h1>
-    <hr>
-    <div class="add">
-        <button (click)="new()" *ngIf="newVisibile">Nuovo</button>
-        <button (click)="homepage()">Torna alla home page</button>
-    </div>
-    <div class="add">
-        <input id="add" type="text" placeholder="codice conto prestito" [disabled]="codiceEdit" *ngIf="addVisibileInput"
-            [(ngModel)]="codice">
-        <button id="add" (click)="add()" *ngIf="addVisibileAdd">Add</button>
-        <br>
-        <div id="errore">
-            {{messaggioErrore}}
+    <!--<div id="pagina">-->
+        <h1>Gestione Conto prestito</h1>
+        <hr>
+        <div class="add">
+            <button class="mright" (click)="new()" *ngIf="newVisibile">Nuovo</button>
+            <button id="hpage" (click)="homepage()">Home Page</button>
         </div>
-    </div>
-    <hr>
-    <div id="tabella">
-        <table>
-            <tr *ngIf="addVisibileIntestazioneTabella">
-                <th>Codice conto</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr *ngFor="let c of listaCodici">
-                <td>{{c.codice}}</td>
-                <td><button (click)="edit(c)">Edit</button></td>
-                <td><button (click)="delete(c)">Delete</button></td>
-            </tr>
-        </table>
-    </div>
+        <div class="add">
+            <input id="add" type="text" placeholder="codice conto prestito" [disabled]="codiceEdit"
+                *ngIf="addVisibileInput" [(ngModel)]="codice">
+            <button class="mleft" (click)="add()" *ngIf="addVisibileAdd">Add</button>
+            <br>
+            <br>
+            <div id="errore">
+                {{messaggioErrore}}
+            </div>
+        </div>
+        <hr>
+        <div id="tabella">
+            <table>
+                <tr *ngIf="addVisibileIntestazioneTabella">
+                    <th>Codice conto</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let c of listaCodici">
+                    <td>{{c.codice}}</td>
+                    <td><button (click)="edit(c)">Edit</button></td>
+                    <td><button (click)="delete(c)">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+    <!--</div>-->
 </body>

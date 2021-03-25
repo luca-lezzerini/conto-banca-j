@@ -1,53 +1,55 @@
 <body>
-    <h1> Benvenuto in banca Jarvis</h1>
-    <hr>
-    <br>
-    <h3>Gestione clienti</h3>
-    <button (click)="vaiA('gestione-cliente')">Gestione clienti</button>
-    <hr>
-    <br>
-    <div>
-        <h3>Gestione conti</h3>
-        <button (click)="vaiA('gestione-conto-corrente')">Gestione conto corrente</button>
-        <button (click)="vaiA('gestione-conto-deposito')">Gestione conto deposito</button>
-        <button (click)="vaiA('gestione-conto-prestito')">Gestione conto prestito</button>
-    </div>
-    <hr>
-    <br>
-    <div>
-        <h3>Associa conti</h3>
-        <button (click)="vaiA('associa-cp')">Associa conto prestito</button>
-        <button (click)="vaiA('associa-cd')">Associa conto deposito</button>
-        <button (click)="vaiA('associa-cc')">Associa conto corrente</button>
-    </div>
-    <hr>
-    <br>
-    <div>
-        <h3>Mostra tutti i conti</h3><button (click)="vaiA('mostra-tutti-i-conti')">Mostra tutti i conti</button>
-    </div>
-    <hr>
-    <br>
-    <div>
-        <h3>Movimenta conti</h3>
-        <button (click)="vaiA('movimenta-cc')">Movimenta conto corrente</button>
-        <button (click)="vaiA('')">Movimenta conto deposito</button>
-        <button (click)="vaiA('')">Movimenta conto prestito</button>
-    </div>
-    <hr>
-    <br>
-    <div>
-        <h3>Saldo conti</h3>
-        <button (click)="vaiA('saldo-cc')">Saldo conto corrente</button>
-        <button (click)="vaiA('saldo-cd')">Saldo conto deposito</button>
-        <button (click)="vaiA('saldo-cp')">Saldo conto prestito</button>
-    </div>
-    <hr>
-    <br>
-    <div>
-        <h3>Estratto conti</h3>
-        <button (click)="vaiA('estratto-conto-cc')">Estratto conto corrente</button>
-        <button (click)="vaiA('')">Estratto conto deposito</button>
-        <button (click)="vaiA('estratto-conto-cp')">Estratto conto prestito</button>
-    </div>
-    <hr>
+    <!--<div id="pagina">-->
+        <h1> Benvenuto in banca Jarvis</h1>
+        <hr>
+        <br>
+        <h3>Gestione clienti</h3>
+        <button (click)="vaiA('gestione-cliente')">Gestione clienti</button>
+        <hr>
+        <br>
+        <div>
+            <h3>Gestione conti</h3>
+            <button class="sx" (click)="vaiA('gestione-conto-corrente')">Gestione conto corrente</button>
+            <button (click)="vaiA('gestione-conto-deposito')">Gestione conto deposito</button>
+            <button class="dx" (click)="vaiA('gestione-conto-prestito')">Gestione conto prestito</button>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <h3>Associa conti</h3>
+            <button class="sx" (click)="vaiA('associa-cp')">Associa conto prestito</button>
+            <button (click)="vaiA('associa-cd')">Associa conto deposito</button>
+            <button class="dx" (click)="vaiA('associa-cc')">Associa conto corrente</button>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <h3>Mostra tutti i conti</h3><button (click)="vaiA('mostra-tutti-i-conti')">Mostra tutti i conti</button>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <h3>Movimenta conti</h3>
+            <button class="sx" (click)="vaiA('movimenta-cc')">Movimenta conto corrente</button>
+            <button (click)="vaiA('')">Movimenta conto deposito</button>
+            <button class="dx" (click)="vaiA('')">Movimenta conto prestito</button>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <h3>Saldo conti</h3>
+            <button class="sx" (click)="vaiA('saldo-cc')">Saldo conto corrente</button>
+            <button (click)="vaiA('saldo-cd')">Saldo conto deposito</button>
+            <button class="dx" (click)="vaiA('saldo-cp')">Saldo conto prestito</button>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <h3>Estratto conti</h3>
+            <button class="sx" (click)="vaiA('estratto-conto-cc')">Estratto conto corrente</button>
+            <button (click)="vaiA('')">Estratto conto deposito</button>
+            <button class="dx" (click)="vaiA('estratto-conto-cp')">Estratto conto prestito</button>
+        </div>
+        <hr>
+    <!--</div>-->
 </body>

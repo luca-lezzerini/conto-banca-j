@@ -1,12 +1,13 @@
 <body>
+  <div id="pagina">
     <h1>Saldo Conto Prestito</h1>
     <hr>
     <div class="center">
       <input type="text" placeholder="Ricerca Cliente" [(ngModel)]="ricercaCliente">
-      <button class="add" (click)="cercaCliente()"> Cerca </button>
+      <button class="mleft" (click)="cercaCliente()"> Cerca </button>
     </div>
     <hr>
-    <div id="tabella">
+    <div class="tabella">
       <table>
         <tr>
           <th>Cognome</th>
@@ -23,21 +24,22 @@
           </td>
         </tr>
       </table>
+      <div *ngIf="showTabCP">
+        <table>
+          <tr>
+            <th>N° Conto</th>
+            <th>Saldo</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let cp  of listaCP; index as i">
+            <td>{{cp.codice}}</td>
+            <td>{{saldoCPre[i]}}</td>
+            <td>
+              <button class="btn" (click)="saldoCP(cp, i)"> Saldo </button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div id="tabella" *ngIf = "showTabCP">
-      <table>
-        <tr>
-          <th>N° Conto</th>
-          <th>Saldo</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let cp  of listaCP; index as i">
-          <td>{{cp.codice}}</td>
-          <td>{{saldoCPre[i]}}</td>
-          <td>
-            <button class="btn" (click)="saldoCP(cp, i)"> Saldo </button>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </body>
+  </div>
+</body>

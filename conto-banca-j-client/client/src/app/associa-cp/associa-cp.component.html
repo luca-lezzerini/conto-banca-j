@@ -1,22 +1,31 @@
-<input type="text" placeholder="ricercaCliente" [(ngModel)]="cognome">
-<button (click)="cercaCognomeEquals()">Cerca</button>
-<table>
-    <tr>
-        <th>Cognome</th>
-        <th>Nome</th>
-        <th>Codice Fiscale</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let c of clienti">
-        <td>{{c.cognome}}</td>
-        <td>{{c.nome}}</td>
-        <td>{{c.codiceFiscale}}</td>
-        <td><button class="tbl" (click)="associaCP(c)">Associa</button></td>
-    </tr>
-</table>
-<input type="text" placeholder="ricercaContoPrestito" [(ngModel)]="codice">
-<button (click)="cercaCodiceEquals()">Cerca</button>
-<br>
-Conto Prestito trovato: {{cp.codice}}
-<br>
-{{risposta}}
+<body>
+    <h1>Conto Prestito</h1>
+    <hr>
+    <div id="inptop">
+        <input type="text" placeholder="ricercaCliente" [(ngModel)]="cognome">
+        <button class="mleft" (click)="cercaCognomeEquals()">Cerca</button>
+    </div>
+    <div class="tabella">
+        <table>
+            <tr>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Codice Fiscale</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let c of clienti">
+                <td>{{c.cognome}}</td>
+                <td>{{c.nome}}</td>
+                <td>{{c.codiceFiscale}}</td>
+                <td><button class="tbl" (click)="associaCP(c)">Associa</button></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="inpt">
+        <input type="text" placeholder="ricercaContoPrestito" [(ngModel)]="codice">
+        <button class ="mleft" (click)="cercaCodiceEquals()">Cerca</button>
+    </div>
+    <h3>Conto Prestito trovato: {{cp.codice}}</h3>
+    {{risposta}}
+</body>

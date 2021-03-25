@@ -3,10 +3,10 @@
   <hr>
   <div class="center">
     <input type="text" placeholder="Ricerca Cliente" [(ngModel)]="ricercaCliente">
-    <button class="add" (click)="cercaCliente()"> Cerca </button>
+    <button class="mleft" (click)="cercaCliente()"> Cerca </button>
   </div>
   <hr>
-  <div id="tabella">
+  <div class="tabella">
     <table>
       <tr>
         <th>Cognome</th>
@@ -26,7 +26,7 @@
   </div>
   <div class="center">
     <input type="text" placeholder="Ricerca Conto Corrente" [(ngModel)]="ricercaCC">
-    <button class="add" (click)="cercaCC()"> Cerca </button>
+    <button class="mleft" (click)="cercaCC()"> Cerca </button>
   </div>
   <div class="center">
     <label>C/C trovato:{{contoCorrente.numConto}}</label>

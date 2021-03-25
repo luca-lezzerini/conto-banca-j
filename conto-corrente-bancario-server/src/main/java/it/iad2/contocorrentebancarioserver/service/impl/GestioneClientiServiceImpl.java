@@ -5,6 +5,9 @@ import it.iad2.contocorrentebancarioserver.model.Cliente;
 import it.iad2.contocorrentebancarioserver.repository.ClienteRepository;
 import it.iad2.contocorrentebancarioserver.service.GestioneClientiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -51,4 +54,10 @@ public class GestioneClientiServiceImpl implements GestioneClientiService {
         return new ListaClientiDto(clienteRepository.findByCognomeLike(s));
     }
 
+    @Override
+    public Page<Cliente> clientiPaginati(int numPage, int elemPage) {
+        return clienteRepository.trovaTuttiPaginati3(PageRequest.of(numPage, elemPage));
+    }
+
+    
 }

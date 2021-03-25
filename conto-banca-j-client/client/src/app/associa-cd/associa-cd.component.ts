@@ -48,14 +48,15 @@ export class AssociaCdComponent implements OnInit {
   }
 
   cercaConto(): void {
-    if(this.numConto != ""){
+    // tslint:disable-next-line:triple-equals
+    if (this.numConto != ''){
     const dto: NumContoCDDto = new NumContoCDDto();
     dto.codice = this.numConto;
     const oss: Observable<ContoDepositoDto> = this.http
       .post<ContoDepositoDto>('http://localhost:8080/cerca-conto-deposito', dto);
     oss.subscribe(r => this.conto = r.conto);
-    this.numConto = '';}
-    else{this.conto.codice = null}
+    this.numConto = ''; }
+    else{this.conto.codice = null; }
   }
 
   aggiornaLista(): void {
