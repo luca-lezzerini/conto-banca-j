@@ -24,12 +24,13 @@ public class ContoDeposito implements Serializable {
     @Column
     private String codice;
     
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "listaContiD", allowSetters = true, allowGetters = true)
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
     
-    @JsonIgnoreProperties(value = "contoD", allowSetters = true, allowGetters = true)
+//    @JsonIgnoreProperties(value = "contoD", allowSetters = true, allowGetters = true)
+    @JsonIgnore
     @OneToMany (cascade = CascadeType.REMOVE , mappedBy = "contoD")
     private List<MovCD> listaMovCD;
 

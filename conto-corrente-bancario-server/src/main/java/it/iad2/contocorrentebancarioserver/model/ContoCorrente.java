@@ -24,20 +24,24 @@ public class ContoCorrente implements Serializable {
     @Column
     private String numConto;
     
+//    @JsonIgnoreProperties(value = "listaContiC", allowSetters = true, allowGetters = true)
     @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
     
-    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
+//    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
+    @JsonIgnore
     @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "contoC")
     private List<MovCC> listaMovCC;
     
-    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
+//    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
+    @JsonIgnore
     @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "contoC")
     private List<MovCD> listaMovCD;
     
-    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
+//    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
+    @JsonIgnore
     @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "contoC")
     private List<MovCP> listaMovCP;
 
@@ -55,14 +59,6 @@ public class ContoCorrente implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public String getCodice() {
-//        return numConto;
-//    }
-//
-//    public void setCodice(String codice) {
-//        this.numConto = codice;
-//    }
 
     public String getNumConto() {
         return numConto;
@@ -115,7 +111,7 @@ public class ContoCorrente implements Serializable {
 
     @Override
     public String toString() {
-        return "ContoCorrente{" + "id=" + id + ", numConto=" + numConto + ", cliente=" + cliente.getCodiceFiscale() + ", listaMovCC=" + listaMovCC + ", listaMovCD=" + listaMovCD + ", listaMovCP=" + listaMovCP + '}';
+        return "ContoCorrente{" + "id=" + id + ", numConto=" + numConto + '}';
     }
     
 }

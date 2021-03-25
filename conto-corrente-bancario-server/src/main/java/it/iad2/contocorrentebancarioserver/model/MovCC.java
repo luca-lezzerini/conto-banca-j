@@ -1,6 +1,7 @@
 package it.iad2.contocorrentebancarioserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class MovCC extends MovimentoGenerico implements Serializable {
 
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "listaMovCC", allowSetters = true, allowGetters = true)
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ContoCorrente contoC;
