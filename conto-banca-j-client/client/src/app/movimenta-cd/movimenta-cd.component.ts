@@ -19,7 +19,6 @@ export class MovimentaCdComponent implements OnInit {
   importo: number;
   conto: ContoDeposito = new ContoDeposito();
   listaMovCD: MovCD [] = [];
-  movCD: MovCD;
 
   constructor(private http: HttpClient) {}
 

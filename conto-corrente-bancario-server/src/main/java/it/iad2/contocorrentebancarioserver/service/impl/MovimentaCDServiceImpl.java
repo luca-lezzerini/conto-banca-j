@@ -5,6 +5,7 @@ import it.iad2.contocorrentebancarioserver.model.MovCD;
 import it.iad2.contocorrentebancarioserver.repository.ContoDepositoRepository;
 import it.iad2.contocorrentebancarioserver.repository.MovCDRepository;
 import it.iad2.contocorrentebancarioserver.service.MovimentaCDService;
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class MovimentaCDServiceImpl implements MovimentaCDService {
         MovCD movCD = new MovCD();
         movCD.setContoD(conto);
         movCD.setImportoMov(importo);
+        movCD.setDataMov(LocalDate.now());
         switch (tipoMovimento) {
             case "deposito":
                 movCD.setTipoMov(tipoMovimento);
