@@ -1,40 +1,46 @@
-<input type="text" placeholder="ricercaCliente" [(ngModel)]="cognome">
-<button (click)="cercaCognomeLike()">Cerca</button>
-<table>
-    <tr>
-        <th>Cognome</th>
-        <th>Nome</th>
-        <th>Codice Fiscale</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let c of clienti">
-        <td>{{c.cognome}}</td>
-        <td>{{c.nome}}</td>
-        <td>{{c.codiceFiscale}}</td>
-        <td><button class="tbl" (click)="seleziona(c)">Seleziona</button></td>
-    </tr>
-</table>
-<br>
-<table>
-    <tr>
-        <th>Codice Conto</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let c of conti">
-        <td>{{c.numConto}}</td>
-        <td><button class="tbl" (click)="mostraEC(c)">Estratto Conto</button></td>
-    </tr>
-</table>
-<br>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Data</th>
-        <th>Importo</th>
-    </tr>
-    <tr *ngFor="let m of movimenti">
-        <td>{{m.id}}</td>
-        <td>{{m.dataMov}}</td>
-        <td>{{m.importoMov}}</td>
-    </tr>
-</table>
+<body>
+    <h1>Estratto ContoCorrente</h1>
+    <input type="text" placeholder="ricercaCliente" [(ngModel)]="cognome">
+    <button class="mleft" (click)="cercaCognomeLike()">Cerca</button>
+    <hr>
+    <div class="tabella">
+        <table>
+            <tr>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Codice Fiscale</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let c of clienti">
+                <td>{{c.cognome}}</td>
+                <td>{{c.nome}}</td>
+                <td>{{c.codiceFiscale}}</td>
+                <td><button class="tbl" (click)="seleziona(c)">Seleziona</button></td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th>Codice Conto</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let c of conti">
+                <td>{{c.numConto}}</td>
+                <td><button class="tbl" (click)="mostraEC(c)">Estratto Conto</button></td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Data</th>
+                <th>Importo</th>
+            </tr>
+            <tr *ngFor="let m of movimenti">
+                <td>{{m.id}}</td>
+                <td>{{m.dataMov}}</td>
+                <td>{{m.importoMov}}</td>
+            </tr>
+        </table>
+    </div>
+</body>

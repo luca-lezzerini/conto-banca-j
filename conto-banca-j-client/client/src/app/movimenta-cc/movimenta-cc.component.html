@@ -1,36 +1,34 @@
-
- <input type="text" [(ngModel)]="codice" placeholder="codice conto">
- <button id="cerca" (click)="cerca()"> Cerca </button>
- <br>
- <br>
- <span>
-     conto selezionato:
-     <br>
-    </span>
-    {{codice}}
-    <br>
-    <select  [(ngModel)]="tipoMov">
-        <option value="versamento">Versamento</option>
-        <option value="prelievo">Prelievo</option>
-        <option value="bonifico">Bonifico</option>
-    </select>
-    <input type="number" [(ngModel)]="importo" placeholder="importo">
-    <button id="esegui" (click)="esegui()"> Esegui </button>
-    <br>
-    <br>
-   <table>
-        <tr *ngFor="let l of listaMovCC">
-        <td>{{l.dataMov}}</td>
-        <td>{{l.tipoMov}}</td>
-        <td>{{l.importoMov}}</td>
-        </tr>
- </table>
-
-
-
-
-        
-
-
-   
- 
+<body>
+    <!--<div id="pagina">-->
+        <h1>Conto Corrente</h1>
+        <hr>
+        <input type="text" [(ngModel)]="codice" placeholder="codice conto">
+        <button class="mleft" (click)="cerca()"> Cerca </button>
+        <br>
+        <br>
+        <span>
+            conto selezionato:
+            <br>
+        </span>
+        {{codice}}
+        <hr>
+        <select [(ngModel)]="tipoMov">
+            <option value="versamento">Versamento</option>
+            <option value="prelievo">Prelievo</option>
+            <option value="bonifico">Bonifico</option>
+        </select>
+        <input type="number" [(ngModel)]="importo" placeholder="importo">
+        <button class="mleft" (click)="esegui()"> Esegui </button>
+        <br>
+        <br>
+        <div class="tabella">
+            <table>
+                <tr *ngFor="let l of listaMovCC">
+                    <td>{{l.dataMov}}</td>
+                    <td>{{l.tipoMov}}</td>
+                    <td>{{l.importoMov}}</td>
+                </tr>
+            </table>
+        </div>
+   <!--</div>-->
+</body>

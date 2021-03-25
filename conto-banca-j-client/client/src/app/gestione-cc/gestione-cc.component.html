@@ -3,25 +3,25 @@
     <hr>
     <div class="center">
         <input type="text" placeholder="numConto" [(ngModel)]="numConto">
-        <button class="add" (click)="aggiungi()"> aggiungi </button>
+        <button class="mleft" (click)="aggiungi()"> aggiungi </button>
     </div>
     <hr>
-    <div id="tabella">
-    <table>
-        <tr>
-            <th>numConto</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let c  of listaConti">
-            <td>{{c.numConto}}</td>
-            <td>
-                <button class="btn"(click)="modifica(c)"> modifica </button>
-            </td>
-            <td>
-                <button class="btn" (click)="elimina(c)"> elimina </button>
-            </td>
-        </tr>
-    </table>
+    <div class="tabella">
+        <table>
+            <tr>
+                <th>numConto</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let c  of listaConti">
+                <td>{{c.numConto}}</td>
+                <td>
+                    <button class="btn" (click)="modifica(c)"> modifica </button>
+                </td>
+                <td>
+                    <button class="btn" (click)="elimina(c)"> elimina </button>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>

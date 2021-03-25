@@ -1,16 +1,14 @@
 <body>
-  <h2>EstrattoContoPrestito</h2>
-
-  <h3>Conti</h3>
+  <h1>EstrattoContoPrestito</h1>
+  <h2>Conti</h2>
   <hr>
   <div id="inputInpt">
     <input type="text" [(ngModel)]="cliente.cognome" placeholder="cerca per cognome">
-    <button id="cerca" (click)="cerca()"> Cerca </button>
+    <button class="mleft" (click)="cerca()"> Cerca </button>
   </div>
   <hr>
   <br>
-
-  <div id="tabella">
+  <div class="tabella">
     <table>
       <tr>
         <th>Nome</th>
@@ -31,14 +29,13 @@
         <td><button (click)="mostraContiCp(c)">Seleziona</button></td>
       </tr>
     </table>
-  </div>
-  <br>
-  <hr>
-
-  <div id="tabella">
-    <table  *ngIf="contiPrestitoVisibile">
+    <br>
+    <hr>
+    <table *ngIf="contiPrestitoVisibile">
       <tr>
         <th>Conti prestito associati</th>
+        <th></th>
+        <th></th>
       </tr>
       <tr *ngFor="let e of contiPrestiti">
         <td>{{e.codice}}</td>
@@ -48,11 +45,11 @@
     </table>
   </div>
   <hr>
-
-
-  <table *ngIf="estrattocontoVisibile" >
+  <table *ngIf="estrattocontoVisibile">
     <tr>
-      <th >Estratto conto prestito</th>
+      <th>Estratto conto prestito</th>
+      <th></th>
+      <th></th>
     </tr>
     <tr>
       <th>Id operazione</th>
@@ -62,7 +59,7 @@
     </tr>
     <tr *ngFor="let m of listaMovCp">
       <td width="100px">{{m.id}}</td>
-      <td width="150px">{{m.dataMov	}}</td>
+      <td width="150px">{{m.dataMov }}</td>
       <td width="150px">{{m.tipoMov}}</td>
       <td width="150px">{{m.importoMov}}</td>
     </tr>
