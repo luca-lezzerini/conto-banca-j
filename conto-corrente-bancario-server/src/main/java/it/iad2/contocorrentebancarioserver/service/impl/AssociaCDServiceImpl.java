@@ -22,10 +22,7 @@ public class AssociaCDServiceImpl implements AssociaCDService {
     @Override
     public ContoDeposito trovaConto(String codice) {
         ContoDeposito c = new ContoDeposito();
-        if (c == null) {
-            return new ContoDeposito();
-        } else {
-            return c;
-        }
+        c = contoDepositoRepository.findByCodice(codice);
+        return c;
     }
 }

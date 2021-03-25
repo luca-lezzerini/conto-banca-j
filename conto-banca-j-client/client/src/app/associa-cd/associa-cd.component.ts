@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ContoDeposito } from '../gestione-cd/contoDeposito';
 import { ContoDepositoDto } from '../gestione-cd/contoDepositoDto';
-import { NumContoCDDto } from '../gestione-cd/numCDDto';
+import { NumCDDto } from '../gestione-cd/numCDDto';
 import { Cliente } from '../gestione-cliente/cliente';
 import { ListaClientiDto } from '../gestione-cliente/lista-clienti-dto';
 import { FiltroCognomeDto } from '../mostra-tutti-i-conti/filtro-cognome-dto';
@@ -50,7 +50,7 @@ export class AssociaCdComponent implements OnInit {
   cercaConto(): void {
     // tslint:disable-next-line:triple-equals
     if (this.numConto != ''){
-    const dto: NumContoCDDto = new NumContoCDDto();
+    const dto: NumCDDto = new NumCDDto();
     dto.codice = this.numConto;
     const oss: Observable<ContoDepositoDto> = this.http
       .post<ContoDepositoDto>('http://localhost:8080/cerca-conto-deposito', dto);
