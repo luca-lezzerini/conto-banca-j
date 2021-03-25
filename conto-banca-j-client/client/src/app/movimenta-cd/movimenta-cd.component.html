@@ -18,7 +18,7 @@
     <br>
    <table>
         <tr *ngFor="let l of listaMovCD">
-        <td>{{l.dataMov}}</td>
+        <td>{{l.dataMov | date: 'dd'}}/{{l.dataMov | date: 'MM'}}/ {{l.dataMov | date: 'yyyy'}}</td>
         <td>{{l.tipoMov}}</td>
         <td>{{l.importoMov}}</td>
         </tr>

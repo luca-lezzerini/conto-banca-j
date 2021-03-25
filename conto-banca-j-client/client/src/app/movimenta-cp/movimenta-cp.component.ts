@@ -36,12 +36,13 @@ export class MovimentaCpComponent implements OnInit {
     let oss: Observable<ListaMovCpDto> = this.http.post<ListaMovCpDto>
       ("http://localhost:8080/cerca-mov-cp", dto);
     oss.subscribe(s => this.movimenti = s.listaMovCp);
-    this.aggiorna();
+    //this.aggiorna();
     console.log(this.movimenti);
   }
 
   esegui() {
-    
+    let dto: MovimentaCPDto = new MovimentaCPDto();
+    dto.movCp
   }
 
   aggiorna() {

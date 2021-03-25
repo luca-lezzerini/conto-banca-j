@@ -27,8 +27,10 @@ public class MovimentaCPServiceImpl implements MovimentaCPService{
 
     @Override
     public List<MovCP> cercaMov(String codice) {
-        ContoPrestito c = new ContoPrestito();
-        c = contoCpRepository.findByCodice(codice);
+        System.out.println("\n\nCercaMov codice: " + codice);
+        ContoPrestito c = contoCpRepository.findByCodiceEquals(codice).get(0);
+        System.out.println("\nConto Prestito: " + c.getListaMovCP());
+        System.out.println("\nConto Prestito id: " + c.getId());
         return c.getListaMovCP();
     }
 
