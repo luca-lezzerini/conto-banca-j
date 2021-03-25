@@ -20,6 +20,22 @@
             <button class="mleft" (click)="annulla()" *ngIf="buttonVisible">Annulla</button>
         </div>
         <hr>
+        <div class="contiene">
+            <button  (click)="aggiungi()"><<</button>
+            <button  (click)="aggiungi()"><</button>
+            <input class="numtype" type="number" Min="1" (onchange)="aggiornaPaginati()" placeholder="1" />
+            <button  (click)="aggiungi()">></button>
+            <button  (click)="aggiungi()">>></button>
+            <div class="btn">
+                <label>Clienti per Pagina </label>
+                <select name="pag">
+                    <option value="5">10</option>
+                    <option value="10">25</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        </div>
+        <br>
         <div class="tabella">
             <table>
                 <tr>

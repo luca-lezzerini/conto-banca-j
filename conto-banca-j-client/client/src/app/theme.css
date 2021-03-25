@@ -62,7 +62,12 @@ hr{
 	width: 100%;
     text-align: center;
 }
-
+.numtype {
+   
+    width: 50px;
+    text-align: center;
+    margin-right: 10px;
+}
 #errore{
     color: red;
     text-transform: uppercase;
