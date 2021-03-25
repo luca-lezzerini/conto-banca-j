@@ -21,11 +21,11 @@
         </div>
         <hr>
         <div class="contiene">
-            <button  (click)="aggiungi()"><<</button>
-            <button  (click)="aggiungi()"><</button>
-            <input class="numtype" type="number" Min="1" (onchange)="aggiornaPaginati()" placeholder="1" />
-            <button  (click)="aggiungi()">></button>
-            <button  (click)="aggiungi()">>></button>
+            <button  (click)="goToFirst()"><<</button>
+            <button  (click)="goToPrevious()"><</button>
+            <input class="numtype" type="number" Min="1" placeholder="1" [(ngModel)]="numPaginaV" />
+            <button  (click)="goToNext()">></button>
+            <button  (click)="goToLast()">>></button>
             <div class="btn">
                 <label>Clienti per Pagina </label>
                 <select name="pag">

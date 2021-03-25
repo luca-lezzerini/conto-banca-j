@@ -22,12 +22,13 @@ export class GestioneClienteComponent implements OnInit {
 
   //variabili paginazione
   numPag: number = 0;
+  numPaginaV: number = 1;
   elemPag: number = 10;
   totalPages: number;
   totalElements: number;
   first: boolean;
   last: boolean;
-  
+
   numberOfElements: number;
 
   constructor(private http: HttpClient) {
@@ -116,6 +117,7 @@ export class GestioneClienteComponent implements OnInit {
       ("http://localhost:8080/clienti-paginati", dto);
     oss.subscribe(v => {
       this.clienti = v.listaCliPag.content;
+      this.totalPages = v.listaCliPag.totalPages;
       console.log("totalPages: " + v.listaCliPag.totalPages);
       console.log("totalElements: " + v.listaCliPag.totalElements);
       console.log("number: " + v.listaCliPag.number);
@@ -126,5 +128,31 @@ export class GestioneClienteComponent implements OnInit {
 
     });
   }
+  goToNext() {
+    if (this.numPaginaV < this.totalPages - 1) {
+      this.numPag += 1;
+      this.numPaginaV = this.numPag + 1;
+      this.aggiornaPaginati();
+    }
+  }
 
+  goToPrevious() {
+    if (this.numPaginaV > 1) {
+      this.numPag -= 1;
+      this.numPaginaV = this.numPag + 1;
+      this.aggiornaPaginati();
+    }
+  }
+
+  goToFirst() {
+    this.numPag = 0;
+    this.numPaginaV = this.numPag + 1;
+    this.aggiornaPaginati();
+  }
+
+  goToLast() {
+    this.numPag = this.totalPages - 1;
+    this.numPaginaV = this.numPag + 1;
+    this.aggiornaPaginati();
+  }
 }
