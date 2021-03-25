@@ -110,29 +110,42 @@ export class GestioneClienteComponent implements OnInit {
   }
 
   aggiornaPaginati(e) {
-    let dto: DatiPageDto = new DatiPageDto();
-    console.log(e);
-    dto.numPag = this.numPaginaV - 1;
-    dto.elemPag = this.elemPag;
-    let oss: Observable<PageDto> = this.http.post<PageDto>
-      ("http://localhost:8080/clienti-paginati", dto);
-    oss.subscribe(v => {
-      this.clienti = v.listaCliPag.content;
-      this.totalPages = v.listaCliPag.totalPages;
-      console.log("totalPages: " + v.listaCliPag.totalPages);
-      console.log("totalElements: " + v.listaCliPag.totalElements);
-      console.log("number: " + v.listaCliPag.number);
-      console.log("first: " + v.listaCliPag.first);
-      console.log("last: " + v.listaCliPag.last);
-      console.log("size. " + v.listaCliPag.size);
-      console.log("numberOfElements: " + v.listaCliPag.numberOfElements);
-
-    });
+    if (this.numPaginaV > 0) {
+      let dto: DatiPageDto = new DatiPageDto();
+      console.log(e);
+      dto.numPag = this.numPaginaV - 1;
+      dto.elemPag = this.elemPag;
+      let oss: Observable<PageDto> = this.http.post<PageDto>
+        ("http://localhost:8080/clienti-paginati", dto);
+      oss.subscribe(v => {
+        this.clienti = v.listaCliPag.content;
+        this.totalPages = v.listaCliPag.totalPages;
+        this.numPag = this.numPaginaV - 1;
+        console.log("totalPages: " + v.listaCliPag.totalPages);
+        console.log("totalElements: " + v.listaCliPag.totalElements);
+        console.log("number: " + v.listaCliPag.number);
+        console.log("first: " + v.listaCliPag.first);
+        console.log("last: " + v.listaCliPag.last);
+        console.log("size. " + v.listaCliPag.size);
+        console.log("numberOfElements: " + v.listaCliPag.numberOfElements);
+        if (this.numPaginaV > this.totalPages) {
+          this.numPag = this.totalPages - 1;
+          this.numPaginaV = this.numPag + 1;
+          this.aggiornaPaginati(e);
+        }
+      });
+    }
+    else {
+      this.numPag = 0;
+      this.numPaginaV = this.numPag + 1;
+      this.aggiornaPaginati(e);
+    }
   }
   goToNext() {
-    if (this.numPaginaV < this.totalPages - 1) {
+    if (this.numPaginaV < this.totalPages) {
       this.numPag += 1;
       this.numPaginaV = this.numPag + 1;
+      this.aggiornaPaginati(this.numPaginaV);
     }
   }
 
@@ -140,16 +153,25 @@ export class GestioneClienteComponent implements OnInit {
     if (this.numPaginaV > 1) {
       this.numPag -= 1;
       this.numPaginaV = this.numPag + 1;
+      this.aggiornaPaginati(this.numPaginaV);
     }
   }
 
   goToFirst() {
     this.numPag = 0;
     this.numPaginaV = this.numPag + 1;
+    this.aggiornaPaginati(this.numPaginaV);
   }
 
   goToLast() {
     this.numPag = this.totalPages - 1;
     this.numPaginaV = this.numPag + 1;
+    this.aggiornaPaginati(this.numPaginaV);
+  }
+
+  refresh(e) {
+    this.numPag = 0;
+    this.numPaginaV = this.numPag + 1;
+    this.aggiornaPaginati(this.numPaginaV);
   }
 }
