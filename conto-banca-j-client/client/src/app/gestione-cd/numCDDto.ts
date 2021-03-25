@@ -1,3 +1,3 @@
-export class NumContoCDDto{
+export class NumCDDto {
     codice: string;
 }

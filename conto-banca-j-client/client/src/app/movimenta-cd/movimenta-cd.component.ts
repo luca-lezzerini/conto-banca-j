@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MovCD } from '../estratto-conto-cd/mov-cd';
-import {NumContoCDDto} from '../gestione-cd/numCDDto';
+import {NumCDDto} from '../gestione-cd/numCDDto';
 import {Observable} from 'rxjs';
 import {ContoDepositoDto} from '../gestione-cd/contoDepositoDto';
 import {ContoDeposito} from '../gestione-cd/contoDeposito';
@@ -25,12 +25,15 @@ export class MovimentaCdComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cerca(): void{
-    const dto: NumContoCDDto = new NumContoCDDto();
+  cerca(): void {
+    const dto: NumCDDto = new NumCDDto();
     dto.codice = this.codice;
     const oss: Observable<ContoDepositoDto> = this.http
       .post<ContoDepositoDto>('http://localhost:8080/cerca-conto-deposito', dto);
-    oss.subscribe(r => this.conto = r.conto);
+    oss.subscribe(r => {
+      this.conto = r.conto;
+      console.log(r);
+    });
     this.aggiornaListaMovimentiCD();
   }
   esegui(): void {
@@ -46,8 +49,9 @@ export class MovimentaCdComponent implements OnInit {
   aggiornaListaMovimentiCD(): void {
     const dto: ContoDepositoDto = new ContoDepositoDto();
     dto.conto = this.conto;
+    console.log(this.conto);
     const oss: Observable<ListaMovCDDto> = this.http
-      .post<ListaMovCDDto>('http://localhost:8080/mostra-movimenti-conto-dto', dto);
+      .post<ListaMovCDDto>('http://localhost:8080/mostra-movimenti-conto-cd', dto);
     oss.subscribe(l => this.listaMovCD = l.listaMovCD);
   }
 }

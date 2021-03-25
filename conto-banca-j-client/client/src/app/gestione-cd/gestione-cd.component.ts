@@ -5,7 +5,7 @@ import { ContoDeposito } from './contoDeposito';
 import { ContoDepositoDto } from './contoDepositoDto';
 import { ListaCDDto } from './listaCDDto';
 import { ModificaCDDto } from './modificaCDDto';
-import { NumContoCDDto } from './numCDDto';
+import { NumCDDto } from './numCDDto';
 
 @Component({
   selector: 'app-gestione-cd',
@@ -21,7 +21,7 @@ listaConti: ContoDeposito[];
   ngOnInit(): void {
   }
   aggiungi(): void{
-    const dto: NumContoCDDto = new NumContoCDDto();
+    const dto: NumCDDto = new NumCDDto();
     dto.codice = this.codice;
     const oss: Observable<ListaCDDto> = this.http
       .post<ListaCDDto>('http://localhost:8080/new-cd', dto);
