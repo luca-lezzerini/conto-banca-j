@@ -11,21 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class MovCC implements Serializable {
+public class MovCC extends MovimentoGenerico implements Serializable {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column
-    private LocalDate dataMov;
-
-    @Column
-    private String tipoMov;
-
-    @Column
-    private double importoMov;
-    
     @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
@@ -35,43 +22,9 @@ public class MovCC implements Serializable {
     }
 
     public MovCC(LocalDate dataMov, String tipoMov, double importoMov) {
-        this.dataMov = dataMov;
-        this.tipoMov = tipoMov;
-        this.importoMov = importoMov;
+        super(dataMov, tipoMov, importoMov);
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDate getDataMov() {
-        return dataMov;
-    }
-
-    public void setDataMov(LocalDate dataMov) {
-        this.dataMov = dataMov;
-    }
-
-    public String getTipoMov() {
-        return tipoMov;
-    }
-
-    public void setTipoMov(String tipoMov) {
-        this.tipoMov = tipoMov;
-    }
-
-    public double getImportoMov() {
-        return importoMov;
-    }
-
-    public void setImportoMov(double importoMov) {
-        this.importoMov = importoMov;
-    }
-
+    
     public ContoCorrente getContoC() {
         return contoC;
     }
