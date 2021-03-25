@@ -23,15 +23,15 @@
         <div class="contiene">
             <button  (click)="goToFirst()"><<</button>
             <button  (click)="goToPrevious()"><</button>
-            <input class="numtype" type="number" Min="1" placeholder="1" [(ngModel)]="numPaginaV" />
+            <input class="numtype" type="number" Min="1" placeholder="1" [(ngModel)]="numPaginaV" (blur)="aggiornaPaginati($event)"/>
             <button  (click)="goToNext()">></button>
             <button  (click)="goToLast()">>></button>
             <div class="btn">
                 <label>Clienti per Pagina </label>
-                <select name="pag">
-                    <option value="5">10</option>
-                    <option value="10">25</option>
-                    <option value="50">50</option>
+                <select name="pag"  [(ngModel)]="elemPag" (change)="aggiornaPaginati($event)">
+                    <option elemPag = 10>10</option>
+                    <option elemPag = 25>25</option>
+                    <option elemPag = 50>50</option>
                 </select>
             </div>
         </div>

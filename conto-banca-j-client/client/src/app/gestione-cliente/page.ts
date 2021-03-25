@@ -1,6 +1,4 @@
-
 import { Cliente } from "./cliente";
-
 
 export class Page{
     content: Cliente[];

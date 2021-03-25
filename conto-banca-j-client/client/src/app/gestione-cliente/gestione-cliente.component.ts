@@ -23,7 +23,7 @@ export class GestioneClienteComponent implements OnInit {
   //variabili paginazione
   numPag: number = 0;
   numPaginaV: number = 1;
-  elemPag: number = 10;
+  elemPag: number = 25;
   totalPages: number;
   totalElements: number;
   first: boolean;
@@ -33,7 +33,7 @@ export class GestioneClienteComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     //this.aggiorna();
-    this.aggiornaPaginati();
+    this.aggiornaPaginati(this.numPaginaV);
   }
 
   ngOnInit(): void {
@@ -109,9 +109,10 @@ export class GestioneClienteComponent implements OnInit {
     oss.subscribe(v => this.clienti = v.listaClienti);
   }
 
-  aggiornaPaginati() {
+  aggiornaPaginati(e) {
     let dto: DatiPageDto = new DatiPageDto();
-    dto.numPag = this.numPag;
+    console.log(e);
+    dto.numPag = this.numPaginaV - 1;
     dto.elemPag = this.elemPag;
     let oss: Observable<PageDto> = this.http.post<PageDto>
       ("http://localhost:8080/clienti-paginati", dto);
@@ -132,7 +133,6 @@ export class GestioneClienteComponent implements OnInit {
     if (this.numPaginaV < this.totalPages - 1) {
       this.numPag += 1;
       this.numPaginaV = this.numPag + 1;
-      this.aggiornaPaginati();
     }
   }
 
@@ -140,19 +140,16 @@ export class GestioneClienteComponent implements OnInit {
     if (this.numPaginaV > 1) {
       this.numPag -= 1;
       this.numPaginaV = this.numPag + 1;
-      this.aggiornaPaginati();
     }
   }
 
   goToFirst() {
     this.numPag = 0;
     this.numPaginaV = this.numPag + 1;
-    this.aggiornaPaginati();
   }
 
   goToLast() {
     this.numPag = this.totalPages - 1;
     this.numPaginaV = this.numPag + 1;
-    this.aggiornaPaginati();
   }
 }
