@@ -5,6 +5,8 @@
  */
 package it.iad2.contocorrentebancarioserver.service.impl;
 
+import it.iad2.contocorrentebancarioserver.dto.ContoPrestitoDto;
+import it.iad2.contocorrentebancarioserver.dto.ListaMovCpDto;
 import it.iad2.contocorrentebancarioserver.model.ContoPrestito;
 import it.iad2.contocorrentebancarioserver.model.MovCP;
 import it.iad2.contocorrentebancarioserver.repository.ContoPrestitoRepository;
@@ -25,12 +27,16 @@ public class MovimentaCPServiceImpl implements MovimentaCPService {
     ContoPrestitoRepository contoCpRepository;
 
     @Override
-    public ContoPrestito cercaMov(String codice) {
+    public ListaMovCpDto cercaMov(String codice) {
         System.out.println("\n\nCercaMov codice: " + codice);
-        ContoPrestito c = contoCpRepository.findByCodiceEquals(codice).get(0);
+        List<ContoPrestito> lista = contoCpRepository.findByCodiceEquals(codice);
+        System.out.println("Lista = " + lista);
+        ContoPrestito c = lista.get(0);
         System.out.println("\nConto Prestito: " + c.getListaMovCP());
         System.out.println("\nConto Prestito id: " + c.getId());
-        return c;
+        System.out.println("Lista mov cp " + c.getListaMovCP());
+        ListaMovCpDto risp = new ListaMovCpDto(c.getListaMovCP());
+        return risp;
     }
 
     @Override
