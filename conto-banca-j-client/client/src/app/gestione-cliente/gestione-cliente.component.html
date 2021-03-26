@@ -21,19 +21,18 @@
         </div>
         <hr>
         <div class="contiene">
-            <button  (click)="goToFirst()"><<</button>
-            <button  (click)="goToPrevious()"><</button>
-            <input class="numtype" type="number" min="1" [max]="totalPages" [(ngModel)]="numPaginaV" (blur)="aggiornaPaginati($event)"/>
-            <button  (click)="goToNext()">></button>
-            <button  (click)="goToLast()">>></button>
-            <div class="btn">
-                <label>Clienti per Pagina </label>
-                <select name="pag"  [(ngModel)]="elemPag" (change)="refresh($event)">
-                    <option elemPag = 10 >10</option>
-                    <option elemPag = 25 >25</option>
-                    <option elemPag = 50 >50</option>
-                </select>
-            </div>
+            <app-pagination 
+                    (next)="goToNext($event)"
+                    (prev)="goToPrevious($event)"
+                    (first)="goToFirst($event)"
+                    (last)="goToLast($event)"
+                    (numPaginaO) = "aggiornaPaginati($event)"
+                    (pagSize) ="setElemPag($event)"
+                    [numPaginaV] = numPaginaV
+                    [totalPages]=totalPages
+                    [elemPag]=elemPag
+                    >
+            </app-pagination>
         </div>
         <br>
         <div class="tabella">
@@ -59,6 +58,21 @@
                     <td><button class="tbl" (click)="cancella(c)">Cancella</button></td>
                 </tr>
             </table>
+        </div>
+        <br>
+        <div class="contiene">
+            <app-pagination 
+                    (next)="goToNext($event)"
+                    (prev)="goToPrevious($event)"
+                    (first)="goToFirst($event)"
+                    (last)="goToLast($event)"
+                    (pagSize) ="setElemPag($event)"
+                    (numPaginaO) = "aggiornaPaginati($event)"
+                    [numPaginaV] = numPaginaV
+                    [totalPages]=totalPages
+                    [elemPag]=elemPag
+                    >
+            </app-pagination>
         </div>
     </div>
 </body>

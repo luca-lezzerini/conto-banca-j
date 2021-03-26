@@ -23,6 +23,7 @@ import { EstrattoContoCdComponent } from './estratto-conto-cd/estratto-conto-cd.
 import { MovimentaCpComponent } from './movimenta-cp/movimenta-cp.component';
 import { MovimentaCcComponent } from './movimenta-cc/movimenta-cc.component';
 import { MovimentaCdComponent } from './movimenta-cd/movimenta-cd.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MovimentaCdComponent } from './movimenta-cd/movimenta-cd.component';
     MovimentaCpComponent,
     MovimentaCcComponent,
     MovimentaCdComponent,
+    PaginationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

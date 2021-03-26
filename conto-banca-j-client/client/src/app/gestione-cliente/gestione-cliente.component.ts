@@ -109,10 +109,10 @@ export class GestioneClienteComponent implements OnInit {
     oss.subscribe(v => this.clienti = v.listaClienti);
   }
 
-  aggiornaPaginati(e) {
+  aggiornaPaginati(numPaginaV: number) {
+    this.numPaginaV = numPaginaV;
     if (this.numPaginaV > 0) {
       let dto: DatiPageDto = new DatiPageDto();
-      console.log(e);
       dto.numPag = this.numPaginaV - 1;
       dto.elemPag = this.elemPag;
       let oss: Observable<PageDto> = this.http.post<PageDto>
@@ -131,45 +131,55 @@ export class GestioneClienteComponent implements OnInit {
         if (this.numPaginaV > this.totalPages) {
           this.numPag = this.totalPages - 1;
           this.numPaginaV = this.numPag + 1;
-          this.aggiornaPaginati(e);
+          this.aggiornaPaginati(this.numPaginaV);
         }
       });
     }
     else {
       this.numPag = 0;
       this.numPaginaV = this.numPag + 1;
-      this.aggiornaPaginati(e);
-    }
-  }
-  goToNext() {
-    if (this.numPaginaV < this.totalPages) {
-      this.numPag += 1;
-      this.numPaginaV = this.numPag + 1;
       this.aggiornaPaginati(this.numPaginaV);
     }
   }
 
-  goToPrevious() {
-    if (this.numPaginaV > 1) {
-      this.numPag -= 1;
-      this.numPaginaV = this.numPag + 1;
-      this.aggiornaPaginati(this.numPaginaV);
-    }
-  }
-
-  goToFirst() {
-    this.numPag = 0;
+  goToNext(numPaginaV: number) {
+    console.log("sono in next del padre");
+    console.log("val numPaginaV: ", numPaginaV);
+    this.numPaginaV = numPaginaV;
+    this.numPag += 1;
     this.numPaginaV = this.numPag + 1;
     this.aggiornaPaginati(this.numPaginaV);
   }
 
-  goToLast() {
+  goToPrevious(numPaginaV: number) {
+    console.log("sono in prev del padre");
+    console.log("val numPaginaV: ", numPaginaV);
+    this.numPaginaV = numPaginaV;
+    this.numPag -= 1;
+    this.numPaginaV = this.numPag + 1;
+    this.aggiornaPaginati(this.numPaginaV);
+  }
+
+  goToFirst(numPaginaV: number) {
+    console.log("sono in first del padre");
+    console.log("val numPaginaV: ", numPaginaV);
+    this.numPaginaV = numPaginaV;
+    this.numPag = numPaginaV - 1;
+    this.aggiornaPaginati(this.numPaginaV);
+  }
+
+  goToLast(numPaginaV: number) {
+    console.log("sono in last del padre");
+    console.log("val numPaginaV: ", numPaginaV);
     this.numPag = this.totalPages - 1;
     this.numPaginaV = this.numPag + 1;
     this.aggiornaPaginati(this.numPaginaV);
   }
 
-  refresh(e) {
+  setElemPag(elemPag: number) {
+    console.log("sono in setElemPage del padre")
+    this.elemPag = elemPag;
+    console.log("elemPag: ", elemPag);
     this.numPag = 0;
     this.numPaginaV = this.numPag + 1;
     this.aggiornaPaginati(this.numPaginaV);
