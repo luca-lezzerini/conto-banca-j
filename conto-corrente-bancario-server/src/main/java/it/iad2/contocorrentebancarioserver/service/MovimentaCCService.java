@@ -8,6 +8,7 @@ public interface MovimentaCCService {
 
     NumCCDto cerca(String n);
 
-    MovimentiCCDto esegui(Date d, double i, String m,String c);
+    MovimentiCCDto esegui(Date d, double i, String m, String c);
 
+    MovimentiCCDto aggiorna(String numConto);
 }

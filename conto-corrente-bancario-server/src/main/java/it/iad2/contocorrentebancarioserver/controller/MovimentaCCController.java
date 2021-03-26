@@ -4,7 +4,6 @@ import it.iad2.contocorrentebancarioserver.dto.MovimentaCCDto;
 import it.iad2.contocorrentebancarioserver.dto.MovimentiCCDto;
 import it.iad2.contocorrentebancarioserver.dto.NumCCDto;
 import it.iad2.contocorrentebancarioserver.service.MovimentaCCService;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +29,9 @@ public class MovimentaCCController {
     MovimentiCCDto esegui(@RequestBody MovimentaCCDto dto) {
         return movimentaCcService.esegui(dto.getData(), dto.getImporto(), dto.getTipoMovCC(),dto.getCodice());
     }
-
+@RequestMapping("/aggiorna-cc")
+    @ResponseBody
+    MovimentiCCDto aggiorna(@RequestBody NumCCDto dto){
+        return movimentaCcService.aggiorna(dto.getNumConto());
+    }
 }

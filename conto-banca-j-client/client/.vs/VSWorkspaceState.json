@@ -3,9 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\associa-cc",
-    "\\src\\app\\estratto-conto-cp"
+    "\\src\\app\\estratto-conto-cp",
+    "\\src\\app\\movimenta-cc"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\src\\app\\estratto-conto-cp\\estratto-conto-cp.component.html",
   "PreviewInSolutionExplorer": false
 }

@@ -20,7 +20,7 @@ export class MovimentaCcComponent implements OnInit {
   codice: string;
   tipoMov: string = "versamento";
   importo: number;
-  listaMovCC: MovimentoCC[];
+  listaMovCC: MovimentoCC[] = [];
 
   constructor(private http: HttpClient) {
   }
@@ -33,6 +33,7 @@ export class MovimentaCcComponent implements OnInit {
     dto.numConto = this.contoCorrente.numConto;
     let oss: Observable<numContoCCDto> = this.http.post<numContoCCDto>("http://localhost:8080/cerca-conto", dto);
     oss.subscribe(c => this.codice = c.numConto);
+    this.aggiorna();
   }
   esegui() {
     let dto: MovimentoCCDto = new MovimentoCCDto();
@@ -42,5 +43,12 @@ export class MovimentaCcComponent implements OnInit {
     dto.tipoMovimento = this.tipoMov;
     let oss: Observable<MovimentiCCDto> = this.http.post<MovimentiCCDto>("http://localhost:8080/esegui-movimento-cc", dto);
     oss.subscribe(x => this.listaMovCC = x.listaMovimentiCC);
+  }
+  aggiorna(): void{
+    let dto: numContoCCDto = new numContoCCDto()
+    dto.numConto = this.codice;
+    let oz: Observable<MovimentiCCDto> = this.http
+      .post<MovimentiCCDto>('http://localhost:8080/aggiorna-cc',dto);
+    oz.subscribe(m => this.listaMovCC = m.listaMovimentiCC); 
   }
 }

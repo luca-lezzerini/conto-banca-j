@@ -1,29 +1,30 @@
-<input type="text" [(ngModel)]="codice" placeholder="codice conto">
- <button id="cerca" (click)="cerca()"> Cerca </button>
- <br>
- <br>
- <span>
-     conto selezionato:
-     <br>
-    </span>
-    {{conto.codice}}
+<body>
+  <input type="text" [(ngModel)]="codice" placeholder="codice conto">
+  <button id="cerca" (click)="cerca()"> Cerca </button>
+  <br>
+  <br>
+  <span>
+    conto selezionato:
     <br>
-    <select  [(ngModel)]="tipoMov">
-        <option value="deposito">deposito</option>
-        <option value="riscatto">riscatto</option>
-    </select>
-    <input type="number" [(ngModel)]="importo" placeholder="importo">
-    <button id="esegui" (click)="esegui()"> Esegui </button>
-    <br>
-    <br>
-   <table>
-        <tr *ngFor="let l of listaMovCD">
-        <td>{{l.dataMov | date: 'dd'}}/{{l.dataMov | date: 'MM'}}/ {{l.dataMov | date: 'yyyy'}}</td>
-        <td>{{l.tipoMov}}</td>
-        <td>{{l.importoMov}}</td>
-        </tr>
- </table>
-
+  </span>
+  {{conto.codice}}
+  <br>
+  <select [(ngModel)]="tipoMov">
+    <option value="deposito">deposito</option>
+    <option value="riscatto">riscatto</option>
+  </select>
+  <input type="number" [(ngModel)]="importo" placeholder="importo">
+  <button id="esegui" (click)="esegui()"> Esegui </button>
+  <br>
+  <br>
+  <table>
+    <tr *ngFor="let l of listaMovCD">
+      <td>{{l.dataMov | date: 'dd'}}/{{l.dataMov | date: 'MM'}}/ {{l.dataMov | date: 'yyyy'}}</td>
+      <td>{{l.tipoMov}}</td>
+      <td>{{l.importoMov}}</td>
+    </tr>
+  </table>
+</body>
 
 
 

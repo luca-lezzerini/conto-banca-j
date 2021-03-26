@@ -18,7 +18,7 @@ public class MovimentaCCServiceImpl implements MovimentaCCService {
     @Autowired
     ContoCorrenteRepository contoCRepository;
     @Autowired
-    MovCCRepository movCcReository;
+    MovCCRepository movCcRepository;
 
     @Override
     public NumCCDto cerca(String n) {
@@ -34,15 +34,44 @@ public class MovimentaCCServiceImpl implements MovimentaCCService {
     }
 
     @Override
-    public MovimentiCCDto esegui(Date d, double i, String m, String c) {
-        ContoCorrente cc = contoCRepository.findByNumConto(c);
+    public MovimentiCCDto esegui(Date d, double i, String tipoMovimento, String codiceConto) {
+        ContoCorrente cc = contoCRepository.findByNumConto(codiceConto);
         MovCC mov = new MovCC();
         mov.setDataMov(LocalDate.now());
-        mov.setTipoMov(m);
+        mov.setTipoMov(tipoMovimento);
         mov.setContoC(cc);
         mov.setImportoMov(i);
-        movCcReository.save(mov);
-        return new MovimentiCCDto(movCcReository.findAll());
+        movCcRepository.save(mov);
+        return new MovimentiCCDto(movCcRepository.findAll());
     }
+//    public MovimentiCCDto esegui(Date d, double i, String tipoM, String c) {
+//        ContoCorrente cc = contoCRepository.findByNumConto(c);
+//
+//        MovCC mov = new MovCC();
+//        mov.setDataMov(LocalDate.now());
+//        mov.setContoC(cc);
+//        mov.setImportoMov(i);
+//        switch (tipoM) {
+//            case "versamento" ->
+//                mov.setTipoMov(tipoM);
+//            case "prelievo" ->
+//                mov.setTipoMov(tipoM);
+//            case "bonifico" ->
+//                mov.setTipoMov(tipoM);
+//        }
+//
+//        movCcRepository.save(mov);
+//        return aggiorna(c);
+//                
+//    }
 
+    @Override
+    public MovimentiCCDto aggiorna(String numConto) {
+        ContoCorrente cc = contoCRepository.findByNumConto(numConto);
+        if (cc == null) {
+            cc = new ContoCorrente();
+        }
+        return new MovimentiCCDto(movCcRepository.findByContoC(cc.getId()));
+
+    }
 }
