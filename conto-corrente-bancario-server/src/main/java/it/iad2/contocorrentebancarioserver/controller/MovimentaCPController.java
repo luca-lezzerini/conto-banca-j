@@ -26,8 +26,8 @@ public class MovimentaCPController {
 
     @ResponseBody
     @RequestMapping("/cerca-mov-cp")
-    public ListaMovCpDto cercaMov(@RequestBody CriterioCPDto dto) {
-        ListaMovCpDto risp = movCpService.cercaMov(dto.getRicerca());
+    public ListaMovCpDto cercaMovCP(@RequestBody CriterioCPDto dto) {
+        ListaMovCpDto risp = new ListaMovCpDto(movCpService.cercaMovCP(dto.getRicerca()));
         return risp;
     }
 

@@ -27,7 +27,7 @@ public class MovimentaCPServiceImpl implements MovimentaCPService {
     ContoPrestitoRepository contoCpRepository;
 
     @Override
-    public ListaMovCpDto cercaMov(String codice) {
+    public List<MovCP> cercaMovCP(String codice) {
         System.out.println("\n\nCercaMov codice: " + codice);
         List<ContoPrestito> lista = contoCpRepository.findByCodiceEquals(codice);
         System.out.println("Lista = " + lista);
@@ -35,8 +35,7 @@ public class MovimentaCPServiceImpl implements MovimentaCPService {
         System.out.println("\nConto Prestito: " + c.getListaMovCP());
         System.out.println("\nConto Prestito id: " + c.getId());
         System.out.println("Lista mov cp " + c.getListaMovCP());
-        ListaMovCpDto risp = new ListaMovCpDto(c.getListaMovCP());
-        return risp;
+        return c.getListaMovCP();
     }
 
     @Override

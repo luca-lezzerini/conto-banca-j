@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MovimentaCPService {
 
-    ListaMovCpDto cercaMov(String codice);
+    List<MovCP> cercaMovCP(String codice);
 
     List<MovCP> esegui(MovCP movimento);
 
