@@ -1,5 +1,6 @@
 export class MovimentoCCDto {
-    tipoMovimento:string;
+    tipoMovimento: string;
+    numContoCC: string;
+    importo: number;
     dataOdierna:Date;
-    importo:number;
 }

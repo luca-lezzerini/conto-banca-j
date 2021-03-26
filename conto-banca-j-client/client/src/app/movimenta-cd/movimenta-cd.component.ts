@@ -11,7 +11,7 @@ import {ListaMovCDDto} from '../estratto-conto-cd/lista-mov-cd-dto';
 @Component({
   selector: 'app-movimenta-cd',
   templateUrl: './movimenta-cd.component.html',
-  styleUrls: ['./movimenta-cd.component.css']
+  styleUrls: ['../theme.css']
 })
 export class MovimentaCdComponent implements OnInit {
   codice: string;

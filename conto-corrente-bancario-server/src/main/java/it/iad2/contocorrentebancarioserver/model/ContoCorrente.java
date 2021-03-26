@@ -16,33 +16,33 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class ContoCorrente implements Serializable {
-    
+
     @Id
     @GeneratedValue
     private Long id;
-    
+
     @Column
     private String numConto;
-    
+
 //    @JsonIgnoreProperties(value = "listaContiC", allowSetters = true, allowGetters = true)
     @JsonIgnore
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Cliente cliente;
-    
+
 //    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
     @JsonIgnore
-    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "contoC")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "contoC")
     private List<MovCC> listaMovCC;
-    
+
 //    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
     @JsonIgnore
-    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "contoC")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "contoC")
     private List<MovCD> listaMovCD;
-    
+
 //    @JsonIgnoreProperties(value = "contoC", allowSetters = true, allowGetters = true)
     @JsonIgnore
-    @OneToMany (cascade = CascadeType.REMOVE ,mappedBy = "contoC")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "contoC")
     private List<MovCP> listaMovCP;
 
     public ContoCorrente() {
@@ -61,11 +61,14 @@ public class ContoCorrente implements Serializable {
     }
 
     public String getNumConto() {
+
         return numConto;
     }
 
     public void setNumConto(String numConto) {
+
         this.numConto = numConto;
+
     }
 
     public Cliente getCliente() {
@@ -77,7 +80,7 @@ public class ContoCorrente implements Serializable {
     }
 
     public List<MovCC> getListaMovCC() {
-        if (listaMovCC == null){
+        if (listaMovCC == null) {
             listaMovCC = new ArrayList<>();
         }
         return listaMovCC;
@@ -88,7 +91,7 @@ public class ContoCorrente implements Serializable {
     }
 
     public List<MovCD> getListaMovCD() {
-        if (listaMovCD == null){
+        if (listaMovCD == null) {
             listaMovCD = new ArrayList<>();
         }
         return listaMovCD;
@@ -99,7 +102,7 @@ public class ContoCorrente implements Serializable {
     }
 
     public List<MovCP> getListaMovCP() {
-        if (listaMovCP == null){
+        if (listaMovCP == null) {
             listaMovCP = new ArrayList<>();
         }
         return listaMovCP;
@@ -113,5 +116,5 @@ public class ContoCorrente implements Serializable {
     public String toString() {
         return "ContoCorrente{" + "id=" + id + ", numConto=" + numConto + '}';
     }
-    
+
 }

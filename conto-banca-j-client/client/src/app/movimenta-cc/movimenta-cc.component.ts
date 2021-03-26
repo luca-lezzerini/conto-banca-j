@@ -36,10 +36,11 @@ export class MovimentaCcComponent implements OnInit {
   }
   esegui() {
     let dto: MovimentoCCDto = new MovimentoCCDto();
-    dto.dataOdierna = this.dataOdierna;
+    dto.numContoCC=this.codice;
+    dto.dataOdierna=this.dataOdierna;
     dto.importo = this.importo;
     dto.tipoMovimento = this.tipoMov;
-    let oss: Observable<MovimentiCCDto> = this.http.post<MovimentiCCDto>("http://localhost:8080/esegui-movimento", dto);
+    let oss: Observable<MovimentiCCDto> = this.http.post<MovimentiCCDto>("http://localhost:8080/esegui-movimento-cc", dto);
     oss.subscribe(x => this.listaMovCC = x.listaMovimentiCC);
   }
 }
