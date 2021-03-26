@@ -3,11 +3,11 @@
 <br>
 Conto selezionato: {{risposta}}
 <br>
-<select>
+<select [(ngModel)]="tipoMovimento">
     <option [ngValue]="null" disabled>Seleziona operazione</option>
-    <option *ngFor="let e of enumCP" [ngValue]="e.id">{{e.name}}</option>
+    <option *ngFor="let o of operazioni" [ngValue]="o.name">{{o.name}}</option>
 </select>
-<input type="text" placeholder="importo" [(ngModel)]="importo">
+<input type="number" placeholder="importo" [(ngModel)]="importo">
 <button (click)="esegui()">Esegui</button>
 <br>
 <table>

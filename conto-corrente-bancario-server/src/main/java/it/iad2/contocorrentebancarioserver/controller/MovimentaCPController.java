@@ -8,6 +8,7 @@ package it.iad2.contocorrentebancarioserver.controller;
 import it.iad2.contocorrentebancarioserver.dto.ContoPrestitoDto;
 import it.iad2.contocorrentebancarioserver.dto.CriterioCPDto;
 import it.iad2.contocorrentebancarioserver.dto.ListaMovCpDto;
+import it.iad2.contocorrentebancarioserver.dto.MovimentaCPDto;
 import it.iad2.contocorrentebancarioserver.service.MovimentaCPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,14 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class MovimentaCPController {
-    
+
     @Autowired
     MovimentaCPService movCpService;
-    
+
     @ResponseBody
     @RequestMapping("/cerca-mov-cp")
-    public ListaMovCpDto cercaMov(@RequestBody CriterioCPDto dto){
-         ListaMovCpDto risp = new ListaMovCpDto(movCpService.cercaMov(dto.getRicerca()));
+    public ContoPrestitoDto cercaMov(@RequestBody CriterioCPDto dto) {
+        ContoPrestitoDto risp = new ContoPrestitoDto(movCpService.cercaMov(dto.getRicerca()));
         return risp;
     }
+
+    @ResponseBody
+    @RequestMapping("/esegui-mov-cp")
+    public ListaMovCpDto eseguiMovCp(@RequestBody MovimentaCPDto dto) {
+        return new ListaMovCpDto(movCpService.esegui(dto.getMovCP()));
+    }
+
 }

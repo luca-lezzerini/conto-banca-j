@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface MovimentaCPService {
     
-    List<MovCP> cercaMov(String codice);
+    ContoPrestito cercaMov(String codice);
     
     List<MovCP> esegui(MovCP movimento);
-    
-    List<MovCP> aggiorna();
+
 }
